@@ -1,0 +1,40 @@
+<template>
+    <h1 class="page-header">Laporan Stok Per RO</h1>
+    <au-input-form>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-9">
+                        <au-autocomplete value.bind="productItem" error.bind="error.productItem" label="Nama Barang" loader.one-time="itemLoader"
+                            placeholder="Nama Barang" options.bind="controlOptions" read-only.bind="readOnlyProduct">
+                        </au-autocomplete>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <au-textbox label="RO" placeholder="RO" value.bind="code" error.bind="error.code" read-only.bind="readOnly"></au-textbox>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9">
+                        <au-textbox label="Warna" placeholder="Warna" value.bind="color" error.bind="error.color" read-only.bind="readOnly"></au-textbox>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" style="width:150px; height:150px">
+                <img class="img-responsive" style="margin:auto;" src.bind="imagePath">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button click.delegate="exportToExcel()" class="btn btn-success btn-sm">Cetak Excel</button> &nbsp;
+                <button style="margin-right:10px;" click.delegate="showReport()" class="btn btn-success btn-sm">Tampilkan</button>
+            </div>
+        </div>
+    </au-input-form>
+    <au-table 
+        view-model.ref="models"
+        options.bind="options"
+        data.bind="data"
+        show.bind="show">
+</template>

@@ -1,0 +1,92 @@
+<template>
+    <h3>Upload Gambar Produk</h3>
+    <br/>
+    <form class="form-horizontal">
+        <div class="col-md-2"><input type="radio" id="ro" value="ro" change.delegate="updateType($event)" name="type" checked/><label for="ro">RO</label></div>
+        <div class="col-md-4">
+            <au-textbox read-only.bind="isNotRO" value.bind="ro" keypress.trigger="check($event)"></au-textbox>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-md-2"><input type="radio" id="name" value="name" change.delegate="updateType($event)" name="type" /><label for="name">Nama Produk</label></div>
+        <div class="col-md-4">
+            <au-autocomplete read-only.bind="isNotName" change.delegate="finishedGoodsChange($event)" loader.bind="finishedGoodsLoader"
+                key="code" text="name" value.bind="product" query.bind="itemFilter"></au-autocomplete>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="form-group col-md-5 ${error.dataSource?'has-error':''}">
+            <span class="help-block">${error.dataSource}</span>
+            <au-collection title="Pilih Produk" checkall.delegate="onClickAllDataSource($event)" items.bind="dataSource" columns.bind="columns" item-template="modules/merchandiser/product/template/finishing-goods-item"
+                read-only.bind="true"></au-collection>
+        </div>
+        <div class="col-md-1" style="padding-top:50px;">
+            <button class="btn btn-sm btn-default col-sm-12" click.delegate="moveRight()"><i class="fa fa-2x fa-angle-double-right"></i></button>
+            <br/><br/>
+            <button class="btn btn-sm btn-default col-sm-12" click.delegate="moveLeft()"><i class="fa fa-2x fa-angle-double-left"></i></button>
+        </div>
+        <div class="form-group col-md-5 ${error.dataDestination?'has-error':''}">
+            <span class="help-block">${error.dataDestination}</span>
+            <au-collection title="Produk Terpilih" checkall.delegate="onClickAllDataDestination($event)"  items.bind="dataDestination" columns.bind="columns" item-template="modules/merchandiser/product/template/finishing-goods-item"
+                read-only.bind="true"></au-collection>
+        </div>
+        <div class="clearfix"></div>
+        <div class="form-group col-md-4 ${error.imageUpload?'has-error':''}">
+            <label class="col-sm-12"><strong>Gambar :</strong></label>
+            <div class="col-sm-12">
+                <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+                <span class="help-block">${error.imageUpload}</span>
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <!--<label><strong>Motif : </strong></label><!--<label>${article_motif.name}</label>-->
+            <!--<div class="form-group ${error.motifname?'has-error':''}">
+                <label class="col-sm-2"><strong>Nama</strong></label>
+                <div class="col-sm-8">
+                    <au-autocomplete value.bind="data.motif" loader.bind="MotifsLoader" error.bind="error.motif" text="name"></au-autocomplete>                      
+                </div>
+            </div>-->
+           <!-- <div class="form-group ${error.motifUpload?'has-error':''}">
+                <label class="col-sm-2"><strong>File Path</strong></label>
+               <div class="col-sm-10">
+                <input type="file" id="motifUpload" name="motifUpload" accept="image/*">
+                <span class="help-block">${error.motifUpload}</span>
+            </div>
+            </div> -->           
+        </div>
+        <div class="col-md-4">
+            <div><label><strong>Warna :</strong></label></div>
+            <div class="form-group">
+                <label class="col-sm-2"><strong>Kode</strong></label>
+                <div class="col-sm-10"><input type="color" id="color" name="color" value.bind="color" change.delegate="changeColor($event)" /></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2"><strong>Nama</strong></label>
+                <div class="col-sm-10">
+                    <au-dropdown items.bind="article_colors" value.bind="article_color"></au-dropdown>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+          <div class="form-group col-md-8 ${error.doc?'has-error':''}">  
+            <!--<au-textbox             label="Nama RO"                         value.bind="data.realizationOrderName"                                                   error.bind="error.realizationOrderName"                     read-only.bind="readOnly">         </au-textbox>-->
+            <au-textbox             label="Nomor RO"                            value.bind="data.ro"                                                                     error.bind="error.ro"                     read-only.bind="readOnly">         </au-textbox>
+            <au-autocomplete        label="Proses"                              value.bind="data.process"                    loader.bind="ProcessLoader"                 error.bind="error.process"                             text="name">                            </au-autocomplete>
+            <au-autocomplete        label="Bahan"                               value.bind="data.materials"                  loader.bind="MaterialsLoader"               error.bind="error.materials"                           text="name">                            </au-autocomplete>
+            <au-autocomplete        label="Komposisi Bahan"                     value.bind="data.materialCompositions"       loader.bind="MaterialCompositionsLoader"    error.bind="error.materialCompositions"                text="name">                            </au-autocomplete>
+            <au-autocomplete        label="Koleksi"                             value.bind="data.collections"                loader.bind="CollectionsLoader"             error.bind="error.collections"                         text="name">                            </au-autocomplete>
+            <au-autocomplete        label="Season"                              value.bind="data.seasons"                    loader.bind="SeasonsLoader"                 error.bind="error.seasons"                             text="name">                            </au-autocomplete>
+            <au-autocomplete        label="Konter"                              value.bind="data.counters"                   loader.bind="CountersLoader"                error.bind="error.counters"                            text="name">                            </au-autocomplete>
+            <au-autocomplete        label="Style"                               value.bind="data.subCounters"                loader.bind="SubCountersLoader"             error.bind="error.subCounters"                         text="name">                            </au-autocomplete>
+            <au-autocomplete        label="Kategori"                            value.bind="data.categories"                 loader.bind="CategoriesLoader"              error.bind="error.categories"                          text="name">                            </au-autocomplete>
+          </div>
+          </div>
+        <div class="clearfix"></div>
+        <hr/>
+        <label class="col-sm-4 control-label"></label>
+        <div class="col-sm-5">
+            <button class="btn btn-primary" click.delegate="upload()">Upload Gambar</button>
+            <button class="btn btn-default" click.delegate="list()">Kembali</button>
+        </div>
+    </form>
+</template>

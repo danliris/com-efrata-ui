@@ -1,0 +1,27 @@
+<template> 
+    <require from="./data-form"></require>
+    <div class="form-horizontal">
+        <h3>DETAIL DISTRIBUSI BARANG</h3>
+        <hr>
+    <!--<block class="display-wrapper" style="display:none">-->
+        <!--<data-form title="Detail Distribusi Barang" read-only="true"></data-form>-->
+        <au-textbox label="Ekspedisi" value.bind="data.expeditionService.name" read-only.bind="true"></au-textbox>
+        <au-textbox label="Nomor Dokumen" value.bind="data.code" read-only.bind="true"></au-textbox>
+        <au-textbox label="Berat (Kg)" value.bind="data.weight" read-only.bind="true"></au-textbox>
+        <au-textbox label="Tujuan" value.bind="data.destination" read-only.bind="true"></au-textbox>
+        <au-datetimepicker label="Tanggal" value.bind="data.date" read-only.bind="true"></au-datetimepicker>
+        <au-collection 
+            items.bind="data.items" 
+            errors.bind="error.spkDocuments"
+            columns.bind="spkDocumentsInfo.columns" 
+            title="Packing List"
+            read-only.bind="true"
+            item-template="modules/efr-kb-exp-cr/template/packing-list">
+        </au-collection>
+        <hr/>
+        <div class="btn-group pull-right">
+            <button class="btn btn-default" click.delegate="list()">Kembali</button>
+            <button class="btn btn-success" click.delegate="print()">Print</button>
+        </div>
+    </div>
+</template>
