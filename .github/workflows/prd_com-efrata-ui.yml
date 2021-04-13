@@ -52,4 +52,4 @@ jobs:
         app-name: 'com-efrata-ui'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_49389b459793478087de47424149dd46 }}
-        package: ./dist
+        package: .
