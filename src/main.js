@@ -30,22 +30,22 @@ export async function configure(aurelia) {
         }
       }
        
-      //var auth = "https://bateeq-auth-api.azurewebsites.net/v1/";
+      var auth = "https://bateeq-auth-api.azurewebsites.net/v1/";
       //var auth = "https://bateeq-auth-api-dev.azurewebsites.net/v1";
       // dipakai
-      var auth = "https://com-bateeq-service-auth-dev.azurewebsites.net/v1/";
+      //var auth = "https://com-bateeq-service-auth-dev.azurewebsites.net/v1/";
       var core = "https://bateeq-core-api-dev.azurewebsites.net/v1/core/";
       //var ncore ="https://com-bateeq-service-core-dev.azurewebsites.net/v1/";
-      var ncore ="http://localhost:53935/v1/";
+      var ncore ="https://com-efrata-service-core.azurewebsites.net/v1/";
       var master = "http://localhost:53935/v1/";
       //var master = "https://bateeq-core-api-dev.azurewebsites.net/v1/master/";
       var manufacture ="https://bateeq-core-api-dev.azurewebsites.net/v1/manufacture/";
       //var inventory ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/inventory/";
       //var inventory ="https://com-bateeq-service-warehouse-dev.azurewebsites.net/v1/";
-      var inventory ="http://localhost:61254/v1/";
+      var inventory ="https://com-efrata-service-warehouse.azurewebsites.net/v1/";
       var inventoryAzure = "https://com-bateeq-service-inventory-dev.azurewebsites.net/v1/";
       //var merchandiser = "https://com-bateeq-service-warehouse-dev.azurewebsites.net/v1/";
-      var merchandiser = "http://localhost:61254/v1/";
+      var merchandiser = "https://com-efrata-service-warehouse.azurewebsites.net/v1/";
       //var merchandiser ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/merchandiser/";
       //var merchandiser = "http://localhost:51011/v1/";
       //var md ="http://localhost:61542/v1/";
