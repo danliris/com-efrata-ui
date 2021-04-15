@@ -37,7 +37,7 @@ export async function configure(aurelia) {
       var core = "https://bateeq-core-api-dev.azurewebsites.net/v1/core/";
       //var ncore ="https://com-bateeq-service-core-dev.azurewebsites.net/v1/";
       var ncore ="https://com-efrata-service-core.azurewebsites.net/v1/";
-      var master = "http://localhost:53935/v1/";
+      var master = "https://com-efrata-service-core.azurewebsites.net/v1/";
       //var master = "https://bateeq-core-api-dev.azurewebsites.net/v1/master/";
       var manufacture ="https://bateeq-core-api-dev.azurewebsites.net/v1/manufacture/";
       //var inventory ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/inventory/";
