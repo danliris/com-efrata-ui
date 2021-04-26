@@ -55,15 +55,15 @@ export class View {
             }
 
             switch (this.type) {
-                case "MD1":
+                 case "MD1":
                     this.hasApprove = !this.data.IsValidatedMD1;
                     // this.hasUnApprove = this.data.IsValidatedMD1 && !this.data.IsValidatedMD2 && !this.data.IsValidated;
                     break;
                 case "Purchasing":
-                    this.hasApprove = this.data.IsValidatedMD1 && !this.data.IsValidatedPurchasing;
+                    this.hasApprove = !this.data.IsValidatedMD1 && !this.data.IsValidatedPurchasing;
                     break;
                 case "MD2":
-                    this.hasApprove = this.data.IsValidatedMD1 && this.data.IsValidatedPurchasing && !this.data.IsValidatedMD2;
+                    this.hasApprove = !this.data.IsValidatedMD1 && this.data.IsValidatedPurchasing && !this.data.IsValidatedMD2;
                     // this.hasUnApprove = this.data.IsValidatedMD2;
                     break;
                 default:

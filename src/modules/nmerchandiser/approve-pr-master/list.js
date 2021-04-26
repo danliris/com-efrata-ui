@@ -24,7 +24,7 @@ export class List {
         },
         { field: "BuyerCode", title: "Kode Buyer" },
         { field: "BuyerName", title: "Nama Buyer" },
-        { field: "Article", title: "ARtikel" },
+        { field: "Article", title: "Artikel" },
         {
             field: "ShipmentDate", title: "Tgl. Shipment", formatter: function (value, data, index) {
                 return moment(value).format("DD MMM YYYY");
@@ -110,7 +110,7 @@ export class List {
                 break;
             case "Purchasing":
                 filter = Object.assign({
-                    IsValidatedMD1: true,
+                    IsValidatedMD1: false,
                     IsValidatedPurchasing: false,
                 }, this.defaultFilter);
                 if (this.section) {
@@ -119,7 +119,7 @@ export class List {
                 break;
             case "MD2":
                 filter = Object.assign({
-                    IsValidatedMD1: true,
+                    IsValidatedMD1: false,
                     IsValidatedPurchasing: true,
                     IsValidatedMD2: false,
                 }, this.defaultFilter);
