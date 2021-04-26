@@ -125,8 +125,8 @@ export class List {
             dateTo : this.dateTo ? moment(this.dateTo).format("YYYY-MM-DD") : "",
             invoiceNo: this.invoice ? this.invoice.invoiceNo  : "",
             doNo : this.deliveryorder ? this.deliveryorder.doNo : "",
-            billNo : this.bill ? this.bill.billNo : "", 
-            paymentBill: this.paymentbill ? this.paymentbill.paymentBill : ""
+            // billNo : this.bill ? this.bill.billNo : "", 
+            // paymentBill: this.paymentbill ? this.paymentbill.paymentBill : ""
         };
         this.service.search(args)
                 .then(result => {
@@ -158,8 +158,8 @@ export class List {
                 dateTo : this.dateTo ? moment(this.dateTo).format("YYYY-MM-DD") : "",
                 invoiceNo: this.invoice ? this.invoice.invoiceNo : "",
                 doNo: this.deliveryorder ? this.deliveryorder.doNo : "",
-                billNo: this.bill ? this.bill.billNo : "",
-                paymentBill: this.paymentBill ? this.paymentbill.paymentBill : ""
+                // billNo: this.bill ? this.bill.billNo : "",
+                // paymentBill: this.paymentBill ? this.paymentbill.paymentBill : ""
             };
             
             this.service.generateExcel(args)
@@ -185,10 +185,10 @@ export class List {
     return (keyword) => {
       var info = {
         keyword: keyword,
-        // select: JSON.stringify({ "doNo": "DONo", "Id": "1", "supplierName": "SupplierName", "billNo": "BillNo", "paymentBill": "PaymentBill" }),
-        // search: JSON.stringify(["DONo", "BillNo", "PaymentBill"]),
-        select: JSON.stringify({ "doNo": "DONo", "Id": "1", "supplierName": "SupplierName" }),
-        search: JSON.stringify(["DONo"]),
+        //select: JSON.stringify({ "doNo": "DONo", "Id": "1", "supplierName": "SupplierName", "billNo": "BillNo", "paymentBill": "PaymentBill" }),
+        //search: JSON.stringify(["DONo", "BillNo", "PaymentBill"]),
+         select: JSON.stringify({ "doNo": "DONo", "Id": "1", "supplierName": "SupplierName" }),
+         search: JSON.stringify(["DONo"]),
         order: { "DONo": "asc" }
       };
       console.log(info);
@@ -206,13 +206,13 @@ export class List {
     return InvoiceLoader;
   }
 
-  // BillNoView = (bill) => {
-  //   return `${bill.billNo}`
-  // }
+  //  BillNoView = (bill) => {
+  //    return `${bill.billNo}`
+  //  }
 
-  // PaymentBillNoView = (paymentbill) => {
-  //   return `${paymentbill.paymentBill}`
-  // }
+  //  PaymentBillNoView = (paymentbill) => {
+  //    return `${paymentbill.paymentBill}`
+  //  }
 
   doView = (deliveryorder) => {
     //console.log(deliveryorder)

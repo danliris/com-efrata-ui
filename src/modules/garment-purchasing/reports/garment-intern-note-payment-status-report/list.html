@@ -29,7 +29,7 @@
         options.bind="controlOptions">
         </au-autocomplete>
 
-        <au-autocomplete
+        <!-- <au-autocomplete
         value.bind="BillNo"
         error.bind="error.Description"
         read-only.bind="readOnly"
@@ -47,7 +47,7 @@
         loader.bind="DOBKLoader"
         text.bind = "DoBPKclView"
         options.bind="controlOptions">
-        </au-autocomplete>
+        </au-autocomplete> -->
         
         <au-autocomplete
         value.bind="NPN"
@@ -165,8 +165,8 @@
                     <td>Surat Jalan</td>
                     <td>Tgl Surat Jalan</td>
                     <td>Nominal SJ</td>
-                    <td>BP Besar</td>
-                    <td>BP Kecil</td>
+                    <!-- <td>BP Besar</td>
+                    <td>BP Kecil</td> -->
                     <td>Nota Pajak PPN</td>
                     <td>Tgl Nota Pajak PPN</td>
                     <td>Nota Pajak PPH</td>
@@ -199,8 +199,8 @@
                         <td>${IN.DoNo}</td>
                         <td>${IN.DoDate | dateFormat:'D MMM YYYY'}</td>
                         <td>${IN.PriceTot}</td>
-                        <td>${IN.BillNo}</td>
-                        <td>${IN.PayBill}</td>
+                        <!-- <td>${IN.BillNo}</td>
+                        <td>${IN.PayBill}</td> -->
                         <td>${IN.NPN}</td>
                         <td>${IN.VatDate}</td>
                         <td>${IN.NPH}</td>
