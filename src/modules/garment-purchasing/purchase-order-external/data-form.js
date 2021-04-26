@@ -1,8 +1,8 @@
 import { inject, bindable, containerless, computedFrom, BindingEngine } from 'aurelia-framework'
 import { Service } from "./service";
-var SupplierLoader = require('../../../loader/ngarment-supplier-loader');
+var SupplierLoader = require('../../../loader/garment-supplier-loader');
 var CurrencyLoader = require('../../../loader/garment-currencies-by-date-loader');
-var IncomeTaxLoader = require('../../../loader/nincome-tax-loader');
+var IncomeTaxLoader = require('../../../loader/income-tax-loader');
 import moment from 'moment';
 
 @containerless()
@@ -25,7 +25,7 @@ export class DataForm {
     typePaymentOptions = ['T/T AFTER', 'FREE', 'CASH', 'T/T BEFORE'];
     typePaymentStorageOptions = ['EX MASTER FREE', 'EX MASTER BELI', 'EX MASTER GUDANG'];
     categoryOptions = ['FABRIC', 'ACCESSORIES']
-    qualityStandardTypeOptions = ['JIS', 'AATCC', 'ISO']
+    qualityStandardTypeOptions = ['JIS', 'AATCC', 'ISO', 'TIDAK ADA']
 
     label = "Periode Tgl. Shipment"
     freightCostByOptions = ['Penjual', 'Pembeli'];
@@ -52,7 +52,9 @@ export class DataForm {
         this.isItem = false;
         
         if(!this.data.OrderDate){
-            this.data.OrderDate=new Date().toLocaleDateString();
+            // this.data.OrderDate=new Date().toLocaleDateString();
+            this.data.OrderDate=new Date().toLocaleDateString('en-US', {
+                month: '2-digit',day: '2-digit',year: 'numeric'});
         }
 
         
@@ -156,11 +158,9 @@ export class DataForm {
             this.data.SupplierId = _selectedSupplier.Id ? _selectedSupplier.Id : "";
             this.data.IsUseVat = _selectedSupplier.usevat;
             this.data.IsIncomeTax = _selectedSupplier.usetax;
-            if(_selectedSupplier.usetax == true){
-                this.data.IncomeTax=_selectedSupplier.IncomeTaxes;
-                this.data.IncomeTax.Name=_selectedSupplier.IncomeTaxes.name;
-                this.data.IncomeTax.Rate=_selectedSupplier.IncomeTaxes.rate == null ? _selectedSupplier.IncomeTaxes.rate : 0;
-            }
+            this.data.IncomeTax=_selectedSupplier.IncomeTaxes;
+            this.data.IncomeTax.Name=_selectedSupplier.IncomeTaxes.name;
+            this.data.IncomeTax.Rate=_selectedSupplier.IncomeTaxes.rate;
         }
     }
 
@@ -201,13 +201,13 @@ export class DataForm {
         if (selectedCategory) {
             this.data.Category = selectedCategory;
 
-            this.data.Shrinkage = '';
-            this.data.WetRubbing = '';
-            this.data.DryRubbing = '';
-            this.data.Washing = '';
-            this.data.DarkPrespiration = '';
-            this.data.LightMedPrespiration = '';
-            this.data.PieceLength = '';
+            this.data.Shrinkage = '-';
+            this.data.WetRubbing = '-';
+            this.data.DryRubbing = '-';
+            this.data.Washing = '-';
+            this.data.DarkPrespiration = '-';
+            this.data.LightMedPrespiration = '-';
+            this.data.PieceLength = '-';
             this.data.QualityStandardType = 'JIS';
 
             if (this.data.Category === "FABRIC") {

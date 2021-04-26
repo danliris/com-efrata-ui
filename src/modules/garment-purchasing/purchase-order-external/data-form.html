@@ -227,70 +227,73 @@
                     options.bind="controlOptions">
                 </au-dropdown>
 
-                <au-textbox 
-                    label="Shrinkage Test" 
-                    value.bind="data.Shrinkage" 
-                    error.bind="error.Shrinkage" 
-                    placeholder="tambahkan shrinkage test"
-                    read-only.bind="readOnly"
-                    options.bind="controlOptions">
-                </au-textbox>
+                <div class="col-md-12" if.bind="data.QualityStandardType != 'TIDAK ADA'">
 
-                <au-textbox 
-                    label="Wet Rubbing Test" 
-                    value.bind="data.WetRubbing" 
-                    error.bind="error.WetRubbing" 
-                    placeholder="tambahkan wet rubbing test" 
-                    read-only.bind="readOnly"
-                    options.bind="controlOptions">
-                </au-textbox>
+                    <au-textbox 
+                        label="Shrinkage Test" 
+                        value.bind="data.Shrinkage" 
+                        error.bind="error.Shrinkage" 
+                        placeholder="tambahkan shrinkage test"
+                        read-only.bind="readOnly"
+                        options.bind="controlOptions">
+                    </au-textbox>
 
-                <au-textbox 
-                    label="Dry Rubbing Test" 
-                    value.bind="data.DryRubbing" 
-                    error.bind="error.DryRubbing" 
-                    placeholder="tambahkan dry rubbing test"
-                    read-only.bind="readOnly"
-                    options.bind="controlOptions">
-                </au-textbox>
+                    <au-textbox 
+                        label="Wet Rubbing Test" 
+                        value.bind="data.WetRubbing" 
+                        error.bind="error.WetRubbing" 
+                        placeholder="tambahkan wet rubbing test" 
+                        read-only.bind="readOnly"
+                        options.bind="controlOptions">
+                    </au-textbox>
 
-                <au-textbox 
-                    label="Washing Test" 
-                    value.bind="data.Washing" 
-                    error.bind="error.Washing" 
-                    placeholder="tambahkan washing test" 
-                    read-only.bind="readOnly"
-                    options.bind="controlOptions">
-                </au-textbox>
+                    <au-textbox 
+                        label="Dry Rubbing Test" 
+                        value.bind="data.DryRubbing" 
+                        error.bind="error.DryRubbing" 
+                        placeholder="tambahkan dry rubbing test"
+                        read-only.bind="readOnly"
+                        options.bind="controlOptions">
+                    </au-textbox>
 
-                <au-textbox 
-                    label="Dark Perspiration Test" 
-                    value.bind="data.DarkPerspiration" 
-                    error.bind="error.DarkPerspiration" 
-                    placeholder="tambahkan dark perspiration test" 
-                    read-only.bind="readOnly"
-                    options.bind="controlOptions">
-                </au-textbox>
+                    <au-textbox 
+                        label="Washing Test" 
+                        value.bind="data.Washing" 
+                        error.bind="error.Washing" 
+                        placeholder="tambahkan washing test" 
+                        read-only.bind="readOnly"
+                        options.bind="controlOptions">
+                    </au-textbox>
 
-                <au-textbox 
-                    label="Light Perspiration Test" 
-                    value.bind="data.LightMedPerspiration" 
-                    error.bind="error.LightMedPerspiration" 
-                    placeholder="tambahkan light perspiration test" 
-                    read-only.bind="readOnly"
-                    options.bind="controlOptions">
-                </au-textbox>
+                    <au-textbox 
+                        label="Dark Perspiration Test" 
+                        value.bind="data.DarkPerspiration" 
+                        error.bind="error.DarkPerspiration" 
+                        placeholder="tambahkan dark perspiration test" 
+                        read-only.bind="readOnly"
+                        options.bind="controlOptions">
+                    </au-textbox>
 
-                <au-multiline 
-                    label="Piece Length " 
-                    value.bind="data.PieceLength"
-                    error.bind="error.PieceLength" 
-                    read-only.bind="readOnly"
-                    placeholder="tambahkan piece length " 
-                    options.bind="controlOptions">
-                </au-multiline>
+                    <au-textbox 
+                        label="Light Perspiration Test" 
+                        value.bind="data.LightMedPerspiration" 
+                        error.bind="error.LightMedPerspiration" 
+                        placeholder="tambahkan light perspiration test" 
+                        read-only.bind="readOnly"
+                        options.bind="controlOptions">
+                    </au-textbox>
+
+                    <au-multiline 
+                        label="Piece Length " 
+                        value.bind="data.PieceLength"
+                        error.bind="error.PieceLength" 
+                        read-only.bind="readOnly"
+                        placeholder="tambahkan piece length " 
+                        options.bind="controlOptions">
+                    </au-multiline>
+                </div>
+            </div>
         </div>
-    </div>
 
         <hr/>
          <div class="form-group" show.bind="!readOnly && data.Currency && !isEdit"> 
