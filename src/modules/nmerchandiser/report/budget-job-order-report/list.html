@@ -24,10 +24,10 @@
                     <tr>
                         <th><label>Urut</label></th>
                         <th><label>Nomor RO</label></th>
-                        <th><label>Kode Agent</label></th>
-                        <th><label>Nama Agent Buyer</label></th>
-                        <th><label>Kode Brand</label></th>
-                        <th><label>Nama Brand Buyer</label></th>
+                        <!-- <th><label>Kode Agent</label></th> -->
+                        <th><label>Buyer Agent</label></th>
+                        <!-- <th><label>Kode Brand</label></th> -->
+                        <th><label>Brand Buyer</label></th>
                         <th><label>Article</label></th>                        
                         <th><label>Komodity</label></th>
                         <th><label>Qty Order</label></th>
@@ -66,30 +66,30 @@
                                     read-only="true">
                                 </au-textbox>
                             </td>
-                            <td width="10%">
+                            <td width="30%">
                                 <au-textbox
                                     value.bind="tableData[index].BuyerCode"
                                     read-only="true">
                                 </au-textbox>
                             </td>
-                            <td width="30%">
+                            <!-- <td width="30%">
                                 <au-textbox
                                     value.bind="tableData[index].BuyerName"
                                     read-only="true">
                                 </au-textbox>
-                            </td>
-                            <td width="10%">
+                            </td> -->
+                            <td width="30%">
                                 <au-textbox
                                     value.bind="tableData[index].BrandCode"
                                     read-only="true">
                                 </au-textbox>
                             </td>
-                            <td width="30%">
+                            <!-- <td width="30%">
                                 <au-textbox
                                     value.bind="tableData[index].BrandName"
                                     read-only="true">
                                 </au-textbox>
-                            </td>
+                            </td> -->
                             <td width="30%">
                                 <au-textbox
                                     value.bind="tableData[index].Article"
