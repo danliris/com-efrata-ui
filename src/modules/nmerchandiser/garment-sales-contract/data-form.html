@@ -132,17 +132,18 @@
         </au-multiline>
 
         <au-numeric
-          label="Harga USD"
+          label="Harga dalam IDR"
           value.bind="data.Price"
           error.bind="error.Price"
           read-only.bind="readonly"
           options.bind="controlOptions"
           change.delegate="PriceChanged($event)"
-				  format = "0,0.0000"
+				  format = "0,0"
           if.bind="!hasItems">
         </au-numeric>
+
         <au-numeric
-          label="Harga USD"
+          label="Harga dalam IDR"
           value.bind="data.Price"
           error.bind="error.Price"
           read-only="true"
