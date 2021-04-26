@@ -117,7 +117,7 @@ export class DataForm {
     this.efficiencyService = serviceEffeciency;
     this.rateService = rateService;
     this.element = element; 
-    this.selectedRate = "USD"
+    this.selectedRate = "IDR"
     this.serviceCore = serviceCore;
   }
 
@@ -185,7 +185,7 @@ export class DataForm {
     }
     else {
       this.data.Rate = this.defaultRate;
-      rate = this.rateService.search({ filter: "{Name:\"USD\"}" })
+      rate = this.rateService.search({ filter: "{Name:\"IDR\"}" })
         .then(results => {
           let result = results.data[0] ? results.data[0] : this.defaultRate;
           result.Value = numeral(numeral(result.Value).format(rateNumberFormat)).value();
