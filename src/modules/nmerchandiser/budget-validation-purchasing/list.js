@@ -28,7 +28,7 @@ export class List {
             keyword: info.search,
             order: order,
             filter: JSON.stringify({
-                IsApprovedMD: true,
+                IsApprovedMD: false, //true,
                 IsApprovedPurchasing: false,
             })
         }

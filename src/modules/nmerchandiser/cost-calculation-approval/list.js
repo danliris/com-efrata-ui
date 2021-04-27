@@ -74,17 +74,19 @@ export class List {
                 break;
             case "ie":
                 this.filter = {
-                    IsApprovedMD: true,
+                    IsApprovedMD: false, //true,
                     IsApprovedIE: false
                 };
                 break;
-            case "kadivmd":
+            case "kasiemd":
                 this.filter = {
                     "CostCalculationGarment_Materials.All(IsPosted == false)": true,
-                    IsApprovedMD: true,
+                    IsApprovedMD: false, //true,
                     IsApprovedPurchasing: true,
                     IsApprovedIE: true,
-                    IsApprovedKadivMD: false
+                    IsApprovedKadivMD: false,
+                    IsPosted: true,
+                    SectionName: username
                 };
                 break;
             default:

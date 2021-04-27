@@ -93,6 +93,7 @@ export class DataForm {
     get buyer() {
         if (this.data.Buyer) {
             return `${this.data.Buyer.Code} - ${this.data.Buyer.Name}`;
+            //return `${this.data.Buyer.Name}`;
         } else {
             return "-";
         }

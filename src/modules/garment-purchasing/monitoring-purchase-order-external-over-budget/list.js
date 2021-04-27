@@ -3,7 +3,7 @@ import { Service } from "./service";
 import { Router } from 'aurelia-router';
 import moment from 'moment';
 
-var Unit = require('../../../loader/nunit-loader');
+var Unit = require('../../../loader/garment-units-loader');
 var Supplier = require('../../../loader/garment-supplier-loader');
 var POEksternal = require('../../../loader/garment-purchase-order-external-loader');
 

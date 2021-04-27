@@ -20,7 +20,8 @@ export class Service extends RestService {
     }
     
     generateExcel(info) {
-        var endpoint = `${serviceUri}/download?inno=${info.inno}&invono=${info.invono}&dono=${info.dono}&npn=${info.npn}&nph=${info.nph}&corrno=${info.corrno}&supplier=${info.supplier}&dateNIFrom=${info.dateNIFrom}&dateNITo=${info.dateNITo}&dueDateFrom=${info.dueDateFrom}&dueDateTo=${info.dueDateTo}&status=${info.status}`;
+        //var endpoint = `${serviceUri}/download?inno=${info.inno}&invono=${info.invono}&dono=${info.dono}&npn=${info.npn}&nph=${info.nph}&corrno=${info.corrno}&supplier=${info.supplier}&dateNIFrom=${info.dateNIFrom}&dateNITo=${info.dateNITo}&dueDateFrom=${info.dueDateFrom}&dueDateTo=${info.dueDateTo}&status=${info.status}`;
+        var endpoint = `${serviceUri}/download?inno=${info.inno}&invono=${info.invono}&dono=${info.dono}&corrno=${info.corrno}&supplier=${info.supplier}&dateNIFrom=${info.dateNIFrom}&dateNITo=${info.dateNITo}&dueDateFrom=${info.dueDateFrom}&dueDateTo=${info.dueDateTo}&status=${info.status}`;
         return super.getXls(endpoint);
     }
 }

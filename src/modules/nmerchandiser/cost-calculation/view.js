@@ -110,7 +110,7 @@ export class View {
     }
     
     this.CM_Price = ((CM_Price  * 1.05) / this.data.Rate.Value) + _confirmPrice;
-    this.CM_Price = US + this.CM_Price.toLocaleString('en-EN', { minimumFractionDigits: 4});
+    this.CM_Price = RP + this.CM_Price.toLocaleString('en-EN', { minimumFractionDigits: 4});
 
     let FOB_Price = this.data.ConfirmPrice;
     let CNF_Price=_confirmPrice;
@@ -128,19 +128,19 @@ export class View {
       FOB_Price=0;
     }
     this.data.ConfirmPrice = this.isDollar
-      ? US + this.data.ConfirmPrice.toLocaleString('en-EN', { minimumFractionDigits: 4})//numeral(this.data.ConfirmPrice).format()
-      : RP + this.data.ConfirmPrice.toLocaleString('en-EN', { minimumFractionDigits: 4});
+      ? RP + this.data.ConfirmPrice.toLocaleString('en-EN', { minimumFractionDigits: 4})//numeral(this.data.ConfirmPrice).format()
+      : US + this.data.ConfirmPrice.toLocaleString('en-EN', { minimumFractionDigits: 4});
     this.data.FOB_Price = this.isDollar
-      ? US + numeral(FOB_Price).format()
-      : RP + numeral(FOB_Price).format();
+      ? RP + numeral(FOB_Price).format()
+      : US + numeral(FOB_Price).format();
     this.data.CMT_Price =
       CM_Price > 0 ? this.data.ConfirmPrice : numeral(0).format();
     this.data.CNF_Price = this.isDollar
-      ? US + numeral(( CNF_Price +this.data.Freight)).format()
-      : RP + numeral(0).format();
+      ? RP + numeral(( CNF_Price +this.data.Freight)).format()
+      : US + numeral(0).format();
     this.data.CIF_Price = this.isDollar
-      ? US + numeral(CIF_Price +_insurance).format()
-      : RP + numeral(0).format();
+      ? RP + numeral(CIF_Price +_insurance).format()
+      : US + numeral(0).format();
     this.data.priceInfo = [
       {
         FOB_Price: this.data.FOB_Price,
@@ -151,11 +151,11 @@ export class View {
     ];
    
     this.data.Freight = this.isDollar
-      ? US + numeral(this.data.Freight).format()
-      : RP + numeral(this.data.Freight).format();
+      ? RP + numeral(this.data.Freight).format()
+      : US + numeral(this.data.Freight).format();
     this.data.Insurance = this.isDollar
-      ? US + numeral(this.data.Insurance).format()
-      : RP + numeral(this.data.Insurance).format();
+      ? RP + numeral(this.data.Insurance).format()
+      : US + numeral(this.data.Insurance).format();
     this.data.SMV_Cutting = numeral(this.data.SMV_Cutting).format();
     this.data.SMV_Sewing = numeral(this.data.SMV_Sewing).format();
     this.data.SMV_Finishing = numeral(this.data.SMV_Finishing).format();
