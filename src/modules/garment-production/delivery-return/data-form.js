@@ -1,8 +1,8 @@
 import { inject, bindable, containerless, computedFrom, BindingEngine } from "aurelia-framework";
 import { Service, PurchasingService } from "./service";
 
-const UnitLoader = require('../../../loader/garment-units-loader');
-const StorageLoader = require('../../../loader/storage-loader');
+const UnitLoader = require('../../../loader/ngarment-units-loader');
+const StorageLoader = require('../../../loader/nstorage-loader');
 const UnitDOLoader = require('../../../loader/garment-unit-delivery-order-loader');
 
 @inject(BindingEngine, Service, PurchasingService)

@@ -61,7 +61,7 @@ const costCalculationServiceUri = 'cost-calculation-garments';
 const serviceUriSalesContract = "merchandiser/garment-sales-contracts";
 class SalesService extends RestService {
     constructor(http, aggregator, config, api) {
-        super(http, aggregator, config, "sales");
+        super(http, aggregator, config, "nsales");
     }
 
     getCostCalculationByRONo(info) {
