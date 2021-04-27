@@ -38,7 +38,7 @@ export class List {
         { field: "RONo", title: "RO" },
         { field: "Article", title: "No Artikel" },
         { field: "TotalQuantity", title: "Jumlah", sortable: false },
-        { field: "TotalRemainingQuantity", title: "Sisa", sortable: false },
+        // { field: "TotalRemainingQuantity", title: "Sisa", sortable: false },
         { field: "UnitCode", title: "Unit Finishing Out"},
         { field: "FinishingTo", title: "Proses Tujuan"},
         { field: "UnitToCode", title: "Unit Tujuan"},

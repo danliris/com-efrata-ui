@@ -92,7 +92,7 @@ class PurchasingService extends RestService {
 
 class CoreService extends RestService {
     constructor(http, aggregator, config, endpoint) {
-        super(http, aggregator, config, "core");
+        super(http, aggregator, config, "ncore");
     }
 
     getGComodity(info) {
@@ -108,7 +108,7 @@ class CoreService extends RestService {
 
 class SalesService extends RestService {
     constructor(http, aggregator, config, api) {
-        super(http, aggregator, config, "sales");
+        super(http, aggregator, config, "nsales");
     }
 
     getCostCalculationByRONo(info) {
