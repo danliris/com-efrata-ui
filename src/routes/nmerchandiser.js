@@ -64,7 +64,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
-            permission: { "PGA": 1, "C9": 1, "C.01": 1 },
+            //permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             type: "MD1"
         }
@@ -84,11 +84,11 @@ module.exports = [
         }
     },
     {
-        route: '/nmerchandiser/approve-pr-master/kadiv-md',
+        route: '/nmerchandiser/approve-pr-master/kasie-md',
         name: 'approve-purchase-request-master',
         moduleId: './modules/nmerchandiser/approve-pr-master/index',
         nav: true,
-        title: 'Approval PR Master - Kadiv Md',
+        title: 'Approval PR Master - Kasie Md',
         auth: true,
         settings: {
             group: "nmerchandiser",
@@ -134,9 +134,9 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
-            permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
+            //permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
-            type: "md"
+            ///type: "md"
         }
     },
     {
@@ -167,17 +167,17 @@ module.exports = [
         }
     },
     {
-        route: '/nmerchandiser/cost-calculation-approval/kadivmd',
+        route: '/nmerchandiser/cost-calculation-approval/kasiemd',
         name: 'cost-calculation-approval-kadivmd',
         moduleId: './modules/nmerchandiser/cost-calculation-approval/index',
         nav: true,
-        title: 'Cost Calculation Approval - Kadiv Md',
+        title: 'Cost Calculation Approval - Kasie Md',
         auth: true,
         settings: {
             group: "nmerchandiser",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
-            type: "kadivmd"
+            type: "kasiemd"
         }
     },
     {
@@ -250,20 +250,6 @@ module.exports = [
         }
     },
     {
-        route: '/nmerchandiser/ro-validation-kabagmd',
-        name: 'ro-validation-kabagmd',
-        moduleId: './modules/nmerchandiser/ro-validation/index',
-        nav: true,
-        title: 'Validasi RO - Kabag Md',
-        auth: true,
-        settings: {
-            group: "nmerchandiser",
-            permission: { "PGA": 1, "C9": 1, "C.01": 1 },
-            iconClass: 'fa fa-calculator',
-            type: 'kabagmd'
-        }
-    },
-    {
         route: '/nmerchandiser/ro-sample-validation',
         name: 'ro-sample-validation',
         moduleId: './modules/nmerchandiser/ro-validation/index',
@@ -275,6 +261,20 @@ module.exports = [
             permission: { "IE": 1, "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             type: 'sample'
+        }
+    },
+    {
+        route: '/nmerchandiser/ro-validation-kabagmd',
+        name: 'ro-validation-kabagmd',
+        moduleId: './modules/nmerchandiser/ro-validation/index',
+        nav: true,
+        title: 'Validasi RO - Kasie Md',
+        auth: true,
+        settings: {
+            group: "nmerchandiser",
+            permission: { "PGA": 1, "C9": 1, "C.01": 1 },
+            iconClass: 'fa fa-calculator',
+            type: 'kabagmd'
         }
     },
     // {

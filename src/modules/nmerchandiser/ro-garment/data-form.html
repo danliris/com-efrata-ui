@@ -19,14 +19,14 @@
       </div>
       <div class="col-md-6">
         <!--<au-numeric label="Kuantitas RO" value.bind="total" read-only.bind="disabled" options.bind="length4" show.bind="hasCostCalculationGarment"></au-numeric>-->
-        <div class="row">
-          <div class="col-md-4">
+        <!-- <div class="row"> -->
+          <!-- <div class="col-md-4"> -->
             <au-numeric label="Kuantitas RO" value.bind="data.CostCalculationGarment.Quantity" read-only.bind="disabled" options.bind="length4" show.bind="hasCostCalculationGarment"></au-numeric>
-          </div>
-          <div class="col-md-4">
+          <!-- </div> -->
+          <!-- <div class="col-md-4"> -->
             <au-textbox label="Satuan RO" value.bind="data.CostCalculationGarment.UOM.Unit" read-only.bind="disabled" options.bind="length4" show.bind="hasCostCalculationGarment"></au-textbox>
-          </div>
-        </div>
+          <!-- </div> -->
+        <!-- </div> -->
         
         <au-datepicker label="Delivery Date" value.bind="data.CostCalculationGarment.DeliveryDate" read-only.bind="disabled" options.bind="length4"
           show.bind="hasCostCalculationGarment"></au-datepicker>
@@ -49,7 +49,7 @@
           show.bind="hasCostCalculationGarment"></au-textbox>
         <!--<au-numeric label="Kuantitas RO" value.bind="total" read-only.bind="disabled" options.bind="length4" show.bind="hasCostCalculationGarment"></au-numeric>-->
       
-      <div class="row">
+        <div class="row">
           <div class="col-md-6">
             <au-numeric label="Kuantitas RO" value.bind="data.CostCalculationGarment.Quantity" 
               read-only.bind="disabled" options.bind="length4" 
