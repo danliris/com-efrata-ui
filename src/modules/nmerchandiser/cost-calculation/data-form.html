@@ -230,19 +230,21 @@
             ${error.CostCalculationGarment_MaterialTable}
         </span>
         <div class="row">
-            <div class="col-md-12">
-                <au-collection
-                    view-model.ref="itemsCollection"
-                    items.bind="data.CostCalculationGarment_Materials"
-                    errors.bind="error.CostCalculationGarment_Materials"
-                    columns.bind="costCalculationGarment_MaterialsInfo.columns"
-                    add.bind="costCalculationGarment_MaterialsInfo.onAdd"
-                    remove.bind="costCalculationGarment_MaterialsInfo.onRemove"
-                    options.bind="costCalculationGarment_MaterialsInfo.options"
-                    responsive.bind="true"
-                    item-template="modules/nmerchandiser/cost-calculation/template/data-form/cost-calculation-material"
-                    footer-template="modules/nmerchandiser/cost-calculation/template/data-form/cost-calculation-material-footer">
-                </au-collection>
+            <div class="table-responsive">  
+                <div class="col-md-12">
+                    <au-collection
+                        view-model.ref="itemsCollection"
+                        items.bind="data.CostCalculationGarment_Materials"
+                        errors.bind="error.CostCalculationGarment_Materials"
+                        columns.bind="costCalculationGarment_MaterialsInfo.columns"
+                        add.bind="costCalculationGarment_MaterialsInfo.onAdd"
+                        remove.bind="costCalculationGarment_MaterialsInfo.onRemove"
+                        options.bind="costCalculationGarment_MaterialsInfo.options"
+                        responsive.bind="true"
+                        item-template="modules/nmerchandiser/cost-calculation/template/data-form/cost-calculation-material"
+                        footer-template="modules/nmerchandiser/cost-calculation/template/data-form/cost-calculation-material-footer">
+                    </au-collection>
+                </div>
             </div>
         </div>
         <div class="row">
