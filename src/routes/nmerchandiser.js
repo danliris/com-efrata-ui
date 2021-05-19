@@ -56,20 +56,6 @@ module.exports = [
         }
     },
     {
-        route: '/nmerchandiser/approve-pr-master/kabag-md',
-        name: 'approve-purchase-request-master',
-        moduleId: './modules/nmerchandiser/approve-pr-master/index',
-        nav: true,
-        title: 'Approval PR Master - Kabag Md',
-        auth: true,
-        settings: {
-            group: "nmerchandiser",
-            //permission: { "PGA": 1, "C9": 1, "C.01": 1 },
-            iconClass: 'fa fa-calculator',
-            type: "MD1"
-        }
-    },
-    {
         route: '/nmerchandiser/approve-pr-master/purchasing',
         name: 'approve-purchase-request-master',
         moduleId: './modules/nmerchandiser/approve-pr-master/index',
@@ -92,6 +78,20 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            //permission: { "PGA": 1, "C9": 1, "C.01": 1 },
+            iconClass: 'fa fa-calculator',
+            //type: "MD1"
+        }
+    },
+    {
+        route: '/nmerchandiser/approve-pr-master/kasie-md',
+        name: 'approve-purchase-request-master',
+        moduleId: './modules/nmerchandiser/approve-pr-master/index',
+        nav: true,
+        title: 'Approval PR Master - Kasie Md',
+        auth: true,
+        settings: {
+            group: "nmerchandiser",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             type: "MD2"
@@ -102,7 +102,7 @@ module.exports = [
         name: 'cost-calculation-by-user',
         moduleId: './modules/nmerchandiser/cost-calculation/index',
         nav: true,
-        title: 'Cost Calculation Export Garment',
+        title: 'Cost Calculation Garment',
         auth: true,
         settings: {
             group: "nmerchandiser",
@@ -116,7 +116,7 @@ module.exports = [
         name: 'cost-calculation',
         moduleId: './modules/nmerchandiser/cost-calculation/index',
         nav: true,
-        title: 'Cost Calculation Export Garment (Semua User)',
+        title: 'Cost Calculation Garment (Semua User)',
         auth: true,
         settings: {
             group: "nmerchandiser",
@@ -226,7 +226,7 @@ module.exports = [
         name: 'ro-garment-by-user',
         moduleId: './modules/nmerchandiser/ro-garment/index',
         nav: true,
-        title: 'RO Export Garment',
+        title: 'RO Garment',
         auth: true,
         settings: {
             group: "nmerchandiser",
@@ -240,7 +240,7 @@ module.exports = [
         name: 'ro-garment',
         moduleId: './modules/nmerchandiser/ro-garment/index',
         nav: true,
-        title: 'RO Export Garment (Semua User)',
+        title: 'RO Garment (Semua User)',
         auth: true,
         settings: {
             group: "nmerchandiser",
@@ -607,7 +607,7 @@ module.exports = [
         name: 'budget-export-garment-report',
         moduleId: './modules/nmerchandiser/report/budget-export-garment-report/index',
         nav: true,
-        title: 'Monitoring Budget Export Garment',
+        title: 'Monitoring Budget Garment',
         auth: true,
         settings: {
             group: "nmerchandiser",

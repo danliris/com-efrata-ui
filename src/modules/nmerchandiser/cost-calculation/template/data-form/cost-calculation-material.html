@@ -8,20 +8,21 @@
         .tooltip-material-field .tooltiptext {
             visibility: hidden;
             width: 120px;
-            background-color: black;
+            /* background-color: black; */
             color: #fff;
             text-align: center;
             border-radius: 6px;
             padding: 5px 0;
+            
     
             /* Position the tooltip */
             position: absolute;
             z-index: 1;
         }
     
-        .tooltip-material-field:hover .tooltiptext {
+        /* .tooltip-material-field:hover .tooltiptext {
             visibility: visible;
-        }
+        } */
     </style>
     
     <tr>
@@ -86,7 +87,7 @@
             </td>
         </template>
         <!-- INPUT MANUAL -->
-        <template if.bind="!data.POMaster">
+        <template if.bind="!data.POMaster" >
             <!-- kategori -->
             <td>
                 <div style="width: 100px;" class="tooltip-material-field">
