@@ -65,15 +65,15 @@ export async function configure(aurelia) {
 
       //var nmerchandiser = "http://localhost:51011/v1/";
       //var nsales = "http://localhost:59451/v1/";
-      var production = "http://localhost:5005/";
+      var production = "https://com-efrata-service-production-dev.azurewebsites.net/";
       //purchasingJob
       //var purchasingJob = "http://localhost:57157/v1/";
       // var purchasingJob = "https://com-bateeq-service-purchasingjob-dev.azurewebsites.net/v1/";
 
-      var nmerchandiser = "http://localhost:51011/v1/";
-      var nsales = "http://localhost:51011/v1/";
+      var nmerchandiser = "https://com-efrata-service-sales-dev.azurewebsites.net/v1/";
+      var nsales = "https://com-efrata-service-sales-dev.azurewebsites.net/v1/";
       //purchasingJob
-      var purchasingJob = "http://localhost:51806/v1/";
+      var purchasingJob = "http://com-efrata-service-purchasingjob-dev.azurewebsites.net/v1/";
 
 
       //Config API

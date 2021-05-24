@@ -1,4 +1,14 @@
 module.exports = [
+  {
+      
+    route: ['', 'Welcome'],
+      name: 'welcome',
+      moduleId: './welcome',
+      nav: false,
+      title: 'Home',
+      auth: true,
+      settings: { roles: ["*"] }
+    },
     {
         route: 'login',
         name: 'login',
