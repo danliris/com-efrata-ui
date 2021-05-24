@@ -42,7 +42,7 @@ module.exports = [
   route: "rate",
   name: "rate",
   moduleId: "./modules/master/rate/index",
-  nav: false,
+  nav: true,
   title: "Ongkos",
   auth: true,
   settings: {
@@ -107,7 +107,7 @@ module.exports = [
   route: "efficiency",
   name: "efficiency",
   moduleId: "./modules/master/nefficiency/index",
-  nav: false,
+  nav: true,
   title: "Efficiency",
   auth: true,
   settings: {
