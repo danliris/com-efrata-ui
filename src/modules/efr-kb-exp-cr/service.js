@@ -32,7 +32,7 @@ export class Service extends RestService {
   getExpeditionServices() {
     return new Promise((resolve, reject) => {
       var config = Container.instance.get(Config);
-      var endpoint = config.getEndpoint("ncore").client.baseUrl + 'expedition-service-routers/all';
+      var endpoint = config.getEndpoint("master").client.baseUrl + 'expedition-service-routers/all';
       super.get(endpoint).then(result => resolve(result));
     });
   }

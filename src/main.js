@@ -38,9 +38,11 @@ export async function configure(aurelia) {
       var ncore ="https://com-bateeq-service-core-dev.azurewebsites.net/v1/";
       var master = "https://bateeq-core-api-dev.azurewebsites.net/v1/master/";
       var manufacture ="https://bateeq-core-api-dev.azurewebsites.net/v1/manufacture/";
-      var inventory ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/inventory/";
+      // var inventory ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/inventory/";
+      var inventory ="http://localhost:53273/v1/";
       var inventoryAzure = "https://com-bateeq-service-inventory-dev.azurewebsites.net/v1/";
-      var merchandiser ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/merchandiser/";
+      // var merchandiser ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/merchandiser/";
+      var merchandiser ="https://com-bateeq-service-warehouse-dev.azurewebsites.net/v1/merchandiser/";
       //var merchandiser = "http://localhost:51011/v1/";
       //var md ="http://localhost:61542/v1/";
       var md ="https://com-bateeq-service-merchandiser-dev.azurewebsites.net/v1/";

@@ -1,5 +1,5 @@
 <template>
-    <h3>DAFTAR PEMASUKAN BARANG</h3>
+    <h3>PEMASUKAN BARANG</h3>
 
     <au-table 
         data.bind="loader" 
@@ -9,7 +9,8 @@
         context.bind="context" 
         context-click.delegate="contextCallback($event)">
         <div slot="toolbar" class="btn-group">
-            <button class="btn btn-warning" click.delegate="viewPending()">Pending</button>
+            <button class="btn btn-success" click.delegate="viewPending()">Pending</button>
         </div>
     </au-table>
 </template>
+    
