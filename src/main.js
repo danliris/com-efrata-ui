@@ -73,7 +73,7 @@ export async function configure(aurelia) {
       var nmerchandiser = "https://com-efrata-service-sales-dev.azurewebsites.net/v1/";
       var nsales = "https://com-efrata-service-sales-dev.azurewebsites.net/v1/";
       //purchasingJob
-      var purchasingJob = "http://com-efrata-service-purchasingjob-dev.azurewebsites.net/v1/";
+      var purchasingJob = "https://com-efrata-service-purchasingjob-dev.azurewebsites.net/v1/";
 
 
       //Config API
