@@ -38,11 +38,9 @@ export async function configure(aurelia) {
       var ncore ="https://com-bateeq-service-core-dev.azurewebsites.net/v1/";
       var master = "https://bateeq-core-api-dev.azurewebsites.net/v1/master/";
       var manufacture ="https://bateeq-core-api-dev.azurewebsites.net/v1/manufacture/";
-      // var inventory ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/inventory/";
-      var inventory ="http://localhost:53273/v1/";
+      var inventory ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/inventory/";
       var inventoryAzure = "https://com-bateeq-service-inventory-dev.azurewebsites.net/v1/";
-      // var merchandiser ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/merchandiser/";
-      var merchandiser ="https://com-bateeq-service-warehouse-dev.azurewebsites.net/v1/merchandiser/";
+      var merchandiser ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/merchandiser/";
       //var merchandiser = "http://localhost:51011/v1/";
       //var md ="http://localhost:61542/v1/";
       var md ="https://com-bateeq-service-merchandiser-dev.azurewebsites.net/v1/";
@@ -53,7 +51,7 @@ export async function configure(aurelia) {
 
       var purchasing ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/purchasing/";
       // var purchasingAzure = "https://com-bateeq-service-purchasing-dev.azurewebsites.net/v1/";
-      var purchasingAzure = "http://localhost:58205/v1/";
+      var purchasingAzure = "https://com-efrata-service-purchasingjob-dev.azurewebsites.net/v1/";
       
       var finance = "https://com-bateeq-service-finance-accounting-dev.azurewebsites.net/v1/";
       //var masterplan ="https://com-bateeq-service-masterplan-dev.azurewebsites.net/v1/";
@@ -67,16 +65,15 @@ export async function configure(aurelia) {
 
       //var nmerchandiser = "http://localhost:51011/v1/";
       //var nsales = "http://localhost:59451/v1/";
-      var production = "http://localhost:5005/";
+      var production = "https://com-efrata-service-production-dev.azurewebsites.net/";
       //purchasingJob
       //var purchasingJob = "http://localhost:57157/v1/";
       // var purchasingJob = "https://com-bateeq-service-purchasingjob-dev.azurewebsites.net/v1/";
 
-      var nmerchandiser = "http://localhost:53247/v1/";
-      var nsales = "http://localhost:53247/v1/";
+      var nmerchandiser = "https://com-efrata-service-sales-dev.azurewebsites.net/v1/";
+      var nsales = "https://com-efrata-service-sales-dev.azurewebsites.net/v1/";
       //purchasingJob
-      var purchasingJob = "http://localhost:53184/v1/";
-      // var purchasingJob = "http://localhost:51806/v1/";
+      var purchasingJob = "http://com-efrata-service-purchasingjob-dev.azurewebsites.net/v1/";
 
 
       //Config API
