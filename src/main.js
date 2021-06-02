@@ -51,7 +51,7 @@ export async function configure(aurelia) {
 
       var purchasing ="https://bateeq-inventory-api-dev.azurewebsites.net/v1/purchasing/";
       // var purchasingAzure = "https://com-bateeq-service-purchasing-dev.azurewebsites.net/v1/";
-      var purchasingAzure = "http://localhost:58205/v1/";
+      var purchasingAzure = "https://com-efrata-service-purchasingjob-dev.azurewebsites.net/v1/";
       
       var finance = "https://com-bateeq-service-finance-accounting-dev.azurewebsites.net/v1/";
       //var masterplan ="https://com-bateeq-service-masterplan-dev.azurewebsites.net/v1/";
@@ -65,15 +65,15 @@ export async function configure(aurelia) {
 
       //var nmerchandiser = "http://localhost:51011/v1/";
       //var nsales = "http://localhost:59451/v1/";
-      var production = "http://localhost:5005/";
+      var production = "https://com-efrata-service-production-dev.azurewebsites.net/";
       //purchasingJob
       //var purchasingJob = "http://localhost:57157/v1/";
       // var purchasingJob = "https://com-bateeq-service-purchasingjob-dev.azurewebsites.net/v1/";
 
-      var nmerchandiser = "http://localhost:51011/v1/";
-      var nsales = "http://localhost:51011/v1/";
+      var nmerchandiser = "https://com-efrata-service-sales-dev.azurewebsites.net/v1/";
+      var nsales = "https://com-efrata-service-sales-dev.azurewebsites.net/v1/";
       //purchasingJob
-      var purchasingJob = "http://localhost:51806/v1/";
+      var purchasingJob = "https://com-efrata-service-purchasingjob-dev.azurewebsites.net/v1/";
 
 
       //Config API
