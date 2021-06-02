@@ -15,6 +15,7 @@
             <button class='btn btn-primary' click.delegate="ExportToExcel()">Export To Excel</button>
           </div>
         <br>
+        <div class="table-responsive">
         <table class="table table-bordered table-hover" id="myTable">
             <thead>
                 <tr>
@@ -78,10 +79,10 @@
             </tbody>
 
         </table>
+        </div>
         <div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
             Tidak Ada Data Yang Ditemukan.
         </div>
         <hr/>
     </form>
-
 </template>

@@ -48,6 +48,13 @@
           options.bind="controlOptions">
         </au-textbox>
 
+        <!-- <au-textbox
+          label="Negara"
+          value.bind="data.country"
+          read-only="true"
+          options.bind="controlOptions">
+        </au-textbox> -->
+
         <au-textbox
           label="Packing"
           value.bind="data.Packing"
@@ -138,7 +145,7 @@
           read-only.bind="readonly"
           options.bind="controlOptions"
           change.delegate="PriceChanged($event)"
-				  format = "0.0"
+				  format = "0.0,00"
           if.bind="!hasItems">
         </au-numeric>
 
@@ -148,7 +155,7 @@
           error.bind="error.Price"
           read-only="true"
           options.bind="controlOptions"
-				  format = "0,0.0000"
+				  format = "0.0,00"
           if.bind="hasItems">
         </au-numeric>
 
@@ -156,7 +163,7 @@
           label="Total Amount"
           value.bind="data.Amount"
           read-only="true"
-          format = "0,0.00"
+          format = "0.0,00"
           options.bind="controlOptions">
         </au-numeric>
 
