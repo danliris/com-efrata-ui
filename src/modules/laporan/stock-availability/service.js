@@ -4,7 +4,8 @@ import {RestService} from '../../../utils/rest-service';
 import { Container } from 'aurelia-dependency-injection';
 import { Config } from "aurelia-api";
 
-const serviceUriStock = 'stock-availability';  
+const serviceUriMonitoring = 'inventories/monitoring';
+const serviceUriStock = 'inventories/monitoring/stock-availability';  
 
 export class Service extends RestService{
   
@@ -14,13 +15,13 @@ export class Service extends RestService{
 
   getStorageInInventory(storageId)
   {
-    var endpoint = `${serviceUriStock}/${storageId}`; 
+    var endpoint = `${serviceUriStock}?storageId=${storageId}`; 
     return super.get(endpoint);
   }
 
-  getNearestStockInInventory(inventoryId)
+  getNearestStockInInventory(arg)
   {
-    var endpoint = `${serviceUriStock}/storage/${inventoryId}`;
+    var endpoint = `${serviceUriMonitoring}/nearest-storage-stock?storageCode=${arg.storageCode}&itemCode=${arg.itemCode}`;
     return super.get(endpoint);
   }
    

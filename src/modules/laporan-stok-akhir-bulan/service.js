@@ -4,7 +4,7 @@ import { RestService } from '../../utils/rest-service';
 import { Container } from 'aurelia-dependency-injection';
 import { Config } from "aurelia-api";
 
-const serviceUri = "monthly-stock";
+const serviceUri = "inventories/monitoring/monthly-stock";
 
 export class Service extends RestService {
 
@@ -13,22 +13,17 @@ export class Service extends RestService {
     }
 
     getMonthlyOverallStock(month, year) {
-        var endpoint = `${serviceUri}/${month}/${year}`;
+        var endpoint = `${serviceUri}?month=${month}&year=${year}`;
         return super.get(endpoint);
     }
 
     getStockInStorage(storageCode, month, year) {
-        var endpoint = `${serviceUri}/${storageCode}/${month}/${year}`;
+        var endpoint = `${serviceUri}/storage?code=${storageCode}&month=${month}&year=${year}`;
         return super.get(endpoint);
     }
 
     stockExcel(storageCode, month, year) {
-        var endpoint = `${serviceUri}/${storageCode}/${month}/${year}`;  
+        var endpoint = `${serviceUri}/download?code=${storageCode}&month=${month}&year=${year}`;  
         return super.getXls(endpoint);
-    }
-
-    getYearMonthsList(){
-        var endpoint = `${serviceUri}`;
-        return super.get(endpoint);
     }
 }

@@ -26,7 +26,7 @@ export class List {
                 this.data = [];
                 for (var data of result) {
                     for (var item of data.items) {
-                        item._createdDate = data._createdDate;
+                        item.CreatedUtc = data.CreatedUtc;
                         item.storageName = data.storage.name;
                         this.total = this.total + item.qtyAdjustment;
                         this.data.push(item);

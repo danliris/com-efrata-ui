@@ -41,7 +41,7 @@ export class Report {
         }
 
         if (this.productItem) {
-            var image = `${config.getEndpoint("master").client.baseUrl}items/finished-goods/image/${this.productItem._id}`;
+            var image = `${config.getEndpoint("ncore").client.baseUrl}items/finished-goods/image/${this.productItem._id}`;
             this.code = this.productItem.article ? this.productItem.article.realizationOrder : null;
             this.color = this.productItem.colorDoc ? this.productItem.colorDoc.name : null;
             this.imagePath = image ? image : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY9Y3rGTwbyc9GoAOyxRClRz7b5GnCnjVsHx_qK_CUXN79yis4';
