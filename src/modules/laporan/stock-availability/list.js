@@ -1,7 +1,7 @@
 import { inject, Lazy } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { Service } from './service';
-var StorageLoader = require('../../../loader/storage-loader');
+var StorageLoader = require('../../../loader/nstorage-loader');
 import { Dialog } from '../../../au-components/dialog/dialog';
 import { FabricGradeTestEditor } from './dialogs/check-nearest-stock-dialog';
 
@@ -9,15 +9,14 @@ import { FabricGradeTestEditor } from './dialogs/check-nearest-stock-dialog';
 export class List {
 
     detail = ['Cek penyimpanan terdekat'];
-    visible = false;
-    tableData = [];
+
+    columns = [{ title: 'Barcode', field: "item.code" }, { title: 'Nama', field: "item.name" }, { title: 'Quantity', field: "quantity"}]
 
     constructor(router, service, dialog) {
         this.router = router;
         this.service = service;
         this.dialog = dialog;
         this.storageId = "";
-        this.inventoryId = "";
     }
 
     activate(context) {
@@ -26,55 +25,45 @@ export class List {
         this.error = context.error;
     }
 
-    tableOptions = {
-        columns: [],
-        search: false,
-        showColumns: false,
-        showToggle: false
-    };
+    // columns = [{ field: 'item.code', title: 'Barcode' }, { field: 'item.name', title: 'Nama' }, { field: 'quantity', title: 'Kuantitas' }]
+
+    // tableOptions = {
+        
+    //     search: false,
+    //     showColumns: false,
+    //     showToggle: false,
+        
+    // };
 
     get storageLoader() {
         return StorageLoader;
     }
 
     showItem() {
+        this.tableData = [];
+        
         let input = this.data;
         if (typeof input === "undefined" || input === null) {
             this.error = "Masukkan kode inventory yang ingin anda cari";
         } else {
+            this.total=0;
             this.error = "";
             this.storageId = input ? input._id : "";
-            this.visible = true;
             this.service.getStorageInInventory(this.storageId)
-                .then((result) => {
-                    this.showTable(result);
+                .then(result => {
+                    this.models.refresh();
+                    this.result = result;
+                    for (var item of this.result)
+                    {
+                        this.tableData.push(item);
+                        this.total=this.total+item.quantity;
+                    }
+                    console.log(this.tableData); 
                 })
                 .catch(e => {
                     this.error = e;
                 })
         }
-    }
-
-    showTable(result) {
-        this.error = "";
-        let tableHeader = [{ field: 'barcode', title: 'Barcode' }, { field: 'name', title: 'Nama' }, { field: 'quantity', title: 'Kuantitas' }]
-        this.tableOptions.columns = [];
-        for (let header of tableHeader) {
-            this.tableOptions.columns.push(header);
-        }
-        this.tableData = [];
-        for (let inventory of result) {
-            inventory.barcode = inventory.item.code;
-            inventory.name = inventory.item.name;
-            inventory.quantity = inventory.quantity;
-            this.tableData.push(inventory);
-        }
-        new Promise((resolve, reject) => {
-            this.models.__table("refreshOptions", this.tableOptions);
-            resolve();
-        }).then(() => {
-            this.models.refresh();
-        });
     }
 
     contextCallback(event) {
@@ -83,18 +72,16 @@ export class List {
         switch (arg.name) {
             case "Cek penyimpanan terdekat":
                 this.__checkNearestStockShowDialog(data);
-            // {   
-            //     // open new window
-            //     let path = this.router.generate('view', {id: data._id});
-            //     this.router.navigate('', window.open(path, '_blank', 'width=720,height=560'));
-            // } 
         }
     }
 
     __checkNearestStockShowDialog(data) {
         this.error = "";
-        this.inventoryId = data._id;
-        this.service.getNearestStockInInventory(this.inventoryId).then(result => {
+        let arg = {
+            storageCode : data.storage.code,
+            itemCode : data.item.code
+        }
+        this.service.getNearestStockInInventory(arg).then(result => {
             this.dialog.show(FabricGradeTestEditor, result);
         })
     }

@@ -21,11 +21,11 @@ export class StockInStorageDialog {
 
     dialogTableColumns = [
         { field: 'number', title: 'No'},
-        { field: 'itemCode', title: 'Barcode'},
-        { field: 'itemName', title: 'Nama Barang'},
-        { field: 'quantity', title: 'Kuantitas'},
-        { field: 'totalHPP', title: 'Total HPP'},
-        { field: 'totalSale', title: 'Total Harga Jual'},
+        { field: 'ItemCode', title: 'Barcode'},
+        { field: 'ItemName', title: 'Nama Barang'},
+        { field: 'Quantity', title: 'Kuantitas'},
+        { field: 'HPP', title: 'Total HPP'},
+        { field: 'Sale', title: 'Total Harga Jual'},
     ]
 
     convertToLocaleString(array){

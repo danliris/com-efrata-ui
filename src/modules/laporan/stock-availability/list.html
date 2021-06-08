@@ -17,17 +17,34 @@
                 </div>
             </div>
     </form>
+    <!-- <table class="table table-bordered table-hover">
+        <thead> 
+            Total : ${total}
+            <tr>
+                <th>Barcode</th>
+                <th>Nama</th>
+                <th>Kuantitas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr repeat.for="item of result" click.delegate="__checkNearestStockShowDialog(item)">
+                <td>${item.item.code}</td>
+                <td>${item.item.name}</td>
+                <td>${item.quantity}</td>
+            </tr>
+            
+        </tbody>        
+    </table> -->
     <au-table 
-        view-model.ref="models"     
-        data.bind="tableData"
-        options.bind="tableOptions"
-        page-size="25"
-        if.bind="visible"
+        view-model.ref="models" 
+        data.bind="tableData" 
+        columns.bind="columns" 
+        page-size="25" 
         context.bind="detail" 
         context-click.delegate="contextCallback($event)">
     </au-table>
-    <div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
+    <!-- <div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
        Tidak ada data.
-    </div>
+    </div> -->
     <hr/> 
 </template>
