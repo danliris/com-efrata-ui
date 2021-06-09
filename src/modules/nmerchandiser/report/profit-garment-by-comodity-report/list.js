@@ -41,6 +41,7 @@ export class List {
                             Quantity : data.Quantity.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
                             UOMUnit : data.UOMUnit,
                             Amount : data.Amount.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),               
+                            Price : data.Price.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
                         });
                     
                         if (!subTotalUoM[BdgtUOM]) {

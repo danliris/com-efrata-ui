@@ -1,47 +1,65 @@
 import { inject, Lazy, bindable } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { Service } from './service';
+import moment from 'moment';
 import { Dialog } from '../../au-components/dialog/dialog';
 import { StockInStorageDialog } from './dialogs/stock-in-storage-dialog';
 
 @inject(Router, Service, Dialog)
 export class Report {
-    @bindable yearMonthsData;
+    itemYears = [];
     detail = ['Detail', "Detail Excel"];
-    yearMonths = [];
-    months = [];
     tableData = [];
     usedMonth = {};
     usedYear = {};
 
-    dropdownOptions = {
+    columns = [
+        [{ title: 'Kode', rowspan: 2, valign: "middle", field: "StorageCode" }, { title: 'Toko', rowspan: 2, valign: "middle", field: "StorageName" }, { title: 'Saldo Awal', colspan: 3 }, { title: 'Saldo Akhir', colspan: 3 }],
+        [{ title: 'Kuantitas', field: "EarlyQuantity" }, { title: 'HPP', field: "EarlyHPP" }, { title: 'Harga Jual', field: "EarlySale" }, { title: 'Kuantitas', field: "LateQuantity" }, { title: 'HPP', field: "LateHPP" }, { title: 'Harga Jual', field: "LateSale" }]
+    ]
+
+    controlOptions = {
         label: {
-            align: 'left',
-            length: 1
+            length: 4,
         },
         control: {
-            length: 2
-        }
-    }
-
-    columns = [
-        [{ title: 'Kode', rowspan: 2, valign: "middle", field: "code" }, { title: 'Toko', rowspan: 2, valign: "middle", field: "name" }, { title: 'Saldo Awal', colspan: 3 }, { title: 'Saldo Akhir', colspan: 3 }],
-        [{ title: 'Kuantitas', field: "earliestQuantity" }, { title: 'HPP', field: "earliestHPP" }, { title: 'Harga Jual', field: "earliestSale" }, { title: 'Kuantitas', field: "latestQuantity" }, { title: 'HPP', field: "latestHPP" }, { title: 'Harga Jual', field: "latestSale" }]
-    ]
+            length: 4,
+        },
+    };
 
     constructor(router, service, dialog) {
         this.router = router;
         this.service = service;
         this.dialog = dialog;
+
+        this.itemMonths = [
+            { text: 'January', value: 1 },
+            { text: 'February', value: 2 },
+            { text: 'March', value: 3 },
+            { text: 'April', value: 4 },
+            { text: 'May', value: 5 },
+            { text: 'June', value: 6 },
+            { text: 'July', value: 7 },
+            { text: 'August', value: 8 },
+            { text: 'September', value: 9 },
+            { text: 'October', value: 10 },
+            { text: 'November', value: 11 },
+            { text: 'Desember', value: 12 }
+        ];
+
+        this.currentYear = moment().format('YYYY');
+        for (var i = parseInt(this.currentYear); i >= 2017; i--) {
+            this.itemYears.push(i.toString());
+        }
     }
 
     async activate() {
-        let yearMonthsList = await this.service.getYearMonthsList()
-            .then(result => {
-                result.forEach(yearMonth => {
-                    this.yearMonths.push(yearMonth)
-                });
-            });
+        // let yearMonthsList = await this.service.getYearMonthsList()
+        //     .then(result => {
+        //         result.forEach(yearMonth => {
+        //             this.yearMonths.push(yearMonth)
+        //         });
+        //     });
     }
 
     convertToLocaleString(array) {
@@ -53,23 +71,17 @@ export class Report {
         return array;
     }
 
-    yearMonthsDataChanged(newValue, oldValue) {
-        this.months = this.yearMonthsData.months;
-    }
-
     showMonthlyOverallStock() {
         this.tableData = [];
         let month = null;
         let year = null;
 
-        if (this.data && this.yearMonths) {
-            month = this.data.month.id;
-            year = this.yearMonthsData.year;
+        if (this.info.month && this.info.year) {
+            month = this.info.month.value;
+            year = this.info.year;
         } else {
-            month = new Date().getMonth() - 1;
+            month = new Date().getMonth();
             year = new Date().getFullYear();
-            this.data = {};
-            this.data.month = month;
         }
 
         this.service.getMonthlyOverallStock(month, year)
@@ -100,21 +112,21 @@ export class Report {
     }
 
     excelStockInStorage(data) {
-        let code = data.code;
-        let name = data.name;
+        let code = data.StorageCode;
         this.service.stockExcel(code, this.usedMonth, this.usedYear)    
     }
 
     checkStockInStorage(data) {
-        console.log(data);
-        let code = data.code;
-        let name = data.name;
+        //console.log(data);
+        let code = data.StorageCode;
         this.service.getStockInStorage(code, this.usedMonth, this.usedYear).then(results => {
+            //console.log(results);
             let storageItems = {};
-            storageItems.code = code;
-            storageItems.name = name;
+            storageItems.code = results[0].StorageCode;
+            storageItems.name = results[0].StorageName;
             storageItems.items = results;
             this.dialog.show(StockInStorageDialog, storageItems);
+            //console.log(storageItems)
         })
     }
 }
