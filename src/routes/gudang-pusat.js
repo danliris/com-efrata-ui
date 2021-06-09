@@ -66,12 +66,12 @@ module.exports = [
         route: 'packingList-tt',
         name: 'packingList-tt',
         moduleId: './modules/packing-list-tt/index',
-        nav: false,
+        nav: true,
         title: 'PackingList Transfer Stock',
         auth: true,
         settings: {
             group: "gudang pusat",
-            permission: { "GDG.01": 1 },
+            permission: { "GDG.01": 1 ,"C.01": 1},
             iconClass: 'fa fa-bank'
         }
     },

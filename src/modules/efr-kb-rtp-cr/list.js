@@ -49,6 +49,7 @@ export class List {
             },
             {
                 field: "date", title: "Tanggal", formatter: (value, data) => {
+                  // console.log(data);
                     return moment(value).locale(locale).format("DD MMMM YYYY");
                 }
             },

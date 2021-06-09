@@ -1,4 +1,5 @@
 <template>
+</style>
     <form class="form-horizontal">
         <textbox label="Nomor Referensi" value.bind="data.reference" error.bind="error.reference" read-only.bind="readOnly" aria-placeholder="Packing List SPK">
         </textbox>
@@ -53,7 +54,7 @@
                         </div>
                         <div class="col-md-1">
                             <div class="form-group ${error.items[$index].quantity?'has-error':''}">
-                                <input class="form-control" type="number" name="quantity" value.bind="item.quantity"
+                                <input class="form-control" style="width: 70px;" type="number" name="quantity" value.bind="item.quantity"
                                   max.bind="item.availablequantity" min="0"
                                     change.delegate="qtyChange(item.item.code, item.quantity)" />
                                 <span class="help-block">${error.items[$index].quantity}</span>

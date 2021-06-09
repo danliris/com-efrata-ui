@@ -27,7 +27,7 @@ var bateeqshopReportRoutes = require("./bateeqshop-report");
 var promotionRoutes = require("./promotion");
 var garmentproductionRoutes = require("./garment-production");
 
-export default [].concat( nmasterRoutes, publicRoutes, nmerchandiserRoutes, gpurchasingRoutes, garmentproductionRoutes);
+export default [].concat( nmasterRoutes, publicRoutes, gudangPusatRoutes, tokoRoutes, nmerchandiserRoutes, gpurchasingRoutes, garmentproductionRoutes);
 
 
 // export default [].concat(nmasterRoutes, publicRoutes, gudangPusatRoutes, laporanRoutes, reportRoutes, designerRoutes, merchandiserRoutes, finishingRoutes, generalInventoryRoutes, authRoutes, purchaseRoutes, npurchaseRoutes, nmasterplan, expeditionRoutes, accountingRoutes, customersRoutes, generalSettingRoutes, bateeqshopReportRoutes, promotionRoutes, nmerchandiserRoutes, nsalesRoutes, gpurchasingRoutes, garmentproductionRoutes);

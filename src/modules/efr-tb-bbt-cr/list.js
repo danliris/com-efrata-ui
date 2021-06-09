@@ -43,7 +43,7 @@ export class List {
         },
         { field: '_createdDate', title: 'Tanggal',
         formatter: (value, data) => {
-            return moment(value).locale(locale).format("DD MMMM YYYY");
+            return moment(data.CreatedUtc).locale(locale).format("DD MMMM YYYY");
         }
       }
     ];
