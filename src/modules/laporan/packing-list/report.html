@@ -5,17 +5,23 @@
         <div class="form-group">
             <label class="col-sm-3 text-right control-label">Transaksi</label>
             <div class="col-sm-9 radio">
-                <label repeat.for="option of transactionTypeOptions">
+                <label style="margin-right:10px;" repeat.for="option of transactionTypeOptions">
                     <input type="radio" name="transactionType" model.bind="option" checked.bind="transactionType"/> ${option.text}
                 </label>
             </div>
         </div>
         <au-autocomplete label="Tujuan Penyimpanan" value.bind="storage" loader.bind="storageLoader" text="name">
         </au-autocomplete>
+        <au-multiline
+                placeholder="No. PackingList"
+                label="No. PackingList"
+                value.bind="packingListNo">
+        </au-multiline>
+    </au-multiline>
         <div class="form-group">
             <label class="col-sm-3 text-right control-label">Status Packing List</label>
-            <div class="col-sm-9 radio">
-                <label repeat.for="option of packingListStatusOptions">
+             <div class="col-sm-9 radio">
+                <label style="margin-right:10px;" repeat.for="option of packingListStatusOptions">
                     <input type="radio" name="packingListStatus" model.bind="option" checked.bind="packingListStatus"/> ${option.text}
                 </label>
             </div>
@@ -24,7 +30,7 @@
     <div class="col-sm-12 form-group">
         <button click.delegate="excel()" class="btn btn-success btn-sm pull-right">Cetak Excel</button> &nbsp;
         <button style="margin-right:10px;" click.delegate="showReport()" class="btn btn-success btn-sm pull-right">Tampilkan</button>
-</div>
+    </div>
 <!--<table class="table table-bordered">
         <thead>
             <tr style='background-color:#282828; color:#ffffff;'>
@@ -51,7 +57,7 @@
             </tr>
         </tbody>
     </table>-->
-<div class="col-sm-12">
-    <div class="pre-scrollable" innerHTML.bind="reportHTML | sanitizeHTML"></div>
-</div>
+    <div class="col-sm-12">
+        <div class="pre-scrollable" innerHTML.bind="reportHTML | sanitizeHTML"></div>
+    </div>
 </template>

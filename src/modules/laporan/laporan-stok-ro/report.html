@@ -26,9 +26,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3">
-                <button click.delegate="exportToExcel()" class="btn btn-success btn-sm">Cetak Excel</button> &nbsp;
-                <button style="margin-right:10px;" click.delegate="showReport()" class="btn btn-success btn-sm">Tampilkan</button>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-md-3">
+                        <button click.delegate="exportToExcel()" class="btn btn-success">Cetak Excel</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button click.delegate="showReport()" class="btn btn-success">Tampilkan</button>
+                    </div>
+                </div>
             </div>
         </div>
     </au-input-form>

@@ -52,6 +52,7 @@ export class DataForm {
       }
       this.data.UomUnit=this.data.Uom.Unit;
       this.data.buyer=this.data.BuyerBrandCode + " - " +this.data.BuyerBrandName;
+      // this.data.country=this.data.BuyerAgent.Country;
     }
 
     this.hasItems=false;
@@ -101,6 +102,7 @@ export class DataForm {
         this.data.comodity="";
         this.data.buyer="";
         this.data.Amount=0;
+        // this.data.country="";
       }
     if (newValue) {
       this.selectedRO=newValue;
@@ -131,6 +133,7 @@ export class DataForm {
         this.data.UomUnit=newValue.UOM.Unit;
         this.data.Price=newValue.ConfirmPrice.toLocaleString('en-EN', { minimumFractionDigits: 4});
         this.data.DeliveryDate=newValue.DeliveryDate;
+        // this.data.country=this.data.Country;
         if(this.data.Items.length==0){
           this.data.Amount=parseFloat(this.data.Quantity*parseFloat(this.data.Price)).toLocaleString('en-EN', { minimumFractionDigits: 2});
         }
@@ -143,19 +146,20 @@ export class DataForm {
       this.data.Article="";
       this.data.ComodityId="";
       this.data.ComodityName="";
-      this.data.ComodityCode="";
       this.data.Uom=null;
       this.data.UomId="";
       this.data.UomUnit="";
       this.data.DeliveryDate=null;
       this.data.Price=0;
       this.data.Items.splice(0);
+      this.data.ComodityCode="";
       this.data.comodity="";
       this.data.buyer="";
       this.data.BuyerBrandName= "";
       this.data.BuyerBrandCode= "";
       this.data.BuyerBrandId="";
       this.data.Amount=0;
+      // this.data.country="";
     }
   }
 

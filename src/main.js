@@ -80,8 +80,8 @@ export async function configure(aurelia) {
       var nsales = "https://com-efrata-service-sales-dev.azurewebsites.net/v1/";
       // var nsales = "http://localhost:53247/v1/";
       //purchasingJob
-      var purchasingJob = "http://com-efrata-service-purchasingjob-dev.azurewebsites.net/v1/";
-      // var purchasingJob = "http://localhost:53184/v1/";
+    
+      var purchasingJob = "https://com-efrata-service-purchasingjob-dev.azurewebsites.net/v1/";
 
 
       //Config API
