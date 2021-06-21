@@ -39,10 +39,12 @@ export async function configure(aurelia) {
       var master = "https://com-bateeq-service-core-dev.azurewebsites.net/v1/";
       var manufacture ="https://com-bateeq-service-core-dev.azurewebsites.net/v1/";
       // var inventory ="https://com-bateeq-service-warehouse-dev.azurewebsites.net/v1/";
+
       var inventory ="https://com-efrata-service-warehouse-dev.azurewebsites.net/v1/";
       var inventoryAzure = "https://com-bateeq-service-inventory-dev.azurewebsites.net/v1/"
       // var merchandiser ="https://com-bateeq-service-warehouse-dev.azurewebsites.net/v1/";
       var merchandiser ="https://com-efrata-service-warehouse-dev.azurewebsites.net/v1/";
+    
       //var merchandiser = "http://localhost:51011/v1/";
       //var md ="http://localhost:61542/v1/";
       var md ="https://com-bateeq-service-merchandiser-dev.azurewebsites.net/v1/";
@@ -52,7 +54,9 @@ export async function configure(aurelia) {
       // var sales = "http://localhost:63614/v1/";
 
       // var purchasing ="https://com-bateeq-service-warehouse-dev.azurewebsites.net/v1/";
+
       var purchasing ="https://com-efrata-service-purchasingjob-dev.azurewebsites.net/v1/";
+
       // var purchasingAzure = "https://com-bateeq-service-purchasing-dev.azurewebsites.net/v1/";
       var purchasingAzure = "https://com-efrata-service-purchasingjob-dev.azurewebsites.net/v1/";
       // var purchasingAzure = "http://localhost:58205/v1/";

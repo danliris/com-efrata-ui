@@ -16,7 +16,7 @@ export class Service extends RestService {
   }
 
   search(info) {
-    var endpoint = `pkpbj/by-user`;
+    var endpoint = `pkpbj/by-user/packingList`;
     return super.list(endpoint, info);
   }
 
@@ -77,7 +77,7 @@ export class Service extends RestService {
   }
 
   getByCode(args) {
-    console.log(args);
+    // console.log(args);
     var config = Container.instance.get(Config);
     var endpoint = config.getEndpoint("inventory").client.baseUrl + `inventory/code?itemData=${args.itemData}&source=${args.source}`;
     // return super.list(endpoint, args);
