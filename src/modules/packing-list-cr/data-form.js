@@ -168,18 +168,21 @@ export class DataForm {
 
     // }
     barcodeChanged(newValue, oldValue) {
+      var selectedSupplier = newValue;
       if(newValue){
-        var _data = this.data.items.find((item) => item.code === selectedSupplier.code);
+        var _data = this.data.items.find((item) => item.code === selectedSupplier.code) ? true : false;
         console.log(_data)
-        if(!_data){
+        if(_data || !_data){
           let args = {
             itemData: newValue,
             source: this.data.source._id
           };
+          console.log(args)
+          console.log(this.data.items)
            this.service.getByCode(args).then(result => {
              //var datas = result;
-             this.sumTotalQty = 0;
-             this.sumPrice = 0;
+            //  this.sumTotalQty = 0;
+            //  this.sumPrice = 0;
              if (result.length > 0) {
                for (var datas of result) {
                  this.data.items.push({
@@ -188,10 +191,11 @@ export class DataForm {
                    itemInternationalRetail: datas.itemInternationalRetail,
                    itemInternationalSale: datas.itemInternationalSale,
                    itemInternationalWholeSale: datas.itemInternationalWholeSale,
-                   quantity: datas.quantity
+                   quantity: datas.quantity,
+                   sendquantity : 0
                  })
-                 this.sumTotalQty = this.sumTotalQty + parseInt(datas.quantity);
-                 this.sumPrice += datas.item.domesticCOGS;
+                //  this.sumTotalQty = this.sumTotalQty + parseInt(datas.quantity);
+                //  this.sumPrice += datas.item.domesticCOGS;
                }
 
              } else {
@@ -206,7 +210,7 @@ export class DataForm {
         //this.data.supplierId = undefined;
       }
       this.makeTotal(this.data.items);
-      
+      this.barcode='';
     }
     itemView = (item) => {
       if (!item.Code)
@@ -237,7 +241,8 @@ export class DataForm {
                             itemInternationalRetail: datas.itemInternationalRetail,
                             itemInternationalSale: datas.itemInternationalSale,
                             itemInternationalWholeSale: datas.itemInternationalWholeSale,
-                            quantity: datas.quantity
+                            quantity: datas.quantity,
+                            sendquantity : 0
                           })
                          this.sumTotalQty = this.sumTotalQty + parseInt(datas.quantity);
                          this.sumPrice += datas.item.domesticCOGS;
@@ -406,9 +411,9 @@ export class DataForm {
         this.sumPrice = 0;
         if (Object.getOwnPropertyNames(items).length > 0) {
             for (var i = 0; i < items.length; i++) {
-                console.log(items[i].item.domesticCOGS);
-                this.sumTotalQty = this.sumTotalQty + parseInt(items[i].sendquantity);
-                this.sumPrice += items[i].item.domesticCOGS;
+                // console.log(items[i].item.domesticCOGS);
+                this.sumTotalQty += parseInt(items[i].sendquantity);
+                this.sumPrice += (parseInt(items[i].sendquantity) * items[i].item.domesticCOGS);
             }
         } 
     }
