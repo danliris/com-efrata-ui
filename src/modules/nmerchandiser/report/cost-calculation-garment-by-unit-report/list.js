@@ -74,25 +74,25 @@ export class List {
                             subTotalBrand1[Brand] += data.Quantity;
                           }
      
-               var brands = [];
-               this.AmountTotal = 0;
-               this.QtyTotal = 0;               
-                   
-               for (var data in dataByBrand) {
-                   brands.push({
-                   data: dataByBrand[data],
-                   brand: dataByBrand[data][0].BrandName,
-                   subTotal: (subTotalBrand[data]).toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-                   subTotal1: (subTotalBrand1[data]).toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),                   
-              });
-                   this.AmountTotal += subTotalBrand[data];   
-                   this.QtyTotal += subTotalBrand1[data];   
-                                   
-               }
-               this.AmountTotal = this.AmountTotal.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-               this.QtyTotal = this.QtyTotal.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-               this.brands = brands;
-             });        
+                        var brands = [];
+                        this.AmountTotal = 0;
+                        this.QtyTotal = 0;               
+                            
+                        for (var data in dataByBrand) {
+                            brands.push({
+                            data: dataByBrand[data],
+                            brand: dataByBrand[data][0].BrandName,
+                            subTotal: (subTotalBrand[data]).toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+                            subTotal1: (subTotalBrand1[data]).toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),                   
+                        });
+                            this.AmountTotal += subTotalBrand[data];   
+                            this.QtyTotal += subTotalBrand1[data];   
+                                            
+                        }
+                            this.AmountTotal = this.AmountTotal.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                            this.QtyTotal = this.QtyTotal.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                            this.brands = brands;
+                    });        
     }
 
     ExportToExcel() {

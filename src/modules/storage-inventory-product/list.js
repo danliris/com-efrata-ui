@@ -13,6 +13,8 @@ export class List {
         this.filter = "";  
     }
 
+columns = [{ title: 'Toko', field: 'StorageName'}, { title: 'Nama', field: 'ItemName'}, {title: 'Kuantitas', field: 'Quantity'}]
+
 get itemLoader()
 {
     return Itemloader;
@@ -27,15 +29,24 @@ itemView =(items) =>{
     }
 
     reloadItem() { 
+        this.tableData = [];
+
         this.total=0;
-        this.itemId= this.item ? this.item._id :"";
-        this.service.getAllInventorybyItemId(this.itemId)
+        this.itemCode= this.item ? this.item.code :"";
+        this.service.getAllInventorybyItemId(this.itemCode)
             .then(data => {
+                this.models.refresh();
                 this.data = data;
                 for (var item of this.data)
                 {
-                    this.total=this.total+item.quantity;
+                    this.tableData.push(item);
+                    this.total=this.total+item.Quantity;
                 }
             })
+    }
+
+    reportExcel(){
+        this.itemCode = this.item ? this.item.code :"";
+        this.service.generateAllInventoryExcel(this.itemCode)
     }
 }

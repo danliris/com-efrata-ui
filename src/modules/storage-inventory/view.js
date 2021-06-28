@@ -18,8 +18,8 @@ export class View {
         this.params = params;
         this.info.keyword = '';
         var storageId = params.storageId;
-        var itemId = params.itemId; 
-        var result = await this.service.getAllMovement(storageId, itemId, this.info);
+        var itemCode = params.itemCode; 
+        var result = await this.service.getAllMovement(storageId, itemCode, this.info);
         this.data = result.data;
         this.info = result.info;
         var moment = require('moment');
@@ -32,8 +32,8 @@ export class View {
         var params = this.params;
         var keyword = this.info.keyword;
         var storageId = params.storageId;
-        var itemId = params.itemId; 
-        this.service.getAllMovement(storageId, itemId, this.info)
+        var itemCode = params.itemCode; 
+        this.service.getAllMovement(storageId, itemCode, this.info)
             .then(result => {
                 this.data = result.data;
                 this.info = result.info;
@@ -48,8 +48,8 @@ export class View {
         var params = this.params;
         var keyword = this.info.keyword;
         var storageId = params.storageId;
-        var itemId = params.itemId; 
-        this.service.movementExcel(storageId, itemId);
+        var itemCode = params.itemCode; 
+        this.service.movementExcel(storageId, itemCode);
     }
 
     changePage(e) {

@@ -1,35 +1,58 @@
 <template>
     <h1 class="page-header">Cari Barang</h1>
-    <form class="form-horizontal">     
-        <finishedgoods-auto-suggest label="Nama Barang" value.bind="item" class="col-md-7" read-only.bind="readOnly" ></finishedgoods-auto-suggest>
-        <!--<textbox                label="Barcode"          value.bind="filter"  read-only.bind="readOnly"></textbox> -->
-        <div class="form-group">
-            <label for="contact" class="col-sm-1 control-label"></label>
-            <div class="col-sm-3">
-                <button click.delegate="reloadItem()" class="btn btn-success btn-sm pull-right">Cari</button> 
+    <form class="form-horizontal"> 
+        <!-- <div class="row"> -->
+            <div class="form-group">
+                <!-- <div class="row"> -->
+                    <div class="col-md-9">
+                        <div class="row">
+                            <au-autocomplete value.bind="item" error.bind="error.item" label="Nama Barang" loader.one-time="itemLoader"
+                                placeholder="Nama Barang" options.bind="controlOptions" read-only.bind="readOnlyProduct">
+                            </au-autocomplete>
+                        </div>  
+                    </div>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <au-button click.delegate="reloadItem()" class="btn btn-success btn-sm pull-right">Cari</au-button> 
+                            <au-button style="margin-right:10px;" click.delegate="reportExcel()" class="btn btn-success btn-sm pull-right">Cetak Excel</au-button>
+                        </div>
+                    </div>
+                <!-- </div> -->
             </div>
-        </div>
+        <!-- </div>   -->
+        <!-- <finishedgoods-auto-suggest label="Nama Barang" value.bind="item" class="col-md-7" read-only.bind="readOnly" ></finishedgoods-auto-suggest> -->
+        <!--<textbox                label="Barcode"          value.bind="filter"  read-only.bind="readOnly"></textbox> -->
     </form> 
     <table class="table table-bordered table-hover">
         <thead> 
-            Total : ${total} pcs
             <tr>
+                <td>Total : ${total} pcs</td>
+            </tr>
+            <!-- <tr>
                 <th>Toko</th>
                 <th>Nama</th>
                 <th>Kuantitas</th>
-            </tr>
+            </tr> -->
         </thead>
-        <tbody>
+        <!-- <tbody>
             <tr repeat.for="item of data">
-                <td>${item.storage.name}</td>
-                <td>${item.item.name}</td>
-                <td>${item.quantity}</td>
+                <td>${item.StorageName}</td>
+                <td>${item.ItemName}</td>
+                <td>${item.Quantity}</td>
             </tr>
             
-        </tbody>
+        </tbody> -->
+        <au-table 
+            view-model.ref="models" 
+            data.bind="tableData" 
+            columns.bind="columns" 
+            page-size="15" 
+            context.bind="detail" 
+            context-click.delegate="contextCallback($event)">
+        </au-table>
     </table>
-    <div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
+    <!-- <div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
        Tidak ada data.
-    </div>
+    </div> -->
     <hr/> 
 </template>
