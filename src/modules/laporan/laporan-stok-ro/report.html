@@ -20,21 +20,15 @@
                         <au-textbox label="Warna" placeholder="Warna" value.bind="color" error.bind="error.color" read-only.bind="readOnly"></au-textbox>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3" style="width:150px; height:150px">
-                <img class="img-responsive" style="margin:auto;" src.bind="imagePath">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-9">
                         <button click.delegate="exportToExcel()" class="btn btn-success">Cetak Excel</button>
-                    </div>
-                    <div class="col-md-3">
                         <button click.delegate="showReport()" class="btn btn-success">Tampilkan</button>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-3" style="width:150px; height:150px">
+                <img class="img-responsive" style="margin:auto;" src.bind="imagePath">
             </div>
         </div>
     </au-input-form>
@@ -43,4 +37,5 @@
         options.bind="options"
         data.bind="data"
         show.bind="show">
+    </au-table>
 </template>
