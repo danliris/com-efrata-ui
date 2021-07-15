@@ -82,11 +82,11 @@
                     class="form-control" 
                     style="width: 70px" 
                     type="number" 
-                    name="quantity" 
-                    value.bind="item.quantity" 
-                    max.bind="item.availableQuantity" 
+                    name="sendquantity" 
+                    value.bind="item.sendquantity" 
+                    max.bind="item.quantity" 
                     min="0"
-                    change.delegate="qtyChange(item.code, item.quantity)" 
+                    change.delegate="qtyChange(item.code, item.sendquantity)" 
                     />
                   <span class="help-block">${error.items[$index].quantity}</span>
                 </td>

@@ -1,16 +1,15 @@
-import { inject, Lazy } from 'aurelia-framework';
-import { HttpClient } from 'aurelia-fetch-client';
-import { RestService } from '../../utils/rest-service';
-import { Container } from 'aurelia-dependency-injection';
+import { inject, Lazy } from "aurelia-framework";
+import { HttpClient } from "aurelia-fetch-client";
+import { RestService } from "../../utils/rest-service";
+import { Container } from "aurelia-dependency-injection";
 import { Config } from "aurelia-api";
 
 //const serviceUri = 'docs/efr-pk-pbj';
-const serviceUri = 'pkpbj/by-user'
-const serviceInven = 'inventory';
-const servicePrintUri = 'docs/print/efr-pk-pbj';
+const serviceUri = "pkpbj/by-user";
+const serviceInven = "inventory";
+const servicePrintUri = "docs/print/efr-pk-pbj";
 
 export class Service extends RestService {
-
   constructor(http, aggregator, config, api) {
     super(http, aggregator, config, "inventory");
   }
@@ -26,6 +25,8 @@ export class Service extends RestService {
   }
 
   create(data) {
+    console.log("Ini data");
+    console.log(data);
     //var config = Container.instance.get(Config);
     //var endpoint = config.getEndpoint("inventory").client.baseUrl + serviceUri
     var endpoint = `${serviceUri}`;
@@ -39,19 +40,21 @@ export class Service extends RestService {
 
   getModuleConfig() {
     var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("master").client.baseUrl + 'modules?keyword=EFR-PK/PLB';
+    var endpoint =
+      config.getEndpoint("master").client.baseUrl +
+      "modules?keyword=EFR-PK/PLB";
     return super.get(endpoint);
   }
 
   getStorageById(id) {
     var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("master").client.baseUrl + 'storages/' + id;
+    var endpoint =
+      config.getEndpoint("master").client.baseUrl + "storages/" + id;
     return super.get(endpoint);
   }
 
-
   getDestinations() {
-    var module = 'EFR-PK/PLB';
+    var module = "EFR-PK/PLB";
     var config = Container.instance.get(Config);
     var endpoint = config.getEndpoint("core");
     var uri = `master/storages/destination?keyword=${module}`;
@@ -59,7 +62,7 @@ export class Service extends RestService {
   }
 
   getSources() {
-    var module = 'EFR-PK/PLB';
+    var module = "EFR-PK/PLB";
     var config = Container.instance.get(Config);
     var endpoint = config.getEndpoint("master");
     var uri = `master/storages/source?keyword=${module}`;
@@ -79,18 +82,19 @@ export class Service extends RestService {
   getByCode(args) {
     // console.log(args);
     var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("inventory").client.baseUrl + `inventory/code?itemData=${args.itemData}&source=${args.source}`;
+    var endpoint =
+      config.getEndpoint("inventory").client.baseUrl +
+      `inventory/code?itemData=${args.itemData}&source=${args.source}`;
     // return super.list(endpoint, args);
     //var endpoint = `${serviceUri}?itemData=${args.itemData}&source=${args.source}`
     return super.get(endpoint);
-
   }
 
   getByName(args) {
     console.log(args);
     var config = Container.instance.get(Config);
-    var query = `inventory/name?itemData=${args.itemData}&source=${args.source}`
-    var endpoint = config.getEndpoint("inventory").client.baseUrl + query
+    var query = `inventory/name?itemData=${args.itemData}&source=${args.source}`;
+    var endpoint = config.getEndpoint("inventory").client.baseUrl + query;
 
     return super.get(endpoint);
   }
@@ -102,7 +106,12 @@ export class Service extends RestService {
 
   getDataInventory(storageId, itemId) {
     var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("inventory").client.baseUrl + 'storages/' + storageId + '/inventories/' + itemId;
+    var endpoint =
+      config.getEndpoint("inventory").client.baseUrl +
+      "storages/" +
+      storageId +
+      "/inventories/" +
+      itemId;
     return super.get(endpoint);
   }
 
@@ -113,8 +122,8 @@ export class Service extends RestService {
 
   getSource(name) {
     var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("master").client.baseUrl + 'storages?keyword=' + name;
+    var endpoint =
+      config.getEndpoint("master").client.baseUrl + "storages?keyword=" + name;
     return super.get(endpoint);
   }
-
 }
