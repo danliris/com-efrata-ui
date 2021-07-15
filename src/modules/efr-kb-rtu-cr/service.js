@@ -122,3 +122,4 @@ export class Service extends RestService {
     return super.getPdf(endpoint);
   }
 }
+

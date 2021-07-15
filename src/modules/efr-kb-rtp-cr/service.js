@@ -63,11 +63,11 @@ export class Service extends RestService {
     return super.get(endpoint);
   }
 
-  getByCode(code) {
-    var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("master").client.baseUrl + 'items/finished-goods/code/' + code;
-    return super.get(endpoint);
-  }
+  // getByCode(code) {
+  //   var config = Container.instance.get(Config);
+  //   var endpoint = config.getEndpoint("master").client.baseUrl + 'items/finished-goods/code/' + code;
+  //   return super.get(endpoint);
+  // }
 
   getExpeditionServices() {
     return new Promise((resolve, reject) => {
@@ -99,6 +99,7 @@ export class Service extends RestService {
   }
 
   getByCode(args) {
+    console.log("Ini args")
     console.log(args);
     var config = Container.instance.get(Config);
     var endpoint = config.getEndpoint("inventory").client.baseUrl + `inventory/code?itemData=${args.itemData}&source=${args.source}`;

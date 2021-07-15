@@ -170,7 +170,7 @@ export class DataForm {
     barcodeChanged(newValue, oldValue) {
       var selectedSupplier = newValue;
       if(newValue){
-        var _data = this.data.items.find((item) => item.code === selectedSupplier.code) ? true : false;
+        var _data = this.data.items.find((item) => item.code === selectedSupplier.code);
         console.log(_data)
         if(_data || !_data){
           let args = {
@@ -192,7 +192,7 @@ export class DataForm {
                    itemInternationalSale: datas.itemInternationalSale,
                    itemInternationalWholeSale: datas.itemInternationalWholeSale,
                    quantity: datas.quantity,
-                   sendquantity : 0
+                   sendquantity : 0,
                  })
                 //  this.sumTotalQty = this.sumTotalQty + parseInt(datas.quantity);
                 //  this.sumPrice += datas.item.domesticCOGS;
@@ -212,6 +212,8 @@ export class DataForm {
       this.makeTotal(this.data.items);
       this.barcode='';
     }
+
+    
     itemView = (item) => {
       if (!item.Code)
         return `${item.name}`
@@ -223,7 +225,7 @@ export class DataForm {
          //console.log(newValue)
          if (selectedSupplier) {
            var _data = this.data.items.find((item) => item.code === selectedSupplier.code);
-                if (!_data) {
+                if ($data || !_data) {
                   //console.log(selectedSupplier.name)
                   this.sumTotalQty = 0;
                   this.sumPrice = 0;
@@ -413,7 +415,7 @@ export class DataForm {
             for (var i = 0; i < items.length; i++) {
                 // console.log(items[i].item.domesticCOGS);
                 this.sumTotalQty += parseInt(items[i].sendquantity);
-                this.sumPrice += (parseInt(items[i].sendquantity) * items[i].item.domesticCOGS);
+                this.sumPrice += (parseInt(items[i].sendquantity) * items[i].item.domesticSale);
             }
         } 
     }

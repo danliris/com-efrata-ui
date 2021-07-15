@@ -92,7 +92,8 @@ export class DataForm {
                   itemInternationalSale: datas.itemInternationalSale,
                   itemInternationalWholeSale: datas.itemInternationalWholeSale,
                   quantity: datas.quantity,
-                  availablequantity: datas.quantity
+                  availablequantity: datas.quantity,
+                  sendquantity: 0,
                 })
                 this.sumTotalQty = this.sumTotalQty + parseInt(datas.quantity);
                 //console.log(datas.item.domesticSale * datas.quantity);
@@ -286,10 +287,13 @@ export class DataForm {
                         itemInternationalWholeSale: datas.itemInternationalWholeSale,
                         quantity: datas.quantity,
                         availablequantity: datas.quantity,
-                        price: datas.item.domesticSale * datas.quantity
+                        price: datas.item.domesticSale * datas.quantity,
+                        sendquantity:0,
                       })
-                      this.sumTotalQty = this.sumTotalQty + parseInt(datas.quantity);
-                      this.sumPrice += datas.item.domesticSale * datas.quantity;
+                      // this.sumTotalQty = this.sumTotalQty + parseInt(datas.quantity);
+                      // this.sumPrice += datas.item.domesticSale * datas.quantity;
+                      // this.sumTotalQty = 0
+                      // this.sumPrice += 0
                     }else{
                       this.firstPrice = 0;
                       this.qtyFg = parseInt(_data.quantity) + 1;
@@ -304,6 +308,7 @@ export class DataForm {
                   }
                 })
       }
+      this.barcode='';
     }
 
     // async nameChoose(e) {
