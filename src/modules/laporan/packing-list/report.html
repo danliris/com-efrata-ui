@@ -1,36 +1,44 @@
 <template>
-    <div class="form-horizontal">
-        <au-datepicker value.bind="dateFrom" label="From"></au-datepicker>
-        <au-datepicker value.bind="dateTo" label="To"></au-datepicker>
+    <h1 class="page-header">Laporan Packing List</h1>
+    <form class="form-horizontal">
         <div class="form-group">
-            <label class="col-sm-3 text-right control-label">Transaksi</label>
-            <div class="col-sm-9 radio">
-                <label style="margin-right:10px;" repeat.for="option of transactionTypeOptions">
-                    <input type="radio" name="transactionType" model.bind="option" checked.bind="transactionType"/> ${option.text}
-                </label>
+            <div class="col-md-9">
+                <div class="row">
+                    <au-datepicker value.bind="dateFrom" label="From"></au-datepicker>
+                    <au-datepicker value.bind="dateTo" label="To"></au-datepicker>
+                    <div class="form-group">
+                        <label class="col-sm-3 text-right control-label">Transaksi</label>
+                        <div class="col-sm-9 radio">
+                            <label style="margin-right:10px;" repeat.for="option of transactionTypeOptions">
+                                <input type="radio" name="transactionType" model.bind="option" checked.bind="transactionType"/> ${option.text}
+                            </label>
+                        </div>
+                    </div>
+                    <au-autocomplete label="Tujuan Penyimpanan" value.bind="storage" loader.bind="storageLoader" text="name">
+                    </au-autocomplete>
+                    <au-multiline
+                            placeholder="No. PackingList"
+                            label="No. PackingList"
+                            value.bind="packingListNo">
+                    </au-multiline>
+                    <div class="form-group">
+                        <label class="col-sm-3 text-right control-label">Status Packing List</label>
+                        <div class="col-sm-9 radio">
+                            <label style="margin-right:10px;" repeat.for="option of packingListStatusOptions">
+                                <input type="radio" name="packingListStatus" model.bind="option" checked.bind="packingListStatus"/> ${option.text}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="col-sm-12 form-group">
+                    <button click.delegate="excel()" class="btn btn-primary btn-sm pull-right">Cetak Excel</button> &nbsp;
+                    <button style="margin-right:10px;" click.delegate="showReport()" class="btn btn-success btn-sm pull-right">Tampilkan</button>
+                </div>
             </div>
         </div>
-        <au-autocomplete label="Tujuan Penyimpanan" value.bind="storage" loader.bind="storageLoader" text="name">
-        </au-autocomplete>
-        <au-multiline
-                placeholder="No. PackingList"
-                label="No. PackingList"
-                value.bind="packingListNo">
-        </au-multiline>
-    </au-multiline>
-        <div class="form-group">
-            <label class="col-sm-3 text-right control-label">Status Packing List</label>
-             <div class="col-sm-9 radio">
-                <label style="margin-right:10px;" repeat.for="option of packingListStatusOptions">
-                    <input type="radio" name="packingListStatus" model.bind="option" checked.bind="packingListStatus"/> ${option.text}
-                </label>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 form-group">
-        <button click.delegate="excel()" class="btn btn-success btn-sm pull-right">Cetak Excel</button> &nbsp;
-        <button style="margin-right:10px;" click.delegate="showReport()" class="btn btn-success btn-sm pull-right">Tampilkan</button>
-    </div>
+    </form>
 <!--<table class="table table-bordered">
         <thead>
             <tr style='background-color:#282828; color:#ffffff;'>
