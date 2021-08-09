@@ -1,6 +1,8 @@
 import { RestService } from '../../../utils/rest-service';
 import { inject, Lazy } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
+import { Container } from 'aurelia-dependency-injection';
+import { Config } from "aurelia-api"
 
 const serviceUri = 'finishing-outs';
 const serviceUriFinIn = 'finishing-ins';
@@ -62,6 +64,27 @@ class Service extends RestService {
         return super.getPdf(endpoint);
     }
 
+    getColors() {
+        var config = Container.instance.get(Config);
+        var endpoint = config.getEndpoint("core");
+        var uri = `articles/colors/all`;
+        return endpoint.find(uri, {});
+    }
+
+    // createSPKDocs(data) {
+    //     var config = Container.instance.get(Config);
+    //     var endpoint = config.getEndpoint("inventory");
+    //     var uri = 'spkdocs';
+    //     return endpoint.post(uri, data);
+    // }
+
+    // getCostCalculationGarmentByRO(info) {
+    //     var config = Container.instance.get(Config);
+    //     var endpoint = config.getEndpoint("nmerchandiser");
+    //     var uri = 'cost-calculation-garments/dynamic';
+    //     return endpoint.find(uri, info);
+    // }
+
 }
 
 class PurchasingService extends RestService {
@@ -75,4 +98,26 @@ class PurchasingService extends RestService {
     }
 }
 
-export { Service,PurchasingService }
+class WarehouseService extends RestService {
+    constructor(http, aggregator, config, endpoint) {
+        super(http, aggregator, config, "inventory");
+    }
+
+    createSPKDocs(data) {
+        var endpoint = 'spkdocs';
+        return super.post(endpoint, data);
+    }
+}
+
+class MerchandiserService extends RestService {
+    constructor(http, aggregator, config, endpoint) {
+        super(http, aggregator, config, "nmerchandiser");
+    }
+
+    getCostCalculationGarmentByRO(info) {
+        var endpoint = 'cost-calculation-garments/dynamic';
+        return super.list(endpoint, info);
+    }
+}
+
+export { Service,PurchasingService,WarehouseService,MerchandiserService }
