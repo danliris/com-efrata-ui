@@ -4,107 +4,203 @@
         with.bind="context"
         options.bind="formOptions">
         
-        <au-textbox
-            if.bind="data.FinishingOutNo"
-            value.bind="data.FinishingOutNo"
-            label="No Finishing Out"
-            read-only="true"
-            options.bind="controlOptions">
-        </au-textbox>
+        <div class="row">
+            <div class="col-md-6">
+                <au-textbox
+                    if.bind="data.FinishingOutNo"
+                    value.bind="data.FinishingOutNo"
+                    label="No Finishing Out"
+                    read-only="true"
+                    options.bind="controlOptions">
+                </au-textbox>
 
-        <au-autocomplete
-            value.bind="selectedUnit"
-            error.bind="error.Unit"
-            label="Unit Finishing Out"
-            loader.bind="unitLoader"
-            text.bind="unitView"
-            placeholder="Unit"
-            read-only.bind="readOnly || isEdit"
-            options.bind="controlOptions">
-        </au-autocomplete>
+                <au-autocomplete
+                    value.bind="selectedUnit"
+                    error.bind="error.Unit"
+                    label="Unit Finishing Out"
+                    loader.bind="unitLoader"
+                    text.bind="unitView"
+                    placeholder="Unit"
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="controlOptions">
+                </au-autocomplete>
 
-        <au-autocomplete
-            value.bind="selectedRO"
-            error.bind="error.RONo"
-            label="RO"
-            loader.bind="roLoader"
-            text.bind="ROView"
-            show.bind="selectedUnit"
-            placeholder="Nomor RO"
-            read-only.bind="readOnly || isEdit"
-            options.bind="controlOptions"
-            view-model.ref="selectedROViewModel">
-        </au-autocomplete>
+                <au-autocomplete
+                    value.bind="selectedRO"
+                    error.bind="error.RONo"
+                    label="RO"
+                    loader.bind="roLoader"
+                    text.bind="ROView"
+                    show.bind="selectedUnit"
+                    placeholder="Nomor RO"
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="controlOptions"
+                    view-model.ref="selectedROViewModel">
+                </au-autocomplete>
 
 
-        <au-textbox
-            value.bind="data.Article"
-            error.bind="error.Article"
-            label="No Artikel"
-            read-only="true"
-            if.bind="data.Article"
-            options.bind="controlOptions">
-        </au-textbox>
+                <au-textbox
+                    value.bind="data.Article"
+                    error.bind="error.Article"
+                    label="No Artikel"
+                    read-only="true"
+                    if.bind="data.Article"
+                    options.bind="controlOptions">
+                </au-textbox>
 
-        <au-textbox
-            value.bind="data.BuyerView"
-            label="Buyer"
-            read-only="true"
-            if.bind="data.Buyer"
-            options.bind="controlOptions">
-        </au-textbox>
+                <au-textbox
+                    value.bind="data.BuyerView"
+                    label="Buyer"
+                    read-only="true"
+                    if.bind="data.Buyer"
+                    options.bind="controlOptions">
+                </au-textbox>
 
-        <au-autocomplete
-            value.bind="data.Comodity"
-            error.bind="error.Comodity"
-            label="Komoditi"
-            text.bind="comodityView"
-            read-only.bind="true"
-            if.bind="data.Comodity"
-            options.bind="controlOptions">
-        </au-autocomplete>
+                <au-autocomplete
+                    value.bind="data.Comodity"
+                    error.bind="error.Comodity"
+                    label="Komoditi"
+                    text.bind="comodityView"
+                    read-only.bind="true"
+                    if.bind="data.Comodity"
+                    options.bind="controlOptions">
+                </au-autocomplete>
 
-        <au-dropdown 
-            label="Proses Tujuan" 
-            value.bind="selectedFinishingTo" 
-            error.bind="error.FinishingTo" 
-            read-only.bind="readOnly || isEdit"
-            items.bind="finishingToOptions"
-            options.bind="controlOptions">
-        </au-dropdown>
+                <au-dropdown 
+                    label="Proses Tujuan" 
+                    value.bind="selectedFinishingTo" 
+                    error.bind="error.FinishingTo" 
+                    read-only.bind="readOnly || isEdit"
+                    items.bind="finishingToOptions"
+                    options.bind="controlOptions">
+                </au-dropdown>
 
-        <au-autocomplete
-            value.bind="selectedUnitTo"
-            error.bind="error.UnitTo"
-            label="Unit Tujuan"
-            loader.bind="unitLoader"
-            text.bind="unitView"
-            placeholder="Unit tujuan"
-            read-only.bind="readOnly || isEdit"
-            options.bind="controlOptions">
-        </au-autocomplete>
-        
-        <au-datepicker 
-            label="Tanggal Finishing Out"
-            value.bind="data.FinishingOutDate"
-            error.bind="error.FinishingOutDate"
-            read-only.bind="readOnly"
-            options.bind="controlOptions">
-        </au-datepicker>
+                <au-autocomplete
+                    value.bind="selectedUnitTo"
+                    error.bind="error.UnitTo"
+                    label="Unit Tujuan"
+                    loader.bind="unitLoader"
+                    text.bind="unitView"
+                    placeholder="Unit tujuan"
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="controlOptions">
+                </au-autocomplete>
+                
+                <au-datepicker 
+                    label="Tanggal Finishing Out"
+                    value.bind="data.FinishingOutDate"
+                    error.bind="error.FinishingOutDate"
+                    read-only.bind="readOnly"
+                    options.bind="controlOptions">
+                </au-datepicker>
 
-        <au-checkbox 
-            label="Beda Size"
-            value.bind="data.IsDifferentSize"
-            read-only.bind="readOnly || isEdit"
-            options.bind="controlOptions"
-            change.delegate=changeChecked()>
-        </au-checkbox>
+                <au-checkbox 
+                    label="Beda Size"
+                    value.bind="data.IsDifferentSize"
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="controlOptions"
+                    change.delegate=changeChecked()>
+                </au-checkbox>
+            </div>
+
+            <div class="col-md-6">
+                <au-autocomplete
+                    value.bind="selectedProcess"
+                    error.bind="error.process"
+                    label="Proses"
+                    text="name"
+                    loader.bind="ProcessLoader"
+                    read-only.bind="readOnly"
+                    show.bind="selectedFinishingTo == 'GUDANG JADI'"
+                    options.bind="controlOptions">
+                </au-autocomplete>
+
+                <au-autocomplete        
+                    value.bind="selectedBahan"               
+                    error.bind="error.materials"   
+                    label="Bahan"                               
+                    text="name" 
+                    loader.bind="MaterialsLoader"               
+                    read-only.bind="readOnly"
+                    show.bind="selectedFinishingTo == 'GUDANG JADI'"
+                    options.bind="controlOptions">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedKomposisiBahan"
+                    error.bind="error.materialCompositions"
+                    label="Komposisi Bahan"
+                    loader.bind="MaterialCompositionsLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    show.bind="selectedFinishingTo == 'GUDANG JADI'"
+                    options.bind="controlOptions">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedKoleksi"
+                    error.bind="error.collections"
+                    label="Koleksi"
+                    loader.bind="CollectionsLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    show.bind="selectedFinishingTo == 'GUDANG JADI'"
+                    options.bind="controlOptions">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedSeason"
+                    error.bind="error.seasons"
+                    label="Season"
+                    loader.bind="SeasonsLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    show.bind="selectedFinishingTo == 'GUDANG JADI'"
+                    options.bind="controlOptions">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedKonter"
+                    error.bind="error.counters"
+                    label="Konter"
+                    loader.bind="CountersLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    show.bind="selectedFinishingTo == 'GUDANG JADI'"
+                    options.bind="controlOptions">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedStyle"
+                    error.bind="error.subCounters"
+                    label="Style"
+                    loader.bind="SubCountersLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    show.bind="selectedFinishingTo == 'GUDANG JADI'"
+                    options.bind="controlOptions">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedKategori"
+                    error.bind="error.categories"
+                    label="Kategori"
+                    loader.bind="CategoriesLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    show.bind="selectedFinishingTo == 'GUDANG JADI'"
+                    options.bind="controlOptions">
+                </au-autocomplete>
+            </div>
+        </div>
         
         <div class="form-group has-error">
             <p if.bind="error.ItemsCount" class="help-block text-center">${error.ItemsCount}</p>
             <p if.bind="error.Price" class="help-block text-center">${error.Price}</p>
         </div>
 
+        <au-textbox error.bind="error.Items" show.bind="error.Items" read-only.bind="true"></au-textbox>
+        
         <au-collection
             items.bind="data.Items"
             errors.bind="error.Items"

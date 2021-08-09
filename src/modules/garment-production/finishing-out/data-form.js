@@ -2,6 +2,14 @@ import { bindable, inject, computedFrom } from "aurelia-framework";
 import { Service,PurchasingService } from "./service";
 
 const UnitLoader = require('../../../loader/garment-units-loader');
+var ProcessLoader = require('../../../loader/process-loader');
+var SeasonsLoader = require('../../../loader/season-loader');
+var SubCountersLoader = require('../../../loader/sub-counter-loader');
+var CollectionsLoader = require('../../../loader/collection-loader');
+var CategoriesLoader = require('../../../loader/category-loader');
+var CountersLoader = require('../../../loader/counter-loader');
+var MaterialCompositionsLoader = require('../../../loader/material-composition-loader');
+var MaterialsLoader = require('../../../loader/material-loader');
 
 @inject(Service,PurchasingService)
 export class DataForm {
@@ -17,6 +25,15 @@ export class DataForm {
     @bindable selectedUnitTo;
     @bindable itemOptions = {};
     @bindable selectedFinishingTo;
+    @bindable selectedProcess;
+    @bindable selectedBahan;
+    @bindable selectedKomposisiBahan;
+    @bindable selectedKoleksi;
+    @bindable selectedSeason;
+    @bindable selectedKonter;
+    @bindable selectedStyle;
+    @bindable selectedKategori;
+    
 
     finishingToOptions = ['GUDANG JADI','SEWING'];
 
@@ -34,10 +51,10 @@ export class DataForm {
 
     controlOptions = {
         label: {
-            length: 2
+            length: 3
         },
         control: {
-            length: 5
+            length: 7
         }
     };
     
@@ -88,6 +105,38 @@ export class DataForm {
 
     get unitLoader() {
         return UnitLoader;
+    }
+
+    get ProcessLoader() {
+        return ProcessLoader;
+    }
+
+    get MaterialsLoader() {
+        return MaterialsLoader;
+    }
+
+    get MaterialCompositionsLoader() {
+        return MaterialCompositionsLoader;
+    }
+
+    get CountersLoader() {
+        return CountersLoader;
+    }
+
+    get SeasonsLoader() {
+        return SeasonsLoader;
+    }
+
+    get CollectionsLoader() {
+        return CollectionsLoader;
+    }
+
+    get SubCountersLoader() {
+        return SubCountersLoader;
+    }
+
+    get CategoriesLoader() {
+        return CategoriesLoader;
     }
 
     selectedFinishingToChanged(newValue){
@@ -158,7 +207,6 @@ export class DataForm {
 
                 Promise.resolve(this.service.searchFinishingInComplete({ filter: JSON.stringify({ RONo: this.data.RONo, UnitId: this.data.Unit.Id ,"Items.Any(RemainingQuantity>0)":true}) }))
                     .then(result => {
-                        
                         for(var finishingIn of result.data){
                             for(var finishingInItem of finishingIn.Items){
                                 var item={};
