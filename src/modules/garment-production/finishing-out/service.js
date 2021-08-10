@@ -8,6 +8,7 @@ const serviceUri = 'finishing-outs';
 const serviceUriFinIn = 'finishing-ins';
 const serviceUriPR = 'garment-purchase-requests';
 const comodityPriceserviceUri = 'comodity-prices';
+const serviceUriStoreMaster = 'master/stores';
 
 class Service extends RestService {
     constructor(http, aggregator, config, endpoint) {
@@ -69,6 +70,12 @@ class Service extends RestService {
         var endpoint = config.getEndpoint("core");
         var uri = `articles/colors/all`;
         return endpoint.find(uri, {});
+    }
+
+    getStore(storeCode) {
+        var config = Container.instance.get(Config);
+        var endpoint = config.getEndpoint("core").client.baseUrl + serviceUriStoreMaster + "/store-storage?code=" + `${storeCode}`
+        return super.get(endpoint);
     }
 
     // createSPKDocs(data) {

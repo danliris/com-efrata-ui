@@ -10,6 +10,7 @@ var CategoriesLoader = require('../../../loader/category-loader');
 var CountersLoader = require('../../../loader/counter-loader');
 var MaterialCompositionsLoader = require('../../../loader/material-composition-loader');
 var MaterialsLoader = require('../../../loader/material-loader');
+var StoreLoader = require('../../../loader/master-store-loader');
 
 @inject(Service,PurchasingService)
 export class DataForm {
@@ -23,6 +24,7 @@ export class DataForm {
     @bindable selectedRO;
     @bindable selectedUnit;
     @bindable selectedUnitTo;
+    @bindable storageTo;
     @bindable itemOptions = {};
     @bindable selectedFinishingTo;
     @bindable selectedProcess;
@@ -103,6 +105,10 @@ export class DataForm {
         return `${ro.RONo}`;
     }
 
+    gudangView = (storage) => {
+        return `${storage.name}`;
+    }
+
     get unitLoader() {
         return UnitLoader;
     }
@@ -137,6 +143,10 @@ export class DataForm {
 
     get CategoriesLoader() {
         return CategoriesLoader;
+    }
+
+    get StoreLoader() {
+        return StoreLoader;
     }
 
     selectedFinishingToChanged(newValue){
@@ -181,6 +191,21 @@ export class DataForm {
         }
         else{
             this.data.UnitTo= null;
+        }
+    }
+
+    storageToChanged(newValue){
+        if(newValue){
+            this.data.storageTo=newValue;
+            this.service.getStore(newValue.code)
+            .then(result => {
+                this.data.StorageId = result.storage._id;
+                this.data.StorageName = result.storage.name;
+                this.data.StorageCode = result.storage.code;
+            })
+        }
+        else{
+            this.data.storageTo= null;
         }
     }
 
