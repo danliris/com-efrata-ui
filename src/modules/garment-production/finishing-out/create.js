@@ -61,6 +61,9 @@ export class Create {
         if(this.data.Unit == undefined || this.data.Unit == ""){
             e["Unit"] = "Unit harus diisi"
         }
+        if(this.data.FinishingTo == 'GUDANG JADI' && this.data.storageTo == undefined || this.data.storageTo == ""){
+            e["storageTo"] = "Gudang tujuan harus diisi"
+        }
         if(this.data.Unit && this.data.RONo == undefined || this.data.RONo == ""){
             e["RONo"] = "RO harus diisi"
         }
@@ -180,7 +183,6 @@ export class Create {
                     filter: JSON.stringify(filter),
                     select: "new(ImagePath,RO_Number,CreatedUtc)",
                 };
-                console.log(JSON.stringify(this.data));
                 this.merchandiserservice.getCostCalculationGarmentByRO(info)
                     .then(results => {
                         const data = results.data;
