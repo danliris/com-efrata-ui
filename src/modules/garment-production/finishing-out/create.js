@@ -54,10 +54,15 @@ export class Create {
         const checkedItem = this.data.Items.filter(d => d.IsSave);
         
         if(checkedItem.length == 0){
-            e["Items"] = "Tidak ada Item yang dipilih"
+            // e["Items"] = "Tidak ada Item yang dipilih"
+            alert("Tidak ada Item yang dipilih");
+            return;
         }
         if(this.data.Unit == undefined || this.data.Unit == ""){
             e["Unit"] = "Unit harus diisi"
+        }
+        if(this.data.FinishingTo == 'GUDANG JADI' && this.data.storageTo == undefined || this.data.storageTo == ""){
+            e["storageTo"] = "Gudang tujuan harus diisi"
         }
         if(this.data.Unit && this.data.RONo == undefined || this.data.RONo == ""){
             e["RONo"] = "RO harus diisi"
@@ -88,6 +93,34 @@ export class Create {
         }
         if (this.data.FinishingTo == 'GUDANG JADI' && this.selectedKategori == null) {
             e["categories"] = "Kategori harus diisi"
+        }
+        if(checkedItem.length > 0){
+            let countErr = checkedItem.filter(d => {
+                if(d.IsDifferentSize){
+                    if(d.Details.length == 0){
+                        alert("Belum ada size yang ditambahkan");
+                        return;
+                    }
+                    
+                    let totalQty = 0;
+                    d.Details.map(dd => {
+                        totalQty += dd.Quantity;
+                    })
+
+                    return(
+                        totalQty > d.FinishingInQuantity
+                    )
+                }else{
+                    return(
+                        d.Quantity > d.FinishingInQuantity
+                    )
+                }
+            })
+            if(countErr.length > 0){
+                alert("Jumlah yang dikeluarkan tidak boleh lebih dari jumlah yang tersedia");
+                return;
+                // e["Items"] = "Jumlah yang dikeluarkan tidak boleh lebih dari jumlah yang tersedia"
+            }
         }
 
         if (Object.keys(e).length > 0) {
@@ -150,7 +183,6 @@ export class Create {
                     filter: JSON.stringify(filter),
                     select: "new(ImagePath,RO_Number,CreatedUtc)",
                 };
-                
                 this.merchandiserservice.getCostCalculationGarmentByRO(info)
                     .then(results => {
                         const data = results.data;

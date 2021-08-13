@@ -93,7 +93,7 @@
                     loader.bind="StoreLoader"
                     text.bind="gudangView"
                     placeholder="Gudang tujuan"
-                    show.bind="readOnly == false"
+                    show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
                     read-only.bind="readOnly || isEdit"
                     options.bind="controlOptions">
                 </au-autocomplete>
