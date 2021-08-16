@@ -23,6 +23,17 @@
                 </au-textbox>
 
                 <au-autocomplete
+                    label="Asal"
+                    value.bind="selectedSource"
+                    error.bind="error.Source"
+                    loader.bind="sourceLoader"
+                    text.bind="sourceView"
+                    placeholder="Asal"
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4"
+                    keypress.delegate="enterDelegate($event)">
+                </au-autocomplete>
+                <au-autocomplete
                     label="Unit"
                     value.bind="selectedUnit"
                     error.bind="error.Unit"
