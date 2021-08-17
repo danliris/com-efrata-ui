@@ -181,15 +181,17 @@ export class Create {
                 const info = {
                     keyword: this.data.RONo,
                     filter: JSON.stringify(filter),
-                    select: "new(ImagePath,RO_Number,CreatedUtc)",
+                    select: "new(ImagePath,RO_Number,CreatedUtc,SourceId)",
                 };
+                
                 this.merchandiserservice.getCostCalculationGarmentByRO(info)
                     .then(results => {
                         const data = results.data;
                         console.log('data',data);
                         if(data.length > 0){
                             this.data.ImagePath = data[0].ImagePath;
-                            this.data.CCGCreatedDateForBarcode = moment(data[0].CreatedUtc).format("YYMM");
+                            this.data.RoCreatedUtc = moment(data[0].CreatedUtc).format("YYMM");
+                            this.data.SourceId = data[0].SourceId;
                         }
                         
                         this.service.create(this.data)

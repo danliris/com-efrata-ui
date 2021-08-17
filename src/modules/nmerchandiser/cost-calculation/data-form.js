@@ -4,7 +4,6 @@ import { ServiceEffeciency } from './service-efficiency';
 import { RateService } from './service-rate';
 import { ServiceCore } from './service-core';
 
-
 import numeral from 'numeral';
 numeral.defaultFormat("0,0.00");
 const rateNumberFormat = "0,0.000";
@@ -13,6 +12,7 @@ var SizeRangeLoader = require('../../../loader/size-range-loader');
 var ComodityLoader = require('../../../loader/garment-comodities-loader');
 var UOMLoader = require('../../../loader/uom-loader');
 var UnitLoader = require('../../../loader/garment-units-loader');
+var SourceLoader = require('../../../loader/master-source-loader');
 @inject(Router, BindingEngine, ServiceEffeciency, RateService, Element, ServiceCore)
 export class DataForm {
   @bindable title;
@@ -222,6 +222,10 @@ export class DataForm {
     console.log(context);
   }
 
+  get StoreLoader() {
+    return StoreLoader;
+}
+
   get preSalesContractLoader() {
     return PreSalesContractLoader;
   }
@@ -238,7 +242,7 @@ export class DataForm {
   }
 
   get comodityQuery(){
-    var result = { "_CreatedBy" : "dev217" }
+    var result = {  }
     return result;   
   }
 
@@ -250,8 +254,16 @@ export class DataForm {
     return UnitLoader;
   }
 
+  get sourceLoader() {
+    return SourceLoader;
+  }
+
   unitView = (unit) => {
     return `${unit.Code} - ${unit.Name}`
+  }
+
+  sourceView = (unit) => {
+    return `${unit.Name}`
   }
 
   uomView =(uom)=>{
@@ -445,7 +457,6 @@ export class DataForm {
   }
 
  
-
   @bindable selectedUnit;
   async selectedUnitChanged(newVal) {
     this.data.Unit = newVal;
@@ -480,6 +491,12 @@ export class DataForm {
     }
   }
 
+  @bindable selectedSource;
+  async selectedSourceChanged(newVal) {
+    this.data.SourceId = newVal.Id;
+    this.data.SourceCode = newVal.Code;
+    this.data.SourceName= newVal.Name;
+  }
 
   @computedFrom('data.SMV_Cutting', 'data.SMV_Sewing', 'data.SMV_Finishing')
   get SMV_Total() {
