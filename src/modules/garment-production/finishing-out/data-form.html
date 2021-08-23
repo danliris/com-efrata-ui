@@ -86,7 +86,7 @@
                     options.bind="controlOptions">
                 </au-autocomplete>
                 
-                <au-autocomplete
+                <!-- <au-autocomplete
                     value.bind="storageTo"
                     error.bind="error.storageTo"
                     label="Gudang Tujuan"
@@ -96,7 +96,7 @@
                     show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
                     read-only.bind="readOnly || isEdit"
                     options.bind="controlOptions">
-                </au-autocomplete>
+                </au-autocomplete> -->
 
                 <au-datepicker 
                     label="Tanggal Finishing Out"
@@ -113,96 +113,6 @@
                     options.bind="controlOptions"
                     change.delegate=changeChecked()>
                 </au-checkbox>
-            </div>
-
-            <div class="col-md-6">
-                <au-autocomplete
-                    value.bind="selectedProcess"
-                    error.bind="error.process"
-                    label="Proses"
-                    text="name"
-                    loader.bind="ProcessLoader"
-                    read-only.bind="readOnly"
-                    show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
-                    options.bind="controlOptions">
-                </au-autocomplete>
-
-                <au-autocomplete        
-                    value.bind="selectedBahan"               
-                    error.bind="error.materials"   
-                    label="Bahan"                               
-                    text="name" 
-                    loader.bind="MaterialsLoader"               
-                    read-only.bind="readOnly"
-                    show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
-                    options.bind="controlOptions">
-                </au-autocomplete>
-
-                <au-autocomplete
-                    value.bind="selectedKomposisiBahan"
-                    error.bind="error.materialCompositions"
-                    label="Komposisi Bahan"
-                    loader.bind="MaterialCompositionsLoader"
-                    text="name" 
-                    read-only.bind="readOnly || isEdit"
-                    show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
-                    options.bind="controlOptions">
-                </au-autocomplete>
-
-                <au-autocomplete
-                    value.bind="selectedKoleksi"
-                    error.bind="error.collections"
-                    label="Koleksi"
-                    loader.bind="CollectionsLoader"
-                    text="name" 
-                    read-only.bind="readOnly || isEdit"
-                    show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
-                    options.bind="controlOptions">
-                </au-autocomplete>
-
-                <au-autocomplete
-                    value.bind="selectedSeason"
-                    error.bind="error.seasons"
-                    label="Season"
-                    loader.bind="SeasonsLoader"
-                    text="name" 
-                    read-only.bind="readOnly || isEdit"
-                    show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
-                    options.bind="controlOptions">
-                </au-autocomplete>
-
-                <au-autocomplete
-                    value.bind="selectedKonter"
-                    error.bind="error.counters"
-                    label="Konter"
-                    loader.bind="CountersLoader"
-                    text="name" 
-                    read-only.bind="readOnly || isEdit"
-                    show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
-                    options.bind="controlOptions">
-                </au-autocomplete>
-
-                <au-autocomplete
-                    value.bind="selectedStyle"
-                    error.bind="error.subCounters"
-                    label="Style"
-                    loader.bind="SubCountersLoader"
-                    text="name" 
-                    read-only.bind="readOnly || isEdit"
-                    show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
-                    options.bind="controlOptions">
-                </au-autocomplete>
-
-                <au-autocomplete
-                    value.bind="selectedKategori"
-                    error.bind="error.categories"
-                    label="Kategori"
-                    loader.bind="CategoriesLoader"
-                    text="name" 
-                    read-only.bind="readOnly || isEdit"
-                    show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
-                    options.bind="controlOptions">
-                </au-autocomplete>
             </div>
         </div>
         

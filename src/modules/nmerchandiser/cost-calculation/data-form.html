@@ -74,6 +74,36 @@
                     error.bind="error.AccessoriesAllowance"
                     options.bind="length4">
                 </au-numeric>
+
+                <au-autocomplete
+                    value.bind="selectedProcess"
+                    error.bind="error.Process"
+                    label="Proses"
+                    text="name"
+                    loader.bind="ProcessLoader"
+                    read-only.bind="readOnly"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete        
+                    value.bind="selectedBahan"               
+                    error.bind="error.Materials"   
+                    label="Bahan"                               
+                    text="name" 
+                    loader.bind="MaterialsLoader"               
+                    read-only.bind="readOnly"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedKomposisiBahan"
+                    error.bind="error.MaterialCompositions"
+                    label="Komposisi Bahan"
+                    loader.bind="MaterialCompositionsLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
             </div>
             <div class="col-md-3">
                 <au-textbox
@@ -121,6 +151,55 @@
                     text="Name"
                     loader.bind="sizeRangeLoader">
                 </au-datepicker>
+                <au-autocomplete
+                    value.bind="selectedKoleksi"
+                    error.bind="error.Collections"
+                    label="Koleksi"
+                    loader.bind="CollectionsLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedSeason"
+                    error.bind="error.Seasons"
+                    label="Season"
+                    loader.bind="SeasonsLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedKonter"
+                    error.bind="error.Counters"
+                    label="Konter"
+                    loader.bind="CountersLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedStyle"
+                    error.bind="error.SubCounters"
+                    label="Style"
+                    loader.bind="SubCountersLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedKategori"
+                    error.bind="error.Categories"
+                    label="Kategori"
+                    loader.bind="CategoriesLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
             </div>
             <div class="col-md-3">
                 <au-dropdown

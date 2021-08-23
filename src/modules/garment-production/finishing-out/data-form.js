@@ -2,14 +2,6 @@ import { bindable, inject, computedFrom } from "aurelia-framework";
 import { Service,PurchasingService } from "./service";
 
 const UnitLoader = require('../../../loader/garment-units-loader');
-var ProcessLoader = require('../../../loader/process-loader');
-var SeasonsLoader = require('../../../loader/season-loader');
-var SubCountersLoader = require('../../../loader/sub-counter-loader');
-var CollectionsLoader = require('../../../loader/collection-loader');
-var CategoriesLoader = require('../../../loader/category-loader');
-var CountersLoader = require('../../../loader/counter-loader');
-var MaterialCompositionsLoader = require('../../../loader/material-composition-loader');
-var MaterialsLoader = require('../../../loader/material-loader');
 var StoreLoader = require('../../../loader/master-store-loader');
 
 @inject(Service,PurchasingService)
@@ -27,15 +19,6 @@ export class DataForm {
     @bindable storageTo;
     @bindable itemOptions = {};
     @bindable selectedFinishingTo;
-    @bindable selectedProcess;
-    @bindable selectedBahan;
-    @bindable selectedKomposisiBahan;
-    @bindable selectedKoleksi;
-    @bindable selectedSeason;
-    @bindable selectedKonter;
-    @bindable selectedStyle;
-    @bindable selectedKategori;
-    
 
     finishingToOptions = ['GUDANG JADI','SEWING'];
 
@@ -111,38 +94,6 @@ export class DataForm {
 
     get unitLoader() {
         return UnitLoader;
-    }
-
-    get ProcessLoader() {
-        return ProcessLoader;
-    }
-
-    get MaterialsLoader() {
-        return MaterialsLoader;
-    }
-
-    get MaterialCompositionsLoader() {
-        return MaterialCompositionsLoader;
-    }
-
-    get CountersLoader() {
-        return CountersLoader;
-    }
-
-    get SeasonsLoader() {
-        return SeasonsLoader;
-    }
-
-    get CollectionsLoader() {
-        return CollectionsLoader;
-    }
-
-    get SubCountersLoader() {
-        return SubCountersLoader;
-    }
-
-    get CategoriesLoader() {
-        return CategoriesLoader;
     }
 
     get StoreLoader() {
