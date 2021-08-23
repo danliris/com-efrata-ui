@@ -61,12 +61,21 @@
           <au-textbox label="RO" options.bind="length4" value.bind="data.RO_Number" read-only.bind="readOnly"></au-textbox>
           <au-datepicker label="Tanggal" options.bind="length4" value.bind="data.CreatedUtc" read-only.bind="readOnly"></au-datepicker>
           <au-textbox label="Unit" options.bind="length4" value.bind="data.Unit.Name" read-only.bind="readOnly"></au-textbox>
+          <au-textbox label="Source" options.bind="length4" value.bind="data.SourceName" read-only.bind="readOnly"></au-textbox>
+          <au-textbox label="Proses" options.bind="length4" value.bind="data.process.name" read-only.bind="readOnly"></au-textbox>
+          <au-textbox label="Bahan" options.bind="length4" value.bind="data.materials.name" read-only.bind="readOnly"></au-textbox>
+          <au-textbox label="Komposisi Bahan" options.bind="length4" value.bind="data.materialCompositions.name" read-only.bind="readOnly"></au-textbox>
         </div>
         <div class="col-md-4">
           <au-textbox label="Size Range" options.bind="length4" value.bind="data.SizeRange" read-only.bind="readOnly"></au-textbox>
           <au-textbox label="Seksi" options.bind="length4" value.bind="data.Section" read-only.bind="readOnly"></au-textbox>
           <au-textbox label="Komoditi" options.bind="length4" value.bind="data.Comodity.Name" read-only.bind="readOnly"></au-textbox>
           <au-textbox label="Confirm Price" options.bind="length4" value.bind="data.ConfirmPrice" read-only.bind="readOnly"></au-textbox>          
+          <au-textbox label="Koleksi" options.bind="length4" value.bind="data.collections.name" read-only.bind="readOnly"></au-textbox>
+          <au-textbox label="Season" options.bind="length4" value.bind="data.seasons.name" read-only.bind="readOnly"></au-textbox>
+          <au-textbox label="Konter" options.bind="length4" value.bind="data.counters.name" read-only.bind="readOnly"></au-textbox>
+          <au-textbox label="Style" options.bind="length4" value.bind="data.subCounters.name" read-only.bind="readOnly"></au-textbox>
+          <au-textbox label="Kategori" options.bind="length4" value.bind="data.categories.name" read-only.bind="readOnly"></au-textbox>
         </div>
         <div class="col-md-4">
           <au-textbox label="Lead Time" options.bind="length4" value.bind="data.LeadTime" read-only.bind="readOnly"></au-textbox>

@@ -13,6 +13,15 @@ var ComodityLoader = require('../../../loader/garment-comodities-loader');
 var UOMLoader = require('../../../loader/uom-loader');
 var UnitLoader = require('../../../loader/garment-units-loader');
 var SourceLoader = require('../../../loader/master-source-loader');
+var ProcessLoader = require('../../../loader/process-loader');
+var SeasonsLoader = require('../../../loader/season-loader');
+var SubCountersLoader = require('../../../loader/sub-counter-loader');
+var CollectionsLoader = require('../../../loader/collection-loader');
+var CategoriesLoader = require('../../../loader/category-loader');
+var CountersLoader = require('../../../loader/counter-loader');
+var MaterialCompositionsLoader = require('../../../loader/material-composition-loader');
+var MaterialsLoader = require('../../../loader/material-loader');
+
 @inject(Router, BindingEngine, ServiceEffeciency, RateService, Element, ServiceCore)
 export class DataForm {
   @bindable title;
@@ -139,6 +148,24 @@ export class DataForm {
     this.data.OTL2 = this.data.OTL2 ? this.data.OTL2 : Object.assign({}, this.defaultRate);
     this.data.ConfirmPrice =this.data.ConfirmPrice ? this.data.ConfirmPrice .toLocaleString('en-EN', { minimumFractionDigits: 4}):0 ;
     let promises = [];
+    this.data.SourceCode = null;
+    this.data.process = {};
+    this.data.materials = {};
+    this.data.materialCompositions = {};
+    this.data.collections = {};
+    this.data.seasons = {};
+    this.data.counters = {};
+    this.data.subCounters = {};
+    this.data.categories = {};
+
+    this.data.process.code = '';
+    this.data.materials.code = '';
+    this.data.materialCompositions.code = '';
+    this.data.collections.code = '';
+    this.data.seasons.code = '';
+    this.data.counters.code = '';
+    this.data.subCounters.code = '';
+    this.data.categories.code = '';
 
     let wage;
     if (this.data.Wage) {
@@ -256,6 +283,38 @@ export class DataForm {
 
   get sourceLoader() {
     return SourceLoader;
+  }
+
+  get ProcessLoader() {
+    return ProcessLoader;
+  }
+
+  get MaterialsLoader() {
+      return MaterialsLoader;
+  }
+
+  get MaterialCompositionsLoader() {
+      return MaterialCompositionsLoader;
+  }
+
+  get CountersLoader() {
+      return CountersLoader;
+  }
+
+  get SeasonsLoader() {
+      return SeasonsLoader;
+  }
+
+  get CollectionsLoader() {
+      return CollectionsLoader;
+  }
+
+  get SubCountersLoader() {
+      return SubCountersLoader;
+  }
+
+  get CategoriesLoader() {
+      return CategoriesLoader;
   }
 
   unitView = (unit) => {
@@ -497,6 +556,55 @@ export class DataForm {
     this.data.SourceCode = newVal.Code;
     this.data.SourceName= newVal.Name;
   }
+
+  @bindable selectedProcess;
+  async selectedProcessChanged(newVal) {
+    this.data.process = newVal
+  }
+
+  @bindable selectedBahan;
+  async selectedBahanChanged(newVal) {
+    this.data.materials = newVal;
+  }
+
+  @bindable selectedKomposisiBahan;
+  async selectedKomposisiBahanChanged(newVal) {
+    this.data.materialCompositions = newVal;
+  }
+  
+  @bindable selectedKoleksi;
+  async selectedKoleksiChanged(newVal) {
+    this.data.collections = newVal;
+  }
+
+  @bindable selectedSeason;
+  async selectedSeasonChanged(newVal) {
+    this.data.seasons = newVal;
+  }
+
+  @bindable selectedKonter;
+  async selectedKonterChanged(newVal) {
+    this.data.counters = newVal;
+  }
+
+  @bindable selectedStyle;
+  async selectedStyleChanged(newVal) {
+    this.data.subCounters = newVal;
+  }
+
+  @bindable selectedKategori;
+  async selectedKategoriChanged(newVal) {
+    this.data.categories = newVal;
+  }
+
+  // this.data.process = this.selectedProcess;
+  //           this.data.materials = this.selectedBahan;
+  //           this.data.materialCompositions = this.selectedKomposisiBahan;
+  //           this.data.collections = this.selectedKoleksi;
+  //           this.data.seasons = this.selectedSeason;
+  //           this.data.counters = this.selectedKonter;
+  //           this.data.subCounters = this.selectedStyle;
+  //           this.data.categories = this.selectedKategori;
 
   @computedFrom('data.SMV_Cutting', 'data.SMV_Sewing', 'data.SMV_Finishing')
   get SMV_Total() {

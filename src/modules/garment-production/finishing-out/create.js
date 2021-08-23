@@ -28,14 +28,6 @@ export class Create {
         this.error = {};
         // this.selectedUnit = null;
         // this.selectedRO = null;
-        this.selectedProcess = null;
-        this.selectedBahan = null;
-        this.selectedKomposisiBahan = null;
-        this.selectedKoleksi = null;
-        this.selectedSeason = null;
-        this.selectedKonter = null;
-        this.selectedStyle = null;
-        this.selectedKategori = null;
     }
 
     determineActivationStrategy() {
@@ -61,39 +53,16 @@ export class Create {
         if(this.data.Unit == undefined || this.data.Unit == ""){
             e["Unit"] = "Unit harus diisi"
         }
-        if(this.data.FinishingTo == 'GUDANG JADI' && this.data.storageTo == undefined || this.data.storageTo == ""){
-            e["storageTo"] = "Gudang tujuan harus diisi"
-        }
+        // if(this.data.FinishingTo == 'GUDANG JADI' && this.data.storageTo == undefined || this.data.storageTo == ""){
+        //     e["storageTo"] = "Gudang tujuan harus diisi"
+        // }
         if(this.data.Unit && this.data.RONo == undefined || this.data.RONo == ""){
             e["RONo"] = "RO harus diisi"
         }
         if(this.data.Unit && (this.data.FinishingOutDate == null || this.data.FinishingOutDate == undefined || this.data.FinishingOutDate == "")){
             e["FinishingOutDate"] = "Tanggal Finishing Out harus diisi"
         }
-        if (this.data.FinishingTo == 'GUDANG JADI' && this.selectedProcess == null) {
-            e["process"] = "Process harus diisi"
-        }
-        if (this.data.FinishingTo == 'GUDANG JADI' && this.selectedBahan == null) {
-            e["materials"] = "Bahan harus diisi"
-        }
-        if (this.data.FinishingTo == 'GUDANG JADI' && this.selectedKomposisiBahan == null) {
-            e["materialCompositions"] = "Komposisi Bahan harus diisi"
-        }
-        if (this.data.FinishingTo == 'GUDANG JADI' && this.selectedKoleksi == null) {
-            e["collections"] = "Koleksi harus diisi"
-        }
-        if (this.data.FinishingTo == 'GUDANG JADI' && this.selectedSeason == null) {
-            e["seasons"] = "Season harus diisi"
-        }
-        if (this.data.FinishingTo == 'GUDANG JADI' && this.selectedKonter == null) {
-            e["counters"] = "Konter harus diisi"
-        }
-        if (this.data.FinishingTo == 'GUDANG JADI' && this.selectedStyle == null) {
-            e["subCounters"] = "Style harus diisi"
-        }
-        if (this.data.FinishingTo == 'GUDANG JADI' && this.selectedKategori == null) {
-            e["categories"] = "Kategori harus diisi"
-        }
+        
         if(checkedItem.length > 0){
             let countErr = checkedItem.filter(d => {
                 if(d.IsDifferentSize){
@@ -160,14 +129,6 @@ export class Create {
                 }
             }
 
-            this.data.process = this.selectedProcess;
-            this.data.materials = this.selectedBahan;
-            this.data.materialCompositions = this.selectedKomposisiBahan;
-            this.data.collections = this.selectedKoleksi;
-            this.data.seasons = this.selectedSeason;
-            this.data.counters = this.selectedKonter;
-            this.data.subCounters = this.selectedStyle;
-            this.data.categories = this.selectedKategori;
             this.data.FinishingOutDate = moment(this.data.FinishingOutDate).format("YYYY-MM-DD");
 
             const color = this.article_colors.find(d => d.name.toLowerCase().includes(this.data.Items[0].Color.toLowerCase()));
@@ -181,17 +142,60 @@ export class Create {
                 const info = {
                     keyword: this.data.RONo,
                     filter: JSON.stringify(filter),
-                    select: "new(ImagePath,RO_Number,CreatedUtc,SourceId)",
+                    select: "new(ImagePath,RO_Number,CreatedUtc,SourceId,CategoryId,CategoryName,CategoryCode,"+
+                    "SubCounterId,SubCounterName,SubCounterCode,CounterId,CounterName,CounterCode,SeasonId,SeasonName,"+
+                    "SeasonCode,CollectionId,CollectionName,CollectionCode,MaterialCompositionId,MaterialCompositionName,"+
+                    "MaterialCompositionCode,MaterialId,MaterialName,MaterialCode,ProcessId,ProcessName,ProcessCode)",
                 };
                 
                 this.merchandiserservice.getCostCalculationGarmentByRO(info)
                     .then(results => {
                         const data = results.data;
-                        console.log('data',data);
+                        console.log('data',JSON.stringify(data));
                         if(data.length > 0){
                             this.data.ImagePath = data[0].ImagePath;
                             this.data.RoCreatedUtc = moment(data[0].CreatedUtc).format("YYMM");
                             this.data.SourceId = data[0].SourceId;
+                            this.data.process = {
+                                _id: ProcessId,
+                                code: ProcessCode,
+                                name: ProcessName
+                            };
+                            this.data.materials = {
+                                _id: MaterialId,
+                                code: MaterialCode,
+                                name: MaterialName
+                            };
+                            this.data.materialCompositions = {
+                                _id: MaterialCompositionId,
+                                code: MaterialCompositionCode,
+                                name: MaterialCompositionName
+                            };
+                            this.data.collections = {
+                                _id: CollectionId,
+                                code: CollectionCode,
+                                name: CollectionName
+                            };
+                            this.data.seasons = {
+                                _id: SeasonId,
+                                code: SeasonCode,
+                                name: SeasonName
+                            };
+                            this.data.counters = {
+                                _id: CounterId,
+                                code: CounterCode,
+                                name: CounterName
+                            };
+                            this.data.subCounters = {
+                                _id: SubCounterId,
+                                code: SubCounterCode,
+                                name: SubCounterName
+                            };
+                            this.data.categories = {
+                                _id: CategoryId,
+                                code: CategoryCode,
+                                name: CategoryName
+                            };
                         }
                         
                         this.service.create(this.data)
