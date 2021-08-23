@@ -34,10 +34,10 @@ export async function configure(aurelia) {
       //var auth = "https://bateeq-auth-api-dev.azurewebsites.net/v1";
       // dipakai
       var auth = "https://com-bateeq-service-auth-dev.azurewebsites.net/v1/";
-      var core = "https://com-bateeq-service-core-dev.azurewebsites.net/v1/";
-      var ncore ="https://com-bateeq-service-core-dev.azurewebsites.net/v1/";
-      var master = "https://com-bateeq-service-core-dev.azurewebsites.net/v1/";
-      var manufacture ="https://com-bateeq-service-core-dev.azurewebsites.net/v1/";
+      var core = "https://com-efrata-service-core-dev.azurewebsites.net/v1/";
+      var ncore ="https://com-efrata-service-core-dev.azurewebsites.net/v1/";
+      var master = "https://com-efrata-service-core-dev.azurewebsites.net/v1/";
+      var manufacture ="https://com-efrata-service-core-dev.azurewebsites.net/v1/";
       // var inventory ="https://com-bateeq-service-warehouse-dev.azurewebsites.net/v1/";
 
       var inventory ="https://com-efrata-service-warehouse-dev.azurewebsites.net/v1/";
