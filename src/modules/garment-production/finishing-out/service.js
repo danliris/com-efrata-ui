@@ -78,20 +78,21 @@ class Service extends RestService {
         return super.get(endpoint);
     }
 
-    // createSPKDocs(data) {
-    //     var config = Container.instance.get(Config);
-    //     var endpoint = config.getEndpoint("inventory");
-    //     var uri = 'spkdocs';
-    //     return endpoint.post(uri, data);
-    // }
-
-    // getCostCalculationGarmentByRO(info) {
-    //     var config = Container.instance.get(Config);
-    //     var endpoint = config.getEndpoint("nmerchandiser");
-    //     var uri = 'cost-calculation-garments/dynamic';
-    //     return endpoint.find(uri, info);
-    // }
-
+    getDestinations() {
+        var module = 'EFR-PK/PBJ';
+        var config = Container.instance.get(Config);
+        var endpoint = config.getEndpoint("ncore");
+        var uri = `master/storages/destination?keyword=${module}`;
+        return endpoint.find(uri);
+    }
+    
+    getSources() {
+        var module = 'EFR-PK/PBJ';
+        var config = Container.instance.get(Config);
+        var endpoint = config.getEndpoint("master");
+        var uri = `master/storages/source?keyword=${module}`;
+        return endpoint.find(uri);
+    }
 }
 
 class PurchasingService extends RestService {
@@ -113,6 +114,12 @@ class WarehouseService extends RestService {
     createSPKDocs(data) {
         var endpoint = 'spkdocs';
         return super.post(endpoint, data);
+    }
+
+    getSPKDocByFinishingOutIdentity(identity) {
+        console.log('identity',identity)
+        var endpoint = `spkdocs/FinishingOutIdentity/${identity}`;
+        return super.get(endpoint);
     }
 }
 

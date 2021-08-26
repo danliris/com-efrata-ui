@@ -53,9 +53,12 @@ export class Create {
         if(this.data.Unit == undefined || this.data.Unit == ""){
             e["Unit"] = "Unit harus diisi"
         }
-        // if(this.data.FinishingTo == 'GUDANG JADI' && this.data.storageTo == undefined || this.data.storageTo == ""){
-        //     e["storageTo"] = "Gudang tujuan harus diisi"
-        // }
+        if(this.data.FinishingTo == 'GUDANG JADI' && this.data.SourceStorageId == undefined || this.data.SourceStorageId == ""){
+            e["source"] = "Sumber peyimpanan harus diisi"
+        }
+        if(this.data.FinishingTo == 'GUDANG JADI' && this.data.DestinationStorageId == undefined || this.data.DestinationStorageId == ""){
+            e["destination"] = "Tujuan peyimpanan harus diisi"
+        }
         if(this.data.Unit && this.data.RONo == undefined || this.data.RONo == ""){
             e["RONo"] = "RO harus diisi"
         }
@@ -157,50 +160,50 @@ export class Create {
                             this.data.RoCreatedUtc = moment(data[0].CreatedUtc).format("YYMM");
                             this.data.SourceId = data[0].SourceId;
                             this.data.process = {
-                                _id: ProcessId,
-                                code: ProcessCode,
-                                name: ProcessName
+                                _id: data[0].ProcessId,
+                                code: data[0].ProcessCode,
+                                name: data[0].ProcessName
                             };
                             this.data.materials = {
-                                _id: MaterialId,
-                                code: MaterialCode,
-                                name: MaterialName
+                                _id: data[0].MaterialId,
+                                code: data[0].MaterialCode,
+                                name: data[0].MaterialName
                             };
                             this.data.materialCompositions = {
-                                _id: MaterialCompositionId,
-                                code: MaterialCompositionCode,
-                                name: MaterialCompositionName
+                                _id: data[0].MaterialCompositionId,
+                                code: data[0].MaterialCompositionCode,
+                                name: data[0].MaterialCompositionName
                             };
                             this.data.collections = {
-                                _id: CollectionId,
-                                code: CollectionCode,
-                                name: CollectionName
+                                _id: data[0].CollectionId,
+                                code: data[0].CollectionCode,
+                                name: data[0].CollectionName
                             };
                             this.data.seasons = {
-                                _id: SeasonId,
-                                code: SeasonCode,
-                                name: SeasonName
+                                _id: data[0].SeasonId,
+                                code: data[0].SeasonCode,
+                                name: data[0].SeasonName
                             };
                             this.data.counters = {
-                                _id: CounterId,
-                                code: CounterCode,
-                                name: CounterName
+                                _id: data[0].CounterId,
+                                code: data[0].CounterCode,
+                                name: data[0].CounterName
                             };
                             this.data.subCounters = {
-                                _id: SubCounterId,
-                                code: SubCounterCode,
-                                name: SubCounterName
+                                _id: data[0].SubCounterId,
+                                code: data[0].SubCounterCode,
+                                name: data[0].SubCounterName
                             };
                             this.data.categories = {
-                                _id: CategoryId,
-                                code: CategoryCode,
-                                name: CategoryName
+                                _id: data[0].CategoryId,
+                                code: data[0].CategoryCode,
+                                name: data[0].CategoryName
                             };
                         }
                         
                         this.service.create(this.data)
                             .then(result => {
-                                
+                                this.data.FinishingOutIdentity = result;
                                 this.warehouseservice.createSPKDocs(this.data)
                                     .then(result => {
                                         alert("Data berhasil dibuat");
