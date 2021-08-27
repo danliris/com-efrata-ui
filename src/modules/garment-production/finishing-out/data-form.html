@@ -86,17 +86,43 @@
                     options.bind="controlOptions">
                 </au-autocomplete>
                 
-                <!-- <au-autocomplete
-                    value.bind="storageTo"
-                    error.bind="error.storageTo"
-                    label="Gudang Tujuan"
-                    loader.bind="StoreLoader"
-                    text.bind="gudangView"
-                    placeholder="Gudang tujuan"
+                <au-dropdown
+                    label="Sumber Penyimpanan"
+                    value.bind="source"
+                    read-only.bind="readOnly"
+                    error.bind="error.source"
+                    options.bind="controlOptions"
                     show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
-                    read-only.bind="readOnly || isEdit"
+                    items.bind="sourceString">
+                </au-dropdown>
+
+                <au-dropdown
+                    label="Tujuan Penyimpanan"
+                    value.bind="destination"
+                    read-only.bind="readOnly"
+                    error.bind="error.destination"
+                    options.bind="controlOptions"
+                    show.bind="selectedFinishingTo == 'GUDANG JADI' && readOnly == false"
+                    items.bind="destinationString">
+                </au-dropdown>
+
+                <au-textbox
+                    if.bind="data.SourceStorageName"
+                    value.bind="data.SourceStorageName"
+                    label="Sumber Penyimpanan"
+                    read-only="true"
+                    show.bind="readOnly == true"
                     options.bind="controlOptions">
-                </au-autocomplete> -->
+                </au-textbox>
+
+                <au-textbox
+                    if.bind="data.DestinationStorageName"
+                    value.bind="data.DestinationStorageName"
+                    label="Tujuan Penyimpanan"
+                    read-only="true"
+                    show.bind="readOnly == true"
+                    options.bind="controlOptions">
+                </au-textbox>
 
                 <au-datepicker 
                     label="Tanggal Finishing Out"

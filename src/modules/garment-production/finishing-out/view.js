@@ -1,19 +1,27 @@
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
-import { Service,PurchasingService } from './service';
+import { Service,PurchasingService,WarehouseService } from './service';
 
-@inject(Router, Service,PurchasingService)
+@inject(Router, Service,PurchasingService,WarehouseService)
 export class View {
     isView = true;
-    constructor(router, service,purchasingService) {
+    constructor(router, service,purchasingService,warehouseservice) {
         this.router = router;
         this.service = service;
         this.purchasingService=purchasingService;
+        this.warehouseservice = warehouseservice;
     }
 
     async activate(params) {
         let id = params.id;
         this.data = await this.service.read(id);
+        const dataSPKDoc = await this.warehouseservice.getSPKDocByFinishingOutIdentity(id);
+        
+        if(dataSPKDoc.length > 0){
+            this.data.SourceStorageName = dataSPKDoc[0].SourceName;
+            this.data.DestinationStorageName = dataSPKDoc[0].DestinationName
+        }
+
         this.selectedRO={
             RONo:this.data.RONo
         };

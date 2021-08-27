@@ -19,12 +19,47 @@ export class DataForm {
     @bindable storageTo;
     @bindable itemOptions = {};
     @bindable selectedFinishingTo;
+    @bindable destinationString;
+    @bindable sourceString;
+    @bindable source;
+    @bindable destination;
+
 
     finishingToOptions = ['GUDANG JADI','SEWING'];
 
     constructor(service,purchasingService) {
         this.service = service;
         this.purchasingService=purchasingService;
+    }
+
+    async attached() {
+        this.service.getDestinations()
+          .then(result => {
+            this.destinations = result.data;
+            this.destinationString = result.data.map(s => s.name);
+          })
+        
+        this.service.getSources()
+          .then(result => {
+            this.sources = result.data;
+            this.sourceString = result.data.map(s => s.name);
+          })
+    }
+
+    destinationChanged(newValue){
+        console.log(newValue);
+        const destination = this.destinations.find(d => d.name === newValue);
+        this.data.DestinationStorageId = destination._id;
+        this.data.DestinationStorageCode = destination.code;
+        this.data.DestinationStorageName = destination.name;
+    }
+
+    sourceChanged(newValue){
+        console.log(newValue);
+        const source = this.sources.find(d => d.name === newValue);
+        this.data.SourceStorageId = source._id;
+        this.data.SourceStorageCode = source.code;
+        this.data.SourceStorageName = source.name;
     }
 
     formOptions = {
