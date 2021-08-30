@@ -28,6 +28,17 @@ export class Create {
     }
 
     save() {
+        let saveItems = this.data.items.filter(d => d.quantity != undefined);
+        this.data.items = saveItems;
+        
+        //cek total weight
+        for(let i = 0; i < this.data.items.length; i++){
+            if(this.data.items[i].weight === 0){
+                alert('Berat tidak boleh 0');
+                return;
+            }
+        }
+        
         this.service.create(this.data)
             .then(result => {
                 this.list();
