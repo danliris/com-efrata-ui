@@ -31,26 +31,24 @@
       read-only.bind="readOnly">
     </datepicker>
 
-    <p class="col-md-1">Barcode</p>
+    <!-- <p class="col-md-1">Barcode</p> -->
 
     <!-- <input type="text" focus.bind="hasFocus" value.bind="barcode" class="col-md-3" aria-placeholder="Barcode"
       input.delegate="barcodeChoose($event)"></input> -->
 
-    <input type="text" focus.bind="hasFocus" value.bind="barcode" class="col-md-3" aria-placeholder="Barcode"></input>
+    <!-- <input type="text" focus.bind="hasFocus" value.bind="barcode" class="col-md-3" aria-placeholder="Barcode"></input> -->
 
     <!-- <finishedgoods-auto-suggest label="Nama Barang" value.bind="item" class="col-md-5" read-only.bind="readOnly"
       change.delegate="nameChoose($event)"></finishedgoods-auto-suggest> -->
-
     <au-autocomplete 
       value.bind="item" 
-      class="col-md-5" 
-      error.bind="error.supplier" 
-      label="Nama Barang"
-      loader.bind="itemLoader"
-      text.bind="itemView" 
-      placeholder="cari Barang" 
-      key="Name" 
+      error.bind="error.barcode" 
+      label="Barcode"
+      loader.bind="itemInventoryLoader"
+      text.bind="barcodeView" 
+      placeholder="Cari Barang"
       read-only.bind="readOnly || isEdit"
+      key="item"
       options.bind="controlOptions">
     </au-autocomplete>
 

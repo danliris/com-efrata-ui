@@ -107,20 +107,18 @@
                 </au-dropdown>
 
                 <au-textbox
-                    if.bind="data.SourceStorageName"
-                    value.bind="data.SourceStorageName"
+                    if.bind="data.SourceName"
+                    value.bind="data.SourceName"
                     label="Sumber Penyimpanan"
                     read-only="true"
-                    show.bind="readOnly == true"
                     options.bind="controlOptions">
                 </au-textbox>
 
                 <au-textbox
-                    if.bind="data.DestinationStorageName"
-                    value.bind="data.DestinationStorageName"
+                    if.bind="data.DestinationName"
+                    value.bind="data.DestinationName"
                     label="Tujuan Penyimpanan"
                     read-only="true"
-                    show.bind="readOnly == true"
                     options.bind="controlOptions">
                 </au-textbox>
 

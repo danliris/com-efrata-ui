@@ -18,8 +18,8 @@ export class View {
         const dataSPKDoc = await this.warehouseservice.getSPKDocByFinishingOutIdentity(id);
         
         if(dataSPKDoc.length > 0){
-            this.data.SourceStorageName = dataSPKDoc[0].SourceName;
-            this.data.DestinationStorageName = dataSPKDoc[0].DestinationName
+            this.data.SourceName = dataSPKDoc[0].SourceName;
+            this.data.DestinationName = dataSPKDoc[0].DestinationName;
         }
 
         this.selectedRO={
