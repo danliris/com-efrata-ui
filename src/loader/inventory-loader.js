@@ -1,7 +1,7 @@
 import { Container } from 'aurelia-dependency-injection';
 import { Config } from "aurelia-api";
 
-const resource = 'inventory/itemCode';
+const resource = 'inventory-loader/itemCode';
 
 module.exports = function(keyword, filter) {
 
