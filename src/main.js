@@ -33,7 +33,7 @@ export async function configure(aurelia) {
       //var auth = "https://bateeq-auth-api.azurewebsites.net/v1/";
       //var auth = "https://bateeq-auth-api-dev.azurewebsites.net/v1";
       // dipakai
-      var auth = "https://com-bateeq-service-auth-dev.azurewebsites.net/v1/";
+      var auth = "https://com-efrata-service-auth.azurewebsites.net/v1/";
       var core = "https://com-efrata-service-core.azurewebsites.net/v1/";
       var ncore ="https://com-efrata-service-core.azurewebsites.net/v1/";
       var master = "https://com-efrata-service-core.azurewebsites.net/v1/";
