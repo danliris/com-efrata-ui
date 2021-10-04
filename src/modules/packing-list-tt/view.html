@@ -67,4 +67,142 @@
         <div style="page-break-after:always;"></div>-->
     </div>
 
+    <div class="print-wrapper struk">
+      <div class="row">
+          <h1 class="bold center-block h1">BON PACKING LIST</h1>
+      </div>
+      <div class="row">
+          <div class="col-xs-5">
+              <address>
+                  <b>PT EFRATA RETAILINDO</b> Kel. Banaran, Kec. Grogol, Kab. Sukoharjo 57193 Jawa Tengah,
+                  Indonesia
+              </address>
+          </div>
+
+          <div class="col-xs-7">
+            <table width="95%" height="50%">
+              <tr>
+                <td><b>No Packing List</b></td>
+                <td>${data.packingList}</td>
+              </tr>
+              <tr>
+                <td><b>Password</b></td>
+                <td>${data.password}</td>
+              </tr>
+              <tr>
+                <td><b>Tanggal</b></td>
+                <td>${data.date}</td>
+              </tr>
+            </table>
+        </div>
+
+        <div class="col-xs-12">
+          <table width="70%" height="30%">
+            <tr>
+              <td><b>Dari</b></td>
+              <td></td>
+              <td>${data.source.name}</td>
+            </tr>
+            <tr>
+              <td><b>Tujuan</b></td>
+              <td></td>
+              <td>${data.destination.name}</td>
+            </tr>
+            <tr>
+              <td><b>Tanggal Kirim</b></td>
+              <td></td>
+              <td>${data.date}</td>
+            </tr>
+            <tr>
+              <td><b>Nomor Referensi</b></td>
+              <td></td>
+              <td>${data.reference}</td>
+            </tr>
+            <tr repeat.for="item of data.items">
+              <td><b>Keterangan</b></td>
+              <td></td>
+              <td>${item.remark}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="col-xs-12">
+          <table class="table table-bordered">
+            <tr>
+              <th><b>No</b></th>
+              <th><b>Produk</b></th>
+              <th><b>Nama Produk</b></th>
+              <th><b>Kuantitas</b></th>
+              <th><b>Harga</b></th>
+            </tr>
+                    
+            <tr repeat.for="item of data.items">
+              <td>${nomor+1}</td>
+              <td>${item.item.code}</td>
+              <td>${item.item.name}</td>
+              <td>${item.quantity}</td>
+              <td>${item.item.domesticSale}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="col-xs-12">
+          <table class="table table-bordered">
+            <tr repeat.for="item of data.items">
+              <td><b>Total</b></td>
+              <td>${totalQuantity.toLocaleString()}</td>
+              <td>${totalPrice.toLocaleString()}</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="col-xs-12">
+          <table class="table table-bordered">
+            <tr>
+              <th></th>
+              <th><b>Yang Membuat</b></th>
+            </tr>
+            <tr>
+              <th></th>
+              <th>(___________________________)</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!--<div class="table-responsive">
+          <table class="table table-bordered">
+              <thead>
+                  <tr>
+                      <th class="text-center">No</th>
+                      <th class="text-center"> Barcode </th>
+                      <th class="text-center"> Nama </th>
+                      <th class="text-center">Kuantitas</th>
+                      <th class="text-center"> Harga </th>
+                      <th class="text-center"> Catatan </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr repeat.for="item of data.items">
+                      <td class="text-center">${$index+1}</td>
+                      <td class="text-center">${item.item.code}</td>
+                      <td class="text-center">${item.item.name}</td>
+                      <td class="text-right">${item.quantity}</td>
+                      <td class="text-right">${item.quantity*item.item.domesticSale}</td>
+                      <td class="text-right">${item.remark}</td>
+                  </tr>
+              </tbody>
+              <tfoot>
+                  <tr>
+                      <td class="text-right" colspan="3">Total</td>
+                      <td class="text-right">${totalQuantity}</td>
+                      <td class="text-right">${totalPrice}</td>
+                      <td class="text-right"></td>
+                  </tr>
+              </tfoot>
+          </table>
+      </div>-->
+      <div style="page-break-after:always;"></div>
+</div>
+
 </template>

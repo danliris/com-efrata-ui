@@ -31,9 +31,10 @@ export class Edit {
                 const uenItem = uen.Items.find(i => i.Id == item.UENItemId);
                 item.BudgetFromUEN = (uenItem.Quantity / uenItem.Conversion) * uenItem.PricePerDealUnit * this.kurs.Rate;
             }
-        } else {
-            this.data.BudgetRate = this.kurs.Rate;
-        }
+        } 
+        // else {
+        //     this.data.BudgetRate = this.kurs.Rate;
+        // }
 
         if(this.data.Currency){
             this.selectedCurrency=this.data.Currency;

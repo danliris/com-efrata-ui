@@ -195,7 +195,7 @@
           </table>
         </div>
         <div>
-          <p if.bind="isDollar">Note: 1 US$ = Rp. ${data.Rate.Value | numberFormat:'0,0.00'}</p>
+          <p if.bind="isDollar">Note: 1 IDR = Rp. ${data.Rate.Value | numberFormat:'0,0.00'}</p>
           <table class="table table-bordered">
             <tbody>
               <tr>
@@ -276,7 +276,7 @@
     <div class="col-sm-6">
       <au-textbox
         label="Buyer"
-        value="${data.BuyerBrand.Code} - ${data.BuyerBrand.Name}"
+        value="${data.Buyer.Name}"
         read-only="true">
       </au-textbox>
       <au-textbox

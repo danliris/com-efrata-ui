@@ -2,6 +2,7 @@ import { bindable, inject, computedFrom } from "aurelia-framework";
 import { Service,PurchasingService } from "./service";
 
 const UnitLoader = require('../../../loader/garment-units-loader');
+var StoreLoader = require('../../../loader/master-store-loader');
 
 @inject(Service,PurchasingService)
 export class DataForm {
@@ -15,14 +16,50 @@ export class DataForm {
     @bindable selectedRO;
     @bindable selectedUnit;
     @bindable selectedUnitTo;
+    @bindable storageTo;
     @bindable itemOptions = {};
     @bindable selectedFinishingTo;
+    @bindable destinationString;
+    @bindable sourceString;
+    @bindable source;
+    @bindable destination;
+
 
     finishingToOptions = ['GUDANG JADI','SEWING'];
 
     constructor(service,purchasingService) {
         this.service = service;
         this.purchasingService=purchasingService;
+    }
+
+    async attached() {
+        this.service.getDestinations()
+          .then(result => {
+            this.destinations = result.data;
+            this.destinationString = result.data.map(s => s.name);
+          })
+        
+        this.service.getSources()
+          .then(result => {
+            this.sources = result.data;
+            this.sourceString = result.data.map(s => s.name);
+          })
+    }
+
+    destinationChanged(newValue){
+        console.log(newValue);
+        const destination = this.destinations.find(d => d.name === newValue);
+        this.data.DestinationStorageId = destination._id;
+        this.data.DestinationStorageCode = destination.code;
+        this.data.DestinationStorageName = destination.name;
+    }
+
+    sourceChanged(newValue){
+        console.log(newValue);
+        const source = this.sources.find(d => d.name === newValue);
+        this.data.SourceStorageId = source._id;
+        this.data.SourceStorageCode = source.code;
+        this.data.SourceStorageName = source.name;
     }
 
     formOptions = {
@@ -34,10 +71,10 @@ export class DataForm {
 
     controlOptions = {
         label: {
-            length: 2
+            length: 3
         },
         control: {
-            length: 5
+            length: 7
         }
     };
     
@@ -86,8 +123,16 @@ export class DataForm {
         return `${ro.RONo}`;
     }
 
+    gudangView = (storage) => {
+        return `${storage.name}`;
+    }
+
     get unitLoader() {
         return UnitLoader;
+    }
+
+    get StoreLoader() {
+        return StoreLoader;
     }
 
     selectedFinishingToChanged(newValue){
@@ -135,6 +180,21 @@ export class DataForm {
         }
     }
 
+    storageToChanged(newValue){
+        if(newValue){
+            this.data.storageTo=newValue;
+            this.service.getStore(newValue.code)
+            .then(result => {
+                this.data.StorageId = result.storage._id;
+                this.data.StorageName = result.storage.name;
+                this.data.StorageCode = result.storage.code;
+            })
+        }
+        else{
+            this.data.storageTo= null;
+        }
+    }
+
     async selectedROChanged(newValue, oldValue){
         if(this.context.isCreate){
             if(newValue) {
@@ -158,7 +218,6 @@ export class DataForm {
 
                 Promise.resolve(this.service.searchFinishingInComplete({ filter: JSON.stringify({ RONo: this.data.RONo, UnitId: this.data.Unit.Id ,"Items.Any(RemainingQuantity>0)":true}) }))
                     .then(result => {
-                        
                         for(var finishingIn of result.data){
                             for(var finishingInItem of finishingIn.Items){
                                 var item={};

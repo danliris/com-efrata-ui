@@ -30,7 +30,7 @@ export class DataForm {
         this.service = service;
     }
 
-    bind(context) {
+    bind(context) { 
         this.context = context;
         this.data = context.data;
         this.error = context.error;
@@ -48,13 +48,13 @@ export class DataForm {
             this.buyerBrand.Id = this.data.BuyerBrandId;
             this.buyerBrand.Code = this.data.BuyerBrandCode;
             this.buyerBrand.Name = this.data.BuyerBrandName;
-
+    
+            }
+            else {
+                this.data.SCNo = null;
+            }
+            this.options.isCreate = this.context.isCreate;
         }
-        else {
-            this.data.SCNo = null;
-        }
-        this.options.isCreate = this.context.isCreate;
-    }
 
     sectionChanged(newValue){
         var selectedSection = newValue;
@@ -95,6 +95,7 @@ export class DataForm {
     }
     buyerAgentView = (buyerAgent) => {
         return `${buyerAgent.Code} - ${buyerAgent.Name}`
+        //return `${buyerAgent.Name}`
     }
     buyerBrandView = (buyerBrand) => {
         return `${buyerBrand.Code} - ${buyerBrand.Name}`

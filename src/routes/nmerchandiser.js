@@ -8,6 +8,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi",
             permission: { "PGA": 1, "C5": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             byUser: true
@@ -22,6 +23,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi All User",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             byUser: false
@@ -36,6 +38,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             byUser: true
@@ -50,23 +53,10 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi All User",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             byUser: false
-        }
-    },
-    {
-        route: '/nmerchandiser/approve-pr-master/kabag-md',
-        name: 'approve-purchase-request-master',
-        moduleId: './modules/nmerchandiser/approve-pr-master/index',
-        nav: true,
-        title: 'Approval PR Master - Kabag Md',
-        auth: true,
-        settings: {
-            group: "nmerchandiser",
-            permission: { "PGA": 1, "C9": 1, "C.01": 1 },
-            iconClass: 'fa fa-calculator',
-            type: "MD1"
         }
     },
     {
@@ -78,20 +68,37 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "PG": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             type: "Purchasing"
         }
     },
     {
-        route: '/nmerchandiser/approve-pr-master/kadiv-md',
+        route: '/nmerchandiser/approve-pr-master/kasie-md',
         name: 'approve-purchase-request-master',
         moduleId: './modules/nmerchandiser/approve-pr-master/index',
         nav: true,
-        title: 'Approval PR Master - Kadiv Md',
+        title: 'Approval PR Master - Kasie Md',
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
+            //permission: { "PGA": 1, "C9": 1, "C.01": 1 },
+            iconClass: 'fa fa-calculator',
+            //type: "MD1"
+        }
+    },
+    {
+        route: '/nmerchandiser/approve-pr-master/kasie-md',
+        name: 'approve-purchase-request-master',
+        moduleId: './modules/nmerchandiser/approve-pr-master/index',
+        nav: true,
+        title: 'Approval PR Master - Kasie Md',
+        auth: true,
+        settings: {
+            group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             type: "MD2"
@@ -102,10 +109,11 @@ module.exports = [
         name: 'cost-calculation-by-user',
         moduleId: './modules/nmerchandiser/cost-calculation/index',
         nav: true,
-        title: 'Cost Calculation Export Garment',
+        title: 'Cost Calculation Garment',
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             byUser: true
@@ -116,10 +124,11 @@ module.exports = [
         name: 'cost-calculation',
         moduleId: './modules/nmerchandiser/cost-calculation/index',
         nav: true,
-        title: 'Cost Calculation Export Garment (Semua User)',
+        title: 'Cost Calculation Garment (Semua User)',
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi All User",
             permission: { "PGA": 1, "C5": 1, "B7": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             byUser: false
@@ -134,9 +143,10 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
-            permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
+            subGroup: "Approval",
+            //permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
-            type: "md"
+            ///type: "md"
         }
     },
     {
@@ -148,6 +158,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval", 
             permission: { "IE": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             type: "ie"
@@ -162,22 +173,24 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "PG": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }
     },
     {
-        route: '/nmerchandiser/cost-calculation-approval/kadivmd',
+        route: '/nmerchandiser/cost-calculation-approval/kasiemd',
         name: 'cost-calculation-approval-kadivmd',
         moduleId: './modules/nmerchandiser/cost-calculation-approval/index',
         nav: true,
-        title: 'Cost Calculation Approval - Kadiv Md',
+        title: 'Cost Calculation Approval - Kasie Md',
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
-            type: "kadivmd"
+            type: "kasiemd"
         }
     },
     {
@@ -189,6 +202,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }
@@ -202,6 +216,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             byUser: true
@@ -216,6 +231,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             byUser: false
@@ -226,10 +242,11 @@ module.exports = [
         name: 'ro-garment-by-user',
         moduleId: './modules/nmerchandiser/ro-garment/index',
         nav: true,
-        title: 'RO Export Garment',
+        title: 'RO Garment',
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             byUser: true
@@ -240,27 +257,14 @@ module.exports = [
         name: 'ro-garment',
         moduleId: './modules/nmerchandiser/ro-garment/index',
         nav: true,
-        title: 'RO Export Garment (Semua User)',
+        title: 'RO Garment (Semua User)',
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             byUser: false
-        }
-    },
-    {
-        route: '/nmerchandiser/ro-validation-kabagmd',
-        name: 'ro-validation-kabagmd',
-        moduleId: './modules/nmerchandiser/ro-validation/index',
-        nav: true,
-        title: 'Validasi RO - Kabag Md',
-        auth: true,
-        settings: {
-            group: "nmerchandiser",
-            permission: { "PGA": 1, "C9": 1, "C.01": 1 },
-            iconClass: 'fa fa-calculator',
-            type: 'kabagmd'
         }
     },
     {
@@ -272,9 +276,25 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "IE": 1, "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator',
             type: 'sample'
+        }
+    },
+    {
+        route: '/nmerchandiser/ro-validation-kabagmd',
+        name: 'ro-validation-kabagmd',
+        moduleId: './modules/nmerchandiser/ro-validation/index',
+        nav: true,
+        title: 'Validasi RO - Kasie Md',
+        auth: true,
+        settings: {
+            group: "nmerchandiser",
+            subGroup: "Approval",
+            permission: { "PGA": 1, "C9": 1, "C.01": 1 },
+            iconClass: 'fa fa-calculator',
+            type: 'kabagmd'
         }
     },
     // {
@@ -299,7 +319,8 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
-           permission: { "P": 1, "C9": 1, "C.01": 1 },
+            subGroup: "Transaksi",
+            permission: { "P": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }
     },
@@ -312,6 +333,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi",
             permission: { "P": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }
@@ -325,6 +347,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi",
             permission: { "P": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }
@@ -338,6 +361,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Copy Transaksi",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }
@@ -351,6 +375,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Copy Transaksi",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }
@@ -364,6 +389,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Copy Transaksi",
             permission: { "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }
@@ -377,85 +403,8 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Monitoring",
             permission: { "PGA": 1, "PG": 1, "GU": 1, "C9": 1, "C.01": 1 },
-            iconClass: 'fa fa-dashboard'
-        }
-    },
-    {
-        route: '/nmerchandiser/garment-cost-calculation-by-unit-report',
-        name: 'garment-cost-calculation-by-unit-report',
-        moduleId: './modules/nmerchandiser/report/cost-calculation-garment-by-unit-report/index',
-        nav: true,
-        title: 'Display Cost Calculation Garment Per Unit',
-        auth: true,
-        settings: {
-            group: "nmerchandiser",
-            permission: {  "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
-            iconClass: 'fa fa-dashboard'
-        }
-    },
-    {
-        route: '/nmerchandiser/garment-cost-calculation-by-section-report',
-        name: 'garment-cost-calculation-by-section-report',
-        moduleId: './modules/nmerchandiser/report/cost-calculation-garment-by-section-report/index',
-        nav: true,
-        title: 'Display Cost Calculation Garment Per Seksi',
-        auth: true,
-        settings: {
-            group: "nmerchandiser",
-            permission: {  "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
-            iconClass: 'fa fa-dashboard'
-        }
-    },
-    {
-        route: '/nmerchandiser/garment-cost-calculation-by-buyer-report',
-        name: 'garment-cost-calculation-by-buyer-report',
-        moduleId: './modules/nmerchandiser/report/cost-calculation-garment-by-buyer-report/index',
-        nav: true,
-        title: 'Display Cost Calculation Garment Per Buyer - Deskripsi',
-        auth: true,
-        settings: {
-            group: "nmerchandiser",
-            permission: {  "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
-            iconClass: 'fa fa-dashboard'
-        }
-    },
-     {
-        route: '/nmerchandiser/garment-cost-calculation-by-sc-report',
-        name: 'garment-cost-calculation-by-sc-report',
-        moduleId: './modules/nmerchandiser/report/cost-calculation-garment-by-sc-report/index',
-        nav: true,
-        title: 'Display Cost Calculation Garment Per Buyer - Sales Contract',
-        auth: true,
-        settings: {
-            group: "nmerchandiser",
-            permission: {  "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
-            iconClass: 'fa fa-dashboard'
-        }
-    },
-    {
-        route: '/nmerchandiser/budget-job-order-report',
-        name: 'budget-job-order-report',
-        moduleId: './modules/nmerchandiser/report/budget-job-order-report/index',
-        nav: true,
-        title: 'Display Budget Job Order',
-        auth: true,
-        settings: {
-            group: "nmerchandiser",
-            permission: { "PGA": 1, "PG": 1, "P": 1, "GU": 1, "B7": 1, "C9": 1, "C.01": 1 },
-            iconClass: 'fa fa-dashboard'
-        }
-    },
-    {
-        route: '/nmerchandiser/budget-master-sample-report',
-        name: 'budget-master-sample-report',
-        moduleId: './modules/nmerchandiser/report/budget-master-sample-report/index',
-        nav: true,
-        title: 'Display Budget Master / Sample',
-        auth: true,
-        settings: {
-            group: "nmerchandiser",
-            permission: { "PGA": 1, "PG": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -468,6 +417,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Monitoring",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -481,6 +431,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Laporan",
             permission: { "B7": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -494,6 +445,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Laporan",
             permission: { "P": 1, "B7": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -507,6 +459,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Laporan",
             permission: { "PGA": 1, "P": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -520,6 +473,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Laporan",
             permission: {  "P": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -533,6 +487,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Laporan",
             permission: { "PGA": 1, "P": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -546,6 +501,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Laporan",
             permission: { "PGA": 1, "P": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -559,6 +515,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Monitoring",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -572,6 +529,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Laporan",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -585,6 +543,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Laporan",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -598,6 +557,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Laporan",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -607,10 +567,11 @@ module.exports = [
         name: 'budget-export-garment-report',
         moduleId: './modules/nmerchandiser/report/budget-export-garment-report/index',
         nav: true,
-        title: 'Monitoring Budget Export Garment',
+        title: 'Monitoring Budget Garment',
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Monitoring",
             permission: { "PGA": 1, "PG": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -624,7 +585,92 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Monitoring",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+    {
+        route: '/nmerchandiser/garment-cost-calculation-by-unit-report',
+        name: 'garment-cost-calculation-by-unit-report',
+        moduleId: './modules/nmerchandiser/report/cost-calculation-garment-by-unit-report/index',
+        nav: true,
+        title: 'Display Cost Calculation Garment Per Unit',
+        auth: true,
+        settings: {
+            group: "nmerchandiser",
+            subGroup: "Monitoring",
+            permission: {  "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+    {
+        route: '/nmerchandiser/garment-cost-calculation-by-section-report',
+        name: 'garment-cost-calculation-by-section-report',
+        moduleId: './modules/nmerchandiser/report/cost-calculation-garment-by-section-report/index',
+        nav: true,
+        title: 'Display Cost Calculation Garment Per Seksi',
+        auth: true,
+        settings: {
+            group: "nmerchandiser",
+            subGroup: "Monitoring",
+            permission: {  "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+    {
+        route: '/nmerchandiser/garment-cost-calculation-by-buyer-report',
+        name: 'garment-cost-calculation-by-buyer-report',
+        moduleId: './modules/nmerchandiser/report/cost-calculation-garment-by-buyer-report/index',
+        nav: true,
+        title: 'Display Cost Calculation Garment Per Buyer - Deskripsi',
+        auth: true,
+        settings: {
+            group: "nmerchandiser",
+            subGroup: "Monitoring",
+            permission: {  "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+     {
+        route: '/nmerchandiser/garment-cost-calculation-by-sc-report',
+        name: 'garment-cost-calculation-by-sc-report',
+        moduleId: './modules/nmerchandiser/report/cost-calculation-garment-by-sc-report/index',
+        nav: true,
+        title: 'Display Cost Calculation Garment Per Buyer - Sales Contract',
+        auth: true,
+        settings: {
+            group: "nmerchandiser",
+            subGroup: "Monitoring",
+            permission: {  "PGA": 1, "C5": 1, "C9": 1, "C.01": 1 },
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+    {
+        route: '/nmerchandiser/budget-job-order-report',
+        name: 'budget-job-order-report',
+        moduleId: './modules/nmerchandiser/report/budget-job-order-report/index',
+        nav: true,
+        title: 'Display Budget Job Order',
+        auth: true,
+        settings: {
+            group: "nmerchandiser",
+            subGroup: "Monitoring",
+            permission: { "PGA": 1, "PG": 1, "P": 1, "GU": 1, "B7": 1, "C9": 1, "C.01": 1 },
+            iconClass: 'fa fa-dashboard'
+        }
+    },
+    {
+        route: '/nmerchandiser/budget-master-sample-report',
+        name: 'budget-master-sample-report',
+        moduleId: './modules/nmerchandiser/report/budget-master-sample-report/index',
+        nav: true,
+        title: 'Display Budget Master / Sample',
+        auth: true,
+        settings: {
+            group: "nmerchandiser",
+            subGroup: "Monitoring",
+            permission: { "PGA": 1, "PG": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
     },
@@ -637,6 +683,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi", 
             permission: { "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard'
         }
@@ -650,6 +697,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard',
             type: "kabag_md"
@@ -664,6 +712,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard',
             type: "purchasing"
@@ -678,6 +727,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-dashboard',
             type: "kadiv_md"
@@ -692,6 +742,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Transaksi",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }
@@ -705,6 +756,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }
@@ -718,6 +770,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "PGA": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }
@@ -731,6 +784,7 @@ module.exports = [
         auth: true,
         settings: {
             group: "nmerchandiser",
+            subGroup: "Approval",
             permission: { "PGA": 1, "SG": 1, "C9": 1, "C.01": 1 },
             iconClass: 'fa fa-calculator'
         }

@@ -30,6 +30,7 @@
         <thead>
             <tr>
                 <th>No.</th>
+                <th>Barcode</th>
                 <th>Produk</th>
                 <th>Kuantitas Diterima</th>
                 <th>Catatan</th> 
@@ -38,6 +39,7 @@
         <tbody>
             <tr repeat.for="item of data.items">
                 <td>${$index+1}</td>
+                <td>${item.item.code }  </td> 
                 <td>${item.item.name }  </td> 
                 <td>${item.sendquantity}</td>
                 <td>${item.remark}</td> 

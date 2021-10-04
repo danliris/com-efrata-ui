@@ -64,7 +64,7 @@
                         <th width="5%"><label>Kuantitas</label></th>
                         <th width="7%"><label>Tanggal Unpost</label></th>
                         <th width="35%"><label>Alasan Unpost</label></th>
-                        <th width="10%"><label>User yang Unpost</label></th>
+                        <th width="10%"><label>User</label></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -105,7 +105,7 @@
                                 <td>
                                     <au-textbox value.bind="data.UnpostReasons[reasonIndex].Reason" read-only="true"></au-textbox>
                                 </td>
-                                <td>
+                                <td align="center">
                                     <au-textbox value.bind="data.UnpostReasons[reasonIndex].Creator" read-only="true"></au-textbox>
                                 </td>
                             </tr>

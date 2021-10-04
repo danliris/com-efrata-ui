@@ -6,7 +6,7 @@ const resource = 'items/finished-goods';
 module.exports = function(keyword, filter) {
 
     var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("master");
+    var endpoint = config.getEndpoint("ncore");
 
     //return endpoint.find(resource, { keyword: keyword, filter: JSON.stringify(filter) })
     return endpoint.find(resource, { keyword: keyword })

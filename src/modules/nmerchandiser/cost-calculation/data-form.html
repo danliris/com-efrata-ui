@@ -23,6 +23,17 @@
                 </au-textbox>
 
                 <au-autocomplete
+                    label="Asal"
+                    value.bind="selectedSource"
+                    error.bind="error.Source"
+                    loader.bind="sourceLoader"
+                    text.bind="sourceView"
+                    placeholder="Asal"
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4"
+                    keypress.delegate="enterDelegate($event)">
+                </au-autocomplete>
+                <au-autocomplete
                     label="Unit"
                     value.bind="selectedUnit"
                     error.bind="error.Unit"
@@ -63,6 +74,36 @@
                     error.bind="error.AccessoriesAllowance"
                     options.bind="length4">
                 </au-numeric>
+
+                <au-autocomplete
+                    value.bind="selectedProcess"
+                    error.bind="error.Process"
+                    label="Proses"
+                    text="name"
+                    loader.bind="ProcessLoader"
+                    read-only.bind="readOnly"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete        
+                    value.bind="selectedBahan"               
+                    error.bind="error.Materials"   
+                    label="Bahan"                               
+                    text="name" 
+                    loader.bind="MaterialsLoader"               
+                    read-only.bind="readOnly"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedKomposisiBahan"
+                    error.bind="error.MaterialCompositions"
+                    label="Komposisi Bahan"
+                    loader.bind="MaterialCompositionsLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
             </div>
             <div class="col-md-3">
                 <au-textbox
@@ -110,6 +151,55 @@
                     text="Name"
                     loader.bind="sizeRangeLoader">
                 </au-datepicker>
+                <au-autocomplete
+                    value.bind="selectedKoleksi"
+                    error.bind="error.Collections"
+                    label="Koleksi"
+                    loader.bind="CollectionsLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedSeason"
+                    error.bind="error.Seasons"
+                    label="Season"
+                    loader.bind="SeasonsLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedKonter"
+                    error.bind="error.Counters"
+                    label="Konter"
+                    loader.bind="CountersLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedStyle"
+                    error.bind="error.SubCounters"
+                    label="Style"
+                    loader.bind="SubCountersLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
+
+                <au-autocomplete
+                    value.bind="selectedKategori"
+                    error.bind="error.Categories"
+                    label="Kategori"
+                    loader.bind="CategoriesLoader"
+                    text="name" 
+                    read-only.bind="readOnly || isEdit"
+                    options.bind="length4">
+                </au-autocomplete>
             </div>
             <div class="col-md-3">
                 <au-dropdown
@@ -202,7 +292,7 @@
                     label="Confirm Price"
                     value.bind="data.ConfirmPrice"
                     error.bind="error.ConfirmPrice"
-                    format="0,0.0000"
+                    format="0,0.00"
                     options.bind="length4">
                 </au-numeric>
                 <div class="row">
@@ -230,19 +320,21 @@
             ${error.CostCalculationGarment_MaterialTable}
         </span>
         <div class="row">
-            <div class="col-md-12">
-                <au-collection
-                    view-model.ref="itemsCollection"
-                    items.bind="data.CostCalculationGarment_Materials"
-                    errors.bind="error.CostCalculationGarment_Materials"
-                    columns.bind="costCalculationGarment_MaterialsInfo.columns"
-                    add.bind="costCalculationGarment_MaterialsInfo.onAdd"
-                    remove.bind="costCalculationGarment_MaterialsInfo.onRemove"
-                    options.bind="costCalculationGarment_MaterialsInfo.options"
-                    responsive.bind="true"
-                    item-template="modules/nmerchandiser/cost-calculation/template/data-form/cost-calculation-material"
-                    footer-template="modules/nmerchandiser/cost-calculation/template/data-form/cost-calculation-material-footer">
-                </au-collection>
+            <div class="table-responsive">  
+                <div class="col-md-12">
+                    <au-collection
+                        view-model.ref="itemsCollection"
+                        items.bind="data.CostCalculationGarment_Materials"
+                        errors.bind="error.CostCalculationGarment_Materials"
+                        columns.bind="costCalculationGarment_MaterialsInfo.columns"
+                        add.bind="costCalculationGarment_MaterialsInfo.onAdd"
+                        remove.bind="costCalculationGarment_MaterialsInfo.onRemove"
+                        options.bind="costCalculationGarment_MaterialsInfo.options"
+                        responsive.bind="true"
+                        item-template="modules/nmerchandiser/cost-calculation/template/data-form/cost-calculation-material"
+                        footer-template="modules/nmerchandiser/cost-calculation/template/data-form/cost-calculation-material-footer">
+                    </au-collection>
+                </div>
             </div>
         </div>
         <div class="row">

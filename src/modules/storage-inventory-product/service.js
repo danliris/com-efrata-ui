@@ -4,12 +4,12 @@ import { RestService } from '../../utils/rest-service';
 import { Container } from 'aurelia-dependency-injection';
 import { Config } from "aurelia-api";
 
-const serviceUriStorages = '/storages';
+const serviceUriStorages = 'inventories/monitoring';
 
 export class Service extends RestService {
 
   constructor(http, aggregator, config, api) {
-    super(http, aggregator, config, "master");
+    super(http, aggregator, config, "ncore");
   }
 
   // getAllInventory(storageId, keyword)
@@ -19,9 +19,9 @@ export class Service extends RestService {
   //   return super.get(endpoint);
   // }
 
-  getAllInventorybyItemId(itemId) {
+  getAllInventorybyItemId(itemCode) {
     var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("inventory").client.baseUrl + 'storages/' + "/items/" + itemId;
+    var endpoint = config.getEndpoint("inventory").client.baseUrl + `${serviceUriStorages}/by-search?itemCode=${itemCode}`;
     return super.get(endpoint);
   }
   getAllMovement(storageId, itemId) {
@@ -30,4 +30,9 @@ export class Service extends RestService {
     return super.get(endpoint);
   }
 
+  generateAllInventoryExcel(itemCode) {
+    var config = Container.instance.get(Config);
+    var endpoint = config.getEndpoint("inventory").client.baseUrl + `${serviceUriStorages}/by-search/download?itemCode=${itemCode}`;
+    return super.getXls(endpoint);
+  }
 }

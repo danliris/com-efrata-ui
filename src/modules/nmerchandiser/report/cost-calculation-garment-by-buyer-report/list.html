@@ -46,6 +46,7 @@
             <button class='btn btn-primary' click.delegate="ExportToExcel()">Export To Excel</button>
           </div>
         <br>
+        <div class="table-responsive">
         <table class="table table-bordered table-hover" id="myTable">
             <thead>
                 <tr>
@@ -55,9 +56,7 @@
                     <th class="text-center">Article / Style</th>
                     <th class="text-center">Deskripsi</th>
                     <th class="text-center">Buyer Agent</th>
-                    <th class="text-center">Nama Buyer Agent</th>
                     <th class="text-center">Brand Buyer</th>
-                    <th class="text-center">Nama Brand Buyer</th>
                     <th class="text-center">Komisi</th>
                     <th class="text-center">Jumlah</th>
                     <th class="text-center">Satuan</th>        
@@ -73,10 +72,8 @@
                         <td>${data.DeliveryDate}</td>
                         <td>${data.Article}</td>
                         <td>${data.Description}</td>
-                        <td>${data.BuyerCode}</td>
-                        <td>${data.BuyerName}</td>
-                        <td>${data.BrandCode}</td>
-                        <td>${data.BrandName}</td>
+                        <td>${data.BuyerCode} - ${data.BuyerName}</td>
+                        <td>${data.BrandCode} - ${data.BrandName}</td>
                         <td class="text-right">${data.Commission}</td>
                         <td class="text-right">${data.Quantity}</td>
                         <td>${data.UOMUnit}</td>
@@ -85,7 +82,7 @@
                     </tr>
                     <tr class="active">
                        <td class="text-center">.</td>
-                        <td class="text-right" colspan="7"><strong>${brand.brand}</strong></td>
+                        <td class="text-right" colspan="5"><strong>${brand.brand}</strong></td>
                         <td class="text-center" colspan="2"><strong>SUB TOTAL</strong></td>
                         <td class="text-right"><strong>${brand.subTotal1}</strong></td>                     
                         <td class="text-right"><strong>.</strong></td>                     
@@ -94,7 +91,7 @@
                     </tr>
                 </template>
                     <tr class="active">
-                        <td class="text-center" colspan="10"><strong>T O T A L . . . . . . :</strong></td>
+                        <td class="text-center" colspan="8"><strong>T O T A L . . . . . . :</strong></td>
                         <td class="text-right"><strong>${QtyTotal}</strong></td>                     
                         <td class="text-right"><strong>.</strong></td>                                                                     
                         <td class="text-right"><strong>.</strong></td>                                             
@@ -103,6 +100,7 @@
             </tbody>
 
         </table>
+        </div>
         <div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
             Tidak Ada Data Yang Ditemukan.
         </div>

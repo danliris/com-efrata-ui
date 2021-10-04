@@ -68,7 +68,7 @@ export class PurchasingService extends RestService {
 const costCalculationServiceUri = 'cost-calculation-garments';
 export class SalesService extends RestService {
     constructor(http, aggregator, config, api) {
-        super(http, aggregator, config, "sales");
+        super(http, aggregator, config, "nsales");
     }
 
     getCostCalculationByRONo(info) {

@@ -10,5 +10,5 @@ npm-debug.log*
 /test/coverage
 yarn.lock
 src/host.js
-src/modules/efr-kb-rtp-cr/data-form.html
 package-lock.json
+src\main.js

@@ -1,0 +1,116 @@
+<template>
+    <form class="form-horizontal">
+        <au-textbox 
+          label="Nomor Referensi" 
+          value.bind="data.reference" 
+          error.bind="error.reference" 
+          read-only.bind="readOnly" 
+          aria-placeholder="Packing List SPK">
+        </au-textbox>
+
+        <au-dropdown 
+          label="Sumber Penyimpanan" 
+          value.bind="data.source" 
+          items.bind="sources" 
+          key="code" 
+          text="name">
+        </au-dropdown>
+
+        <au-dropdown label="Tujuan Penyimpanan" value.bind="data.destination" items.bind="destinations"></au-dropdown>
+
+        <au-dropdown 
+          value.bind="data.expeditionService" 
+          label="Expedisi" 
+          error.bind="error.expedition"
+          items.bind="expeditionServices"
+          key="code" 
+          text="name" 
+          read-only.bind="readOnly">
+        </au-dropdown>
+
+        <p class="col-md-1">Barcode</p>
+
+        <input 
+          type="text" 
+          focus.bind="hasFocus" 
+          value.bind="barcode" 
+          class="col-md-3"
+          aria-placeholder="Barcode">
+        </input>
+
+        <!-- <input type="text" focus.bind="hasFocus" value.bind="barcode" class="col-md-3" aria-placeholder="Barcode" input.delegate="barcodeChoose($event)"></input> -->
+        <!-- <finishedgoods-auto-suggest label="Nama Barang" value.bind="item" class="col-md-5" read-only.bind="readOnly" change.delegate="nameChoose($event)"></finishedgoods-auto-suggest> -->
+        
+        <au-autocomplete 
+          value.bind="item" 
+          class="col-md-5" 
+          error.bind="error.supplier" 
+          label="Nama Barang"
+          loader.bind="itemLoader" 
+          text.bind="itemView" 
+          placeholder="cari Barang" 
+          key="Name"
+          read-only.bind="readOnly || isEdit" 
+          options.bind="controlOptions">
+        </au-autocomplete>
+
+        <numeric label="Total Kuantitas:" read-only.bind="true" value.bind="sumTotalQty" class="col-md-5"></numeric>
+        <numeric label="Total Harga:" read-only.bind="true" value.bind="sumPrice" class="col-md-3"></numeric>
+    </form>
+    
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Barcode</th>
+                <th>Nama</th>
+                <th>Kuantitas Stok</th>
+                <th>Kuantitas Pengiriman</th>
+                <th>Harga</th>
+                <th>Catatan</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr repeat.for="item of data.items">
+                <td>${$index+1}</td>
+                <td> ${item.item.code} </td>
+                <td> ${item.item.name} </td>
+                <td> ${item.availablequantity} </td>
+                <td>
+                  <input 
+                    class="form-control" 
+                    style="width: 70px" 
+                    type="number" 
+                    name="quantity" 
+                    value.bind="item.quantity" 
+                    max.bind="item.availableQuantity" 
+                    min="0"
+                    change.delegate="qtyChange(item.code, item.quantity)" 
+                    />
+                  <span class="help-block">${error.items[$index].quantity}</span>
+                </td>
+                <td>
+                  <numeric 
+                    label="" 
+                    read-only.bind="true" 
+                    value.bind="item.item.domesticSale"
+                    class="col-md-1">
+                  </numeric>
+                </td>
+                <td>
+                  <div class="form-group ${error.items[$index].remark?'has-error':''}">
+                    <input class="form-control" type="text" name="remark" value.bind="item.remark" />
+                    <span class="help-block">${error.items[$index].remark}</span>
+                  </div>
+                </td>
+                <td>
+                  <button href="#" class="btn btn-danger btn-sm pull-right" click.delegate="removeItem(item)">Hapus</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="alert alert-info text-center" role="alert" if.bind="data.items.length == 0">
+        Tidak ada data.
+    </div>
+</template>

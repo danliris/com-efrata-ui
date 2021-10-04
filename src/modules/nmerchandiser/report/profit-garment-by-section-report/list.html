@@ -24,30 +24,31 @@
             <button class='btn btn-primary' click.delegate="ExportToExcel()">Export To Excel</button>
         </div>
         <br>
+        <div class= "table-responsive">
         <table class="table table-bordered table-hover" id="myTable">
             <thead>
                 <tr>
                     <th class="text-center">Nomor</th>
                     <th class="text-center">Nomor RO</th>
                     <th class="text-center">Seksi</th>
-                    <th class="text-center">Nama Unit</th>
+                    <!-- <th class="text-center">Nama Unit</th>
                     <th class="text-center">Buyer Agent</th>
-                    <th class="text-center">Nama Buyer Agent</th>
+                    <th class="text-center">Nama Buyer Agent</th> -->
                     <th class="text-center">Brand Buyer</th>
                     <th class="text-center">Nama Brand Buyer</th>
                     <th class="text-center">Article / Style</th>
                     <th class="text-center">Komoditi</th>
                     <th class="text-center">Deskripsi Garment</th>
-                    <th class="text-center">Fabric Allowance</th>      
-                    <th class="text-center">Acc Allowance</th> 
-                    <th class="text-center">Tgl Shipment</th>      
-                    <th class="text-center">Profit %</th>
+                    <!-- <th class="text-center">Fabric Allowance</th>      
+                    <th class="text-center">Acc Allowance</th> -->
+                    <th class="text-center">Tgl Shipment</th>       
                     <th class="text-center">Jumlah Order</th>
                     <th class="text-center">Satuan</th>                            
                     <th class="text-center">Confirm Price</th>
                     <th class="text-center">CM Price</th>
                     <th class="text-center">FOB Price</th>     
-                    <th class="text-center">Amount</th>     
+                    <th class="text-center">Amount</th> 
+                    <th class="text-center">Profit IDR %</th>    
                 </tr>
             </thead>
             <tbody>
@@ -56,49 +57,52 @@
                         <td class="text-center"> ${$index + 1}</td>
                         <td>${item.RO_Number}</td>
                         <td>${item.Section}</td>
-                        <td>${item.UnitName}</td>
+                        <!-- <td>${item.UnitName}</td>
                         <td>${item.BuyerCode}</td>
-                        <td>${item.BuyerName}</td>
+                        <td>${item.BuyerName}</td> -->
                         <td>${item.BrandCode}</td>
                         <td>${item.BrandName}</td>
                         <td>${item.Article}</td>
                         <td>${item.Comodity}</td>
                         <td>${item.ComodityDescription}</td>
-                        <td class="text-right">${item.FabAllow}</td>
-                        <td class="text-right">${item.AccAllow}</td>
+                        <!-- <td class="text-right">${item.FabAllow}</td>
+                        <td class="text-right">${item.AccAllow}</td> -->
                         <td>${item.DeliveryDate}</td>
-                        <td class="text-right">${item.Profit}</td>
                         <td class="text-right">${item.Quantity}</td>
                         <td>${item.UOMUnit}</td>
                         <td class="text-right">${item.ConfirmPrice}</strong></td>     
                         <td class="text-right">${item.CMPrice}</strong></td>   
                         <td class="text-right">${item.FOBPrice}</strong></td>                             
-                        <td class="text-right">${item.Amount}</td>   
+                        <td class="text-right">${item.Amount}</td>
+                        <td class="text-right">${item.Profit}</td>   
                     </tr>
                         <tr class="active">
                         <td class="text-center">.</td>
                         <td class="text-center"><strong>.</strong></td>                     
                         <td class="text-center"><strong>.</strong></td>    
-                        <td class="text-center" colspan="9"><strong>S E K S I : ${Seksi.SECTION}</strong></td>
-                        <td class="text-center" colspan="4"><strong>SUB TOTAL</strong></td>
+                        <td class="text-center" colspan="5"><strong>S E K S I : ${Seksi.SECTION}</strong></td>
+                        <td class="text-center" colspan="2"><strong>SUB TOTAL</strong></td>
                         <td class="text-center"><strong>.</strong></td>    
                         <td class="text-center"><strong>.</strong></td>    
                         <td class="text-center"><strong>.</strong></td>    
-                        <td class="text-center"><strong>.</strong></td>                                             
+                        <td class="text-center"><strong>.</strong></td>
                         <td class="text-right"><strong>${Seksi.subTotal}</strong></td>                     
+                        <td class="text-center"><strong>.</strong></td>                                             
                     </tr>
                 </template>
                    <tr class="active">
-                        <td class="text-center" colspan="16"><strong>T O T A L . . . . . . :</strong></td>
-                        <td class="text-center"><strong>.</strong></td>                     
-                        <td class="text-center"><strong>.</strong></td>                                                                     
+                        <td class="text-center" colspan="10"><strong>T O T A L . . . . . . :</strong></td>
+                        <td class="text-center"><strong>.</strong></td> 
+                        <td class="text-center"><strong>.</strong></td>                                                                    
                         <td class="text-center"><strong>.</strong></td>                                                                     
                         <td class="text-center"><strong>.</strong></td>                                             
                         <td class="text-right"><strong>${AmountTotal}</strong></td>                     
+                        <td class="text-center"><strong>.</strong></td>                     
                     </tr>
             </tbody>
 
         </table>
+        </div>
         <div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
             Tidak Ada Data Yang Ditemukan.
         </div>

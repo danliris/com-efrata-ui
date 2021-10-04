@@ -9,10 +9,12 @@ export class Edit {
         this.router = router;
         this.service = service;
     }
-isEdit=true;
+
+    isEdit=true;
     async activate(params) {
         var id = params.id;
         this.data = await this.service.getById(id);
+        
         // this.hasItems=false;
         // if(this.data.Items)
         //     if(this.data.Items.length>0){

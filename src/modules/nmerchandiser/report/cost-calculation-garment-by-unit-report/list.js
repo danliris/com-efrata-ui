@@ -2,7 +2,7 @@ import { inject, bindable } from 'aurelia-framework';
 import { Service } from "./service";
 import { Router } from 'aurelia-router';
 import moment from 'moment';
-var UnitLoader = require('../../../../loader/unit-loader');
+var UnitLoader = require('../../../../loader/garment-units-loader');
 
 @inject(Router, Service)
 export class List {
@@ -74,25 +74,25 @@ export class List {
                             subTotalBrand1[Brand] += data.Quantity;
                           }
      
-               var brands = [];
-               this.AmountTotal = 0;
-               this.QtyTotal = 0;               
-                   
-               for (var data in dataByBrand) {
-                   brands.push({
-                   data: dataByBrand[data],
-                   brand: dataByBrand[data][0].BrandName,
-                   subTotal: (subTotalBrand[data]).toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-                   subTotal1: (subTotalBrand1[data]).toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),                   
-              });
-                   this.AmountTotal += subTotalBrand[data];   
-                   this.QtyTotal += subTotalBrand1[data];   
-                                   
-               }
-               this.AmountTotal = this.AmountTotal.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-               this.QtyTotal = this.QtyTotal.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-               this.brands = brands;
-             });        
+                        var brands = [];
+                        this.AmountTotal = 0;
+                        this.QtyTotal = 0;               
+                            
+                        for (var data in dataByBrand) {
+                            brands.push({
+                            data: dataByBrand[data],
+                            brand: dataByBrand[data][0].BrandName,
+                            subTotal: (subTotalBrand[data]).toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
+                            subTotal1: (subTotalBrand1[data]).toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),                   
+                        });
+                            this.AmountTotal += subTotalBrand[data];   
+                            this.QtyTotal += subTotalBrand1[data];   
+                                            
+                        }
+                            this.AmountTotal = this.AmountTotal.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                            this.QtyTotal = this.QtyTotal.toLocaleString('en-EN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                            this.brands = brands;
+                    });        
     }
 
     ExportToExcel() {

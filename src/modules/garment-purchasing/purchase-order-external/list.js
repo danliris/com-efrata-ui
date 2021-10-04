@@ -45,7 +45,7 @@ export class List {
                 return value ? "YA" : "TIDAK";
             }
         },
-        { field: "IsApproved", title: "Status Approve" , formatter: function (value, data, index) {
+        { field: "IsApproved", title: "Status Approve Over Bugdet" , formatter: function (value, data, index) {
                 return data.approveStatus;}
         }
     ];

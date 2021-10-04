@@ -30,7 +30,7 @@
                         <th>Barcode</th>
                         <th>Produk</th>
                         <th if.bind="!isDetail">Kuantitas Packing List</th>
-                        <th if.bind="!isDetail">Kuantitas Stok</th>
+                        <!-- <th if.bind="!isDetail">Kuantitas Stok</th> -->
                         <th if.bind="!isDetail">Kuantitas Pengiriman</th>
                         <th if.bind="isDetail">Kuantitas</th>
                         <th>Catatan</th>
@@ -55,15 +55,15 @@
                                 <span class="help-block">${error.items[$index].quantity}</span>
                             </div>
                         </td>
-                        <td if.bind="!isDetail">
+                        <!-- <td if.bind="!isDetail">
                             <div class="form-group ${error.items[$index].quantityStock?'has-error':''}">
                                 <au-numeric label="" format="0" value.bind="item.quantityStock" read-only.bind="true"></au-class>
                                 <span class="help-block">${error.items[$index].quantityStock}</span>
                             </div>
-                        </td>
+                        </td> -->
                         <td if.bind="!isDetail">
                             <div class="form-group ${error.items[$index].sendQuantity?'has-error':''}">
-                                <au-numeric label="" format="0" value.bind="item.sendQuantity" read-only.bind="options.readOnly"></au-numeric>
+                                <au-numeric label="" format="0" value.bind="item.sendQuantity" read-only.bind="true"></au-numeric>
                                 <span class="help-block">${error.items[$index].sendQuantity}</span>
                             </div>
                         </td>
