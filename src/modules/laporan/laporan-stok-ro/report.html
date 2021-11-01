@@ -1,6 +1,7 @@
 <template>
     <h1 class="page-header">Laporan Stok Per RO</h1>
-    <au-input-form>
+    <!-- <au-input-form> -->
+    <from class="form-horizontal">
         <div class="row">
             <div class="col-md-9">
                 <div class="row">
@@ -22,8 +23,8 @@
                 </div>
                 <div class="row">
                     <div class="col-md-9">
-                        <button click.delegate="exportToExcel()" class="btn btn-success">Cetak Excel</button>
-                        <button click.delegate="showReport()" class="btn btn-success">Tampilkan</button>
+                        <button click.delegate="exportToExcel()" class="btn btn-primary">Excel</button>
+                        <button click.delegate="showReport()" class="btn btn-success">Cari</button>
                     </div>
                 </div>
             </div>
@@ -31,11 +32,55 @@
                 <img class="img-responsive" style="margin:auto;" src.bind="imagePath">
             </div>
         </div>
-    </au-input-form>
-    <au-table 
-        view-model.ref="models"
-        options.bind="options"
-        data.bind="data"
-        show.bind="show">
-    </au-table>
+    <!-- </au-input-form> -->
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <!-- <th class="text-center">Toko</th> -->
+                        <th class="text-center">Kode Item</th>
+                        <th class="text-center">Umur</th>
+                        <th class="text-center">Size</th>
+                        <th class="text-center">Stock</th>
+                        <th class="text-center">Terjual</th>
+                    </tr>    
+                </thead>
+                </tbody>
+                    <template repeat.for="storage of storages">
+                        <tr>
+                            <td class="text-center" colspan="5"><strong>${storage.storage}</strong></td>
+                            <tr repeat.for="data of storage.data">
+                                <td class="text-center">${data.itemCode}</td>
+                                <td class="text-center">${data.age}</td>
+                                <td class="text-center">${data.size}</td>
+                                <td class="text-center">${data.quantityOnInventory}</td>
+                                <td class="text-center">${data.quantityOnSales}</td>
+                            </tr>
+                        </tr>
+                        <tr class="active">
+                            <!-- <td class="text-center" colspan="3"><strong>${storage.storage}</strong></td> -->
+                            <td class="text-center"><strong>Total</strong></td>
+                            <td class="text-center"><strong>${storage.subSizeStock}</strong></td>
+                            <td class="text-center"><strong>${storage.subSizeTerjual}</strong></td>
+                            <!-- <td class="text-center"><strong>${storage.subTotalStock}</strong></td> -->
+                            <td class="text-center"><strong>${AmountTotal}</strong></td>
+                            <!-- <td class="text-center"><strong>${storage.subTotalSales}</strong></td> -->
+                            <td class="text-center"><strong>${AmountSales}</strong></td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+        <div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
+            Tidak Ada Data Yang Ditemukan.
+        </div>
+        <hr/>
+        <!-- <au-table 
+            view-model.ref="models"
+            options.bind="options"
+            data.bind="data"
+            show.bind="show">
+        </au-table> -->
+    </from>
 </template>

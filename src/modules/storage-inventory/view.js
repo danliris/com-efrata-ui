@@ -19,7 +19,7 @@ export class View {
         this.info.keyword = '';
         var storageId = params.storageId;
         var itemCode = params.itemCode; 
-        var result = await this.service.getAllMovement(storageId, itemCode, this.info);
+        var result = await this.service.getAllMovement(storageId, itemCode);
         this.data = result.data;
         this.info = result.info;
         var moment = require('moment');
@@ -46,7 +46,7 @@ export class View {
 
     moveexcel(params) {
         var params = this.params;
-        var keyword = this.info.keyword;
+        //var keyword = this.info.keyword;
         var storageId = params.storageId;
         var itemCode = params.itemCode; 
         this.service.movementExcel(storageId, itemCode);

@@ -15,16 +15,16 @@ export class List {
         this.filter = "";  
     }
 
-    detail = ['view'];
+    // detail = ['view'];
 
-    columns = [
-        {title: 'Barcode', field: 'ItemCode'}, 
-        {title: 'Nama', field: 'ItemName'}, 
-        {title: 'RO', field: 'ItemArticleRealizationOrder'},
-        {title: 'Kuantitas', field: 'Quantity'},
-        {title: 'Harga', field: 'ItemDomesticSale'},
-        {title: 'Subtotal', field: 'subtotal'}
-    ]
+    // columns = [
+    //     {title: 'Barcode', field: 'ItemCode'}, 
+    //     {title: 'Nama', field: 'ItemName'}, 
+    //     {title: 'RO', field: 'ItemArticleRealizationOrder'},
+    //     {title: 'Kuantitas', field: 'Quantity'},
+    //     {title: 'Harga', field: 'ItemDomesticSale'},
+    //     {title: 'Subtotal', field: 'subtotal'}
+    // ]
 
     get storageLoader(){
         return Storageloader;
@@ -33,8 +33,17 @@ export class List {
     async activate() { 
     }
 
+    // convertToLocaleString(array) {
+    //     for (var a of array) {
+    //         for (var prop of Object.getOwnPropertyNames(a)) {
+    //             a[prop] = a[prop].toLocaleString();
+    //         }
+    //     }
+    //     return array;
+    // }
+
     reloadItem() { 
-        this.tableData=[];
+        // this.tableData=[];
         this.total=0;
         this.totalharga=0;
         this.storageId= this.storage ? this.storage._id : "";
@@ -42,11 +51,11 @@ export class List {
         this.service.getAllInventory(this.storageId, this.filter)
             .then(data => {
 
-                this.models.refresh();
+                // this.models.refresh();
                 this.data = data;
                 for (var item of this.data)
                 {
-                    this.tableData.push(item);
+                    // this.tableData.push(item);
                     item.subtotal=item.Quantity*item.ItemDomesticSale;
                     this.total=this.total+item.Quantity;
                     this.totalharga=this.totalharga+item.subtotal;
@@ -54,14 +63,14 @@ export class List {
             })
     }
 
-    contextCallback(event){
-        var arg = event.detail;
-        var data = arg.data;
-        switch (arg.name) {
-            case "view":
-                this.view(data);
-        }
-    }
+    // contextCallback(event){
+    //     var arg = event.detail;
+    //     var data = arg.data;
+    //     switch (arg.name) {
+    //         case "view":
+    //             this.view(data);
+    //     }
+    // }
 
     excel() {
         this.storageId= this.storage._id;
