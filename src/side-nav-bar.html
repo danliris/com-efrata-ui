@@ -9,7 +9,27 @@
       display: none;
     }
   </style>
-  <div class="side-nav-bar ${minimized ? 'minimized' : ''} ${expand ? 'expand' : ''} ${expandMore ? 'expand-more' : ''}" if.bind="isAuthenticated" >
+  <div
+    class="
+      side-nav-bar
+      ${minimized
+      ?
+      'minimized'
+      :
+      ''}
+      ${expand
+      ?
+      'expand'
+      :
+      ''}
+      ${expandMore
+      ?
+      'expand-more'
+      :
+      ''}
+    "
+    if.bind="isAuthenticated"
+  >
     <!-- NEW CODE -->
     <aside class="main-sidebar">
       <div class="sidebar-header">
@@ -40,6 +60,7 @@
               class="fa fa-database"
               if.bind="key.toUpperCase() == 'NMASTER'"
             ></i>
+            <i class="" if.bind="key.toUpperCase() == 'AUTH'"></i>
             <i
               class="fa fa-shopping-cart"
               if.bind="key.toUpperCase() == 'PURCHASING'"
@@ -61,11 +82,11 @@
               if.bind="key.toUpperCase() == 'GUDANG PUSAT'"
             ></i>
             <i
-              class ="fa fa-shopping-bag"
+              class="fa fa-shopping-bag"
               if.bind="key.toUpperCase() == 'TOKO'"
             ></i>
             <i
-              class ="fa fa-bar-chart"
+              class="fa fa-bar-chart"
               if.bind="key.toUpperCase() == 'LAPORAN'"
             ></i>
             <i
@@ -144,7 +165,16 @@
             <span if.bind="!minimized">${key.toUpperCase()}</span>
             <div class="pull-right" if.bind="value.size > 0 && !minimized">
               <i
-                class="fa ${activeMenu == value ? 'fa-angle-left' : 'fa-angle-right'}"
+                class="
+                  fa
+                  ${activeMenu
+                  ==
+                  value
+                  ?
+                  'fa-angle-left'
+                  :
+                  'fa-angle-right'}
+                "
               ></i>
             </div>
           </a>
@@ -168,7 +198,16 @@
             <span if.bind="!minimized">${key.toUpperCase()}</span>
             <div class="pull-right" if.bind="value.length > 0 && !minimized">
               <i
-                class="fa ${activeSubMenu == value ? 'fa-angle-left' : 'fa-angle-right'}"
+                class="
+                  fa
+                  ${activeSubMenu
+                  ==
+                  value
+                  ?
+                  'fa-angle-left'
+                  :
+                  'fa-angle-right'}
+                "
               ></i>
             </div>
           </a>
