@@ -1,7 +1,7 @@
 import { Container } from 'aurelia-dependency-injection';
 import { Config } from "aurelia-api";
 
-const resource = 'docs/efr-pk/expedition';
+const resource = 'pkpbj/by-user/expedition';
 
 module.exports = function (keyword, filter) {
 

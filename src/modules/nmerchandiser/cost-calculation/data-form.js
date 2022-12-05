@@ -4,7 +4,6 @@ import { ServiceEffeciency } from './service-efficiency';
 import { RateService } from './service-rate';
 import { ServiceCore } from './service-core';
 
-
 import numeral from 'numeral';
 numeral.defaultFormat("0,0.00");
 const rateNumberFormat = "0,0.000";
@@ -13,6 +12,16 @@ var SizeRangeLoader = require('../../../loader/size-range-loader');
 var ComodityLoader = require('../../../loader/garment-comodities-loader');
 var UOMLoader = require('../../../loader/uom-loader');
 var UnitLoader = require('../../../loader/garment-units-loader');
+var SourceLoader = require('../../../loader/master-source-loader');
+var ProcessLoader = require('../../../loader/process-loader');
+var SeasonsLoader = require('../../../loader/season-loader');
+var SubCountersLoader = require('../../../loader/sub-counter-loader');
+var CollectionsLoader = require('../../../loader/collection-loader');
+var CategoriesLoader = require('../../../loader/category-loader');
+var CountersLoader = require('../../../loader/counter-loader');
+var MaterialCompositionsLoader = require('../../../loader/material-composition-loader');
+var MaterialsLoader = require('../../../loader/material-loader');
+
 @inject(Router, BindingEngine, ServiceEffeciency, RateService, Element, ServiceCore)
 export class DataForm {
   @bindable title;
@@ -139,6 +148,24 @@ export class DataForm {
     this.data.OTL2 = this.data.OTL2 ? this.data.OTL2 : Object.assign({}, this.defaultRate);
     this.data.ConfirmPrice =this.data.ConfirmPrice ? this.data.ConfirmPrice .toLocaleString('en-EN', { minimumFractionDigits: 4}):0 ;
     let promises = [];
+    this.data.SourceCode = null;
+    this.data.process = {};
+    this.data.materials = {};
+    this.data.materialCompositions = {};
+    this.data.collections = {};
+    this.data.seasons = {};
+    this.data.counters = {};
+    this.data.subCounters = {};
+    this.data.categories = {};
+
+    this.data.process.code = '';
+    this.data.materials.code = '';
+    this.data.materialCompositions.code = '';
+    this.data.collections.code = '';
+    this.data.seasons.code = '';
+    this.data.counters.code = '';
+    this.data.subCounters.code = '';
+    this.data.categories.code = '';
 
     let wage;
     if (this.data.Wage) {
@@ -222,6 +249,10 @@ export class DataForm {
     console.log(context);
   }
 
+  get StoreLoader() {
+    return StoreLoader;
+}
+
   get preSalesContractLoader() {
     return PreSalesContractLoader;
   }
@@ -238,7 +269,7 @@ export class DataForm {
   }
 
   get comodityQuery(){
-    var result = { "_CreatedBy" : "dev217" }
+    var result = {  }
     return result;   
   }
 
@@ -250,8 +281,48 @@ export class DataForm {
     return UnitLoader;
   }
 
+  get sourceLoader() {
+    return SourceLoader;
+  }
+
+  get ProcessLoader() {
+    return ProcessLoader;
+  }
+
+  get MaterialsLoader() {
+      return MaterialsLoader;
+  }
+
+  get MaterialCompositionsLoader() {
+      return MaterialCompositionsLoader;
+  }
+
+  get CountersLoader() {
+      return CountersLoader;
+  }
+
+  get SeasonsLoader() {
+      return SeasonsLoader;
+  }
+
+  get CollectionsLoader() {
+      return CollectionsLoader;
+  }
+
+  get SubCountersLoader() {
+      return SubCountersLoader;
+  }
+
+  get CategoriesLoader() {
+      return CategoriesLoader;
+  }
+
   unitView = (unit) => {
     return `${unit.Code} - ${unit.Name}`
+  }
+
+  sourceView = (unit) => {
+    return `${unit.Name}`
   }
 
   uomView =(uom)=>{
@@ -445,7 +516,6 @@ export class DataForm {
   }
 
  
-
   @bindable selectedUnit;
   async selectedUnitChanged(newVal) {
     this.data.Unit = newVal;
@@ -480,6 +550,61 @@ export class DataForm {
     }
   }
 
+  @bindable selectedSource;
+  async selectedSourceChanged(newVal) {
+    this.data.SourceId = newVal.Id;
+    this.data.SourceCode = newVal.Code;
+    this.data.SourceName= newVal.Name;
+  }
+
+  @bindable selectedProcess;
+  async selectedProcessChanged(newVal) {
+    this.data.process = newVal
+  }
+
+  @bindable selectedBahan;
+  async selectedBahanChanged(newVal) {
+    this.data.materials = newVal;
+  }
+
+  @bindable selectedKomposisiBahan;
+  async selectedKomposisiBahanChanged(newVal) {
+    this.data.materialCompositions = newVal;
+  }
+  
+  @bindable selectedKoleksi;
+  async selectedKoleksiChanged(newVal) {
+    this.data.collections = newVal;
+  }
+
+  @bindable selectedSeason;
+  async selectedSeasonChanged(newVal) {
+    this.data.seasons = newVal;
+  }
+
+  @bindable selectedKonter;
+  async selectedKonterChanged(newVal) {
+    this.data.counters = newVal;
+  }
+
+  @bindable selectedStyle;
+  async selectedStyleChanged(newVal) {
+    this.data.subCounters = newVal;
+  }
+
+  @bindable selectedKategori;
+  async selectedKategoriChanged(newVal) {
+    this.data.categories = newVal;
+  }
+
+  // this.data.process = this.selectedProcess;
+  //           this.data.materials = this.selectedBahan;
+  //           this.data.materialCompositions = this.selectedKomposisiBahan;
+  //           this.data.collections = this.selectedKoleksi;
+  //           this.data.seasons = this.selectedSeason;
+  //           this.data.counters = this.selectedKonter;
+  //           this.data.subCounters = this.selectedStyle;
+  //           this.data.categories = this.selectedKategori;
 
   @computedFrom('data.SMV_Cutting', 'data.SMV_Sewing', 'data.SMV_Finishing')
   get SMV_Total() {

@@ -24,7 +24,8 @@ export class View {
                     this.totalPrice += item.totalPrice;
                 }
                 
-                this.data._createdDate = moment(data._createdDate).format("DD MMM YYYY HH:mm:ss");
+                // this.data._createdDate = moment(data._createdDate).format("DD MMM YYYY HH:mm:ss");
+                this.data.date = moment(data.date).format("DD MMM YYYY HH:mm:ss");
                 this.service.getSPKByReference(this.data.code).then(spk => {
                     this.data.spk = spk;
                 })

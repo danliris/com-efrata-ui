@@ -15,14 +15,14 @@
             <tr>
                 <th>Transfer Stok</th>
                 <th>Packing List</th>
-                <th>Toko Asal</th>
-                <th>Toko Tujuan</th>
+                <th>Sumber Penyimpanan</th>
+                <th>Tujuan Penyimpanan</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
             <tr repeat.for="item of data">
-                <td if.bind = "item.reference != ''">${item.Reference}</td>
+                <td if.bind = "item.reference != ''">${item.reference}</td>
                 <td if.bind = "item.reference == ''"> - </td>
                 <td>${item.packingList}</td>
                 <!-- <td if.bind = "item.reference != null">${item.sourceReference}</td>

@@ -28,7 +28,7 @@ export class Pending {
     // }
 
     async activate() {
-        this.info.keyword = '';
+        this.info.keyword = 'EFR-FN';
         var result = await this.service.listPending(this.info);
         console.log(result.data);
         var resultWithReference = await result.data.map(item => {

@@ -2,6 +2,7 @@ import { inject, bindable } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
 import { Service } from './service';
 var ItemLoader = require('../../loader/finished-goods-loader');
+var ItemInventoryLoader = require('../../loader/inventory-loader');
 
 @inject(Router, Service)
 export class DataForm {
@@ -24,14 +25,11 @@ export class DataForm {
     firstPrice = 0;
     indexSource = 0;
     hasFocus = true;
+
     constructor(router, service) {
         this.router = router;
         this.service = service;
-        
-
-        
-        
-
+    
         // this.service.getSources()
         // .then(result => {
         //     this.sources = result.data;
@@ -44,13 +42,26 @@ export class DataForm {
         //     });
         // });
         //console.log(this.data)
-  
     }
+
     sumTotalQty;
     sumPrice;
 
+    controlOptions = {
+      label: {
+          length: 4
+      },
+      control: {
+          length: 5
+      }
+    };
+
     get itemLoader() {
       return ItemLoader;
+    }
+
+    get itemInventoryLoader() {
+      return ItemInventoryLoader;
     }
     
 
@@ -165,95 +176,113 @@ export class DataForm {
     //       //   console.log(this.data);
     //         this.makeTotal(this.data.items);
     //       }) 
-
     // }
-    barcodeChanged(newValue, oldValue) {
-      if(newValue){
-        var _data = this.data.items.find((item) => item.code === selectedSupplier.code);
-        console.log(_data)
-        if(!_data){
-          let args = {
-            itemData: newValue,
-            source: this.data.source._id
-          };
-           this.service.getByCode(args).then(result => {
-             //var datas = result;
-             this.sumTotalQty = 0;
-             this.sumPrice = 0;
-             if (result.length > 0) {
-               for (var datas of result) {
-                 this.data.items.push({
-                   item: datas.item,
-                   itemInternationalCOGS: datas.itemInternationalCOGS,
-                   itemInternationalRetail: datas.itemInternationalRetail,
-                   itemInternationalSale: datas.itemInternationalSale,
-                   itemInternationalWholeSale: datas.itemInternationalWholeSale,
-                   quantity: datas.quantity
-                 })
-                 this.sumTotalQty = this.sumTotalQty + parseInt(datas.quantity);
-                 this.sumPrice += datas.item.domesticCOGS;
-               }
 
-             } else {
-               alert("Stock Inventory Kosong")
-             }
-           })
-        }
+    // barcodeChanged(newValue, oldValue) {
+    //   var selectedSupplier = newValue;
+    //   if(newValue){
+    //     var _data = this.data.items.find((item) => item.code === selectedSupplier.code) ? true : false;
+    //     console.log(_data)
+    //     if(_data || !_data){
+    //       let args = {
+    //         itemData: newValue,
+    //         source: this.data.source._id
+    //       };
+    //       console.log(args)
+    //       console.log(this.data.items)
+    //        this.service.getByCode(args).then(result => {
+    //          //var datas = result;
+    //         //  this.sumTotalQty = 0;
+    //         //  this.sumPrice = 0;
+    //          if (result.length > 0) {
+    //            for (var datas of result) {
+    //              this.data.items.push({
+    //                item: datas.item,
+    //                itemInternationalCOGS: datas.itemInternationalCOGS,
+    //                itemInternationalRetail: datas.itemInternationalRetail,
+    //                itemInternationalSale: datas.itemInternationalSale,
+    //                itemInternationalWholeSale: datas.itemInternationalWholeSale,
+    //                quantity: datas.quantity,
+    //                sendquantity : 0
+    //              })
+    //             //  this.sumTotalQty = this.sumTotalQty + parseInt(datas.quantity);
+    //             //  this.sumPrice += datas.item.domesticCOGS;
+    //            }
 
-      } else {
-        //this.data.supplier = {};
-        //this.data.items = [];
-        //this.data.supplierId = undefined;
-      }
-      this.makeTotal(this.data.items);
-      
-    }
+    //          } else {
+    //            alert("Stock Inventory Kosong")
+    //          }
+    //        })
+    //     }
+
+    //   } else {
+    //     //this.data.supplier = {};
+    //     //this.data.items = [];
+    //     //this.data.supplierId = undefined;
+    //   }
+    //   this.makeTotal(this.data.items);
+    //   this.barcode='';
+    // }
+
     itemView = (item) => {
       if (!item.Code)
         return `${item.name}`
       else
         return `${item.name}`
     }
+    barcodeView = (item) => {
+      console.log('item',item);
+      if (!item.code)
+        return `${item.code} - ${item.name}`
+      else
+        return `${item.code} - ${item.name}`
+    }
     itemChanged(newValue, oldValue) {
-         var selectedSupplier = newValue;
-         //console.log(newValue)
-         if (selectedSupplier) {
-           var _data = this.data.items.find((item) => item.code === selectedSupplier.code);
-                if (!_data) {
-                  //console.log(selectedSupplier.name)
-                  this.sumTotalQty = 0;
-                  this.sumPrice = 0;
-                  let args = {
-                    source: this.data.source._id,
-                    itemData: selectedSupplier.name,
-                  };
-                      this.service.getByName(args).then(result => {
-                        //var datas = result;
-                        if(result.length > 0 ){
-                        for(var datas of result){
-                          this.data.items.push({
-                            item: datas.item,
-                            itemInternationalCOGS: datas.itemInternationalCOGS,
-                            itemInternationalRetail: datas.itemInternationalRetail,
-                            itemInternationalSale: datas.itemInternationalSale,
-                            itemInternationalWholeSale: datas.itemInternationalWholeSale,
-                            quantity: datas.quantity
-                          })
-                         this.sumTotalQty = this.sumTotalQty + parseInt(datas.quantity);
-                         this.sumPrice += datas.item.domesticCOGS;
-                        }
-                      }else{
-                        alert("Stock Inventory Kosong")
-                      }
-                      })
-                      this.makeTotal(this.data.items);
-                }
-
-         } else {
-           //this.data.supplier = {};
-           this.data.items = [];
-           //this.data.supplierId = undefined;
+         newValue.sendquantity = 0;
+         if(this.data.items.find(d => d.item.code == newValue.item.code) == -1 || this.data.items.find(d => d.item.code == newValue.item.code) == undefined){
+          this.data.items.push(newValue);
+          this.sumTotalQty = this.sumTotalQty + parseInt(newValue.quantity);
+          this.sumPrice += newValue.item.domesticCOGS;
+          this.makeTotal(this.data.items);
          }
+        //  if (selectedSupplier) {
+        //    var _data = this.data.items.find((item) => item.code === selectedSupplier.code);
+        //         if (!_data) {
+        //           //console.log(selectedSupplier.name)
+        //           this.sumTotalQty = 0;
+        //           this.sumPrice = 0;
+        //           let args = {
+        //             source: this.data.source._id,
+        //             itemData: selectedSupplier.name,
+        //           };
+        //               this.service.getByName(args).then(result => {
+        //                 //var datas = result;
+        //                 if(result.length > 0 ){
+        //                 for(var datas of result){
+        //                   this.data.items.push({
+        //                     item: datas.item,
+        //                     itemInternationalCOGS: datas.itemInternationalCOGS,
+        //                     itemInternationalRetail: datas.itemInternationalRetail,
+        //                     itemInternationalSale: datas.itemInternationalSale,
+        //                     itemInternationalWholeSale: datas.itemInternationalWholeSale,
+        //                     quantity: datas.quantity,
+        //                     sendquantity : 0
+        //                   })
+        //                  this.sumTotalQty = this.sumTotalQty + parseInt(datas.quantity);
+        //                  this.sumPrice += datas.item.domesticCOGS;
+        //                 }
+        //               }else{
+        //                 alert("Stock Inventory Kosong")
+        //               }
+        //               })
+        //               this.makeTotal(this.data.items);
+        //         }
+
+        //  } else {
+        //    //this.data.supplier = {};
+        //    this.data.items = [];
+        //    //this.data.supplierId = undefined;
+        //  }
          
     }
     // async nameChoose(e) {
@@ -406,9 +435,9 @@ export class DataForm {
         this.sumPrice = 0;
         if (Object.getOwnPropertyNames(items).length > 0) {
             for (var i = 0; i < items.length; i++) {
-                console.log(items[i].item.domesticCOGS);
-                this.sumTotalQty = this.sumTotalQty + parseInt(items[i].sendquantity);
-                this.sumPrice += items[i].item.domesticCOGS;
+                // console.log(items[i].item.domesticCOGS);
+                this.sumTotalQty += parseInt(items[i].sendquantity);
+                this.sumPrice += (parseInt(items[i].sendquantity) * items[i].item.domesticCOGS);
             }
         } 
     }
