@@ -16,7 +16,7 @@
                 <div class="col-md-9">
                     <div class="row">
                         <!-- <label for="contact" class="col-sm-6 control-label"></label> -->
-                        <au-button click.delegate="reloadItem()" class="btn btn-success btn-sm pull-right">Cari</au-button> 
+                        <au-button click.delegate="reloadItem()" class="btn btn-primary btn-sm pull-right">Cari</au-button> 
                         <au-button style="margin-right:10px;" click.delegate="excel()" class="btn btn-success btn-sm pull-right">Cetak Excel</au-button>
                     </div>
                 </div>
@@ -42,16 +42,16 @@
                     <b>${totalharga.toLocaleString()}</b>
                 </td>
             </tr>
-            <!-- <tr>
+            <tr>
                 <th>Barcode</th>
                 <th>Nama</th>
                 <th>RO</th>
                 <th>Kuantitas</th>
                 <th>Harga</th>
                 <th>Subtotal</th>
-            </tr> -->
+            </tr>
         </thead>
-        <!-- <tbody>
+        <tbody>
             <tr repeat.for="item of data" click.delegate="view(item)">
                 <td>${item.ItemCode}</td>
                 <td>${item.ItemName}</td>
@@ -61,18 +61,18 @@
                 <td>${item.subtotal}</td>
             </tr>
             
-        </tbody> -->
-        <au-table 
+        </tbody>
+        <!-- <au-table 
             view-model.ref="models" 
             data.bind="tableData" 
             columns.bind="columns" 
             page-size="15" 
             context.bind="detail" 
-            context-click.delegate="contextCallback($event)">
-        </au-table>
+            context-click.delegate="contextClickCallback($event)">
+        </au-table> -->
     </table>
-    <!-- <div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
+    <div class="alert alert-info text-center" role="alert" if.bind="data.length == 0">
        Tidak ada data.
-    </div> -->
+    </div>
     <hr/> 
 </template>
